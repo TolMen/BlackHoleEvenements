@@ -1,0 +1,26 @@
+:root {
+    --color-gray-background: #f9f9f9;
+
+    --color-gray-border: #202020;
+    --color-gray-shadow: #20202026;
+
+    --color-text: black;
+    --color-text-hover: #000000bf;
+
+    --color-tomato-item: #ff977d;
+    --color-tomato-item-hover: #fbd3cb;
+}
+
+/* Pour le darkMode */
+/* :root {
+    --color-gray-background: rgb(25, 25, 25);
+
+    --color-gray-border: rgb(238, 238, 238);
+    --color-gray-shadow: rgb(238, 238, 238, 0.15);
+
+    --color-text: rgb(255, 255, 255);
+    --color-text-hover: rgb(180, 180, 180);
+
+    --color-tomato-item: rgb(251, 211, 203);
+    --color-tomato-item-hover: rgb(255, 151, 125);
+} */
