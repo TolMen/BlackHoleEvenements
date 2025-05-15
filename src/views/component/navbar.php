@@ -2,18 +2,15 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<nav class="navbar navbar-expand-sm fixed-top custom-navbar">
+<nav class="navbar navbar-expand-sm fixed-top customNavbar">
     <div class="container-fluid">
-        <!-- Logo à gauche -->
         <a href="home.php" class="navbar-brand"><img src="../../../public/assets/logo.png" alt="Logo Black Hole Evènements"></a>
 
-        <!-- Burger menu pour mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">

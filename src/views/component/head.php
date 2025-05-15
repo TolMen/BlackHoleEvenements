@@ -20,4 +20,6 @@
     <!-- Feuilles de style personnalisées -->
     <link rel="stylesheet" href="../../../public/css/styleBase.css" />
     <link rel="stylesheet" href="../../../public/css/styleColor.css" />
-    <link rel="stylesheet" href="../../../public/css/styleComponent.css" />
+    <link rel="stylesheet" href="../../../public/css/styleComponent/styleNavBar.css" />
+    <link rel="stylesheet" href="../../../public/css/styleComponent/styleFooter.css" />
+    
