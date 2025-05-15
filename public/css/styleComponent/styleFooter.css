@@ -1,0 +1,72 @@
+.footer {
+    z-index: 1000;
+    border-top: 1px solid var(--color-gray-border);
+    box-shadow: 0 -4px 6px var(--color-gray-shadow);
+    background-color: var(--color-gray-background);
+    color: var(--color-text);
+}
+
+.footer .socialIcon {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-tomato-item);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer .socialIcon i {
+    color: var(--color-gray-background);
+}
+
+.footer .socialIcon:hover {
+    transform: translateY(-3px);
+    background: var(--color-tomato-item-hover);
+}
+
+.footer .footerLink {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer .footerLink:hover {
+    color: var(--color-text-hover);
+}
+
+.footer .telBtn {
+    padding: 12px;
+    height: 35px;
+    font-weight: bold;
+    background: var(--color-tomato-item);
+    color: var(--color-gray-background);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.footer .telBtn:hover {
+    background: var(--color-tomato-item-hover);
+    transform: translateY(-3px);
+}
+
+.footer .mailBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.footer .mailCopy {
+    display: none;
+    font-size: 14px;
+    color: black;
+    white-space: nowrap;
+}
