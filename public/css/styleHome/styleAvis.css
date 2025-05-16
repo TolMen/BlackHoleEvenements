@@ -16,23 +16,6 @@
     justify-content: center;
 }
 
-/* Titre de section */
-.section-title {
-    font-weight: bold;
-    color: var(--color-text);
-}
-
-/* Ligne de séparation */
-.title-separator {
-    border: 2px solid var(--color-tomato-item);
-    border-radius: 2px;
-    width: 100px;
-    margin-bottom: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 100;
-}
-
 /* Source des avis */
 .sourceAvis {
     color: var(--color-text);

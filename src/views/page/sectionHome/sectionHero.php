@@ -58,19 +58,19 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="stat-item">
-                        <h3>750+</h3>
+                        <h3><span class="count-up" data-target="750">0</span><span>+</span></h3>
                         <p>Événements organisés</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="stat-item">
-                        <h3>96 %</h3>
+                        <h3><span class="count-up" data-target="96">0</span><span>%</span></h3>
                         <p>Clients satisfaits</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="stat-item">
-                        <h3>25+</h3>
+                        <h3><span class="count-up" data-target="25">0</span><span>+</span></h3>
                         <p>Années d'expérience</p>
                     </div>
                 </div>

@@ -55,6 +55,7 @@
 /* ========== BOUTON PERSONNALISÉ ========== */
 
 .custom-bouton {
+    display: inline-block;
     font-weight: bold;
     background: var(--color-tomato-item);
     color: var(--color-gray-background);
