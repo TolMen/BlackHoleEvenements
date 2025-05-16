@@ -31,26 +31,6 @@
     gap: 10px;
 }
 
-/* ========== COMPORTEMENT RESPONSIVE ========== */
-
-@media (max-width: 992px) {
-    .boxGal .options {
-        flex-wrap: wrap;
-        height: auto;
-        justify-content: center;
-    }
-
-    .boxGal .options .option {
-        flex: 1 1 150px;
-        height: 200px;
-    }
-
-    .option.active {
-        flex-grow: 1;
-        max-width: none;
-        border-radius: 20px;
-    }
-}
 
 /* ========== OPTIONS (CARTES INDIVIDUELLES) ========== */
 
@@ -132,7 +112,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 10px;
+    margin-left: 5px;
     color: var(--color-gray-background);
     font-weight: bold;
 }
@@ -146,4 +126,183 @@
 .option:not(.active) .label .info .title {
     left: 20px;
     opacity: 0;
+}
+
+/* ========== COMPORTEMENT RESPONSIVE ========== */
+
+/* ===== GALLERY SIMPLE (mobile) ===== */
+/* ===== GALLERIE RESPONSIVE MOBILE ===== */
+
+.boxSimpleGallery {
+    display: none;
+}
+
+.galleryResponsive {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vmin;
+    padding: 0 14px;
+    list-style-type: none;
+}
+
+.galleryResponsive li {
+    list-style-type: none;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+    height: auto;
+}
+
+
+.img-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px var(--color-gray-shadow);
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Légende */
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+}
+
+.caption img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+/* ===== MEDIA QUERY ===== */
+@media (max-width: 995px) {
+    .boxInteractive {
+        display: none !important;
+    }
+
+    .boxSimpleGallery {
+        display: block;
+    }
+
+    /* Cacher la version interactive */
+    .boxGal {
+        display: none;
+    }
+
+    /* Afficher la version mobile */
+    .boxSimpleGallery {
+        display: block;
+    }
+
+    .galleryResponsive {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .galleryResponsive li {
+        list-style-type: none;
+        flex-grow: 1;
+        min-width: 150px;
+        flex-basis: calc(50% - 10px); /* 2 par ligne */
+        height: auto;
+    }
+
+    .img-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px var(--color-gray-shadow);
+        border: 1px solid var(--color-gray-border);
+    }
+
+    .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .img-wrapper .label {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .img-wrapper .icon {
+        min-width: 40px;
+        max-width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: var(--color-tomato-item);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-wrapper .icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+    .img-wrapper .info {
+        color: var(--color-gray-background);
+        font-weight: bold;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .img-wrapper .info p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 550px) {
+    .galleryResponsive li {
+        flex-basis: 100%;
+        min-width: 100%;
+        height: 200px;
+    }
+
+    .img-wrapper {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px var(--color-gray-shadow);
+    }
+
+    .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
 }
