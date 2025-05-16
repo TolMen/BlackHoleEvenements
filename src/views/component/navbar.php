@@ -2,7 +2,7 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<nav class="navbar navbar-expand-sm fixed-top customNavbar">
+<nav class="navbar navbar-expand-md fixed-top customNavbar">
     <div class="container-fluid">
         <a href="home.php" class="navbar-brand"><img src="../../../public/assets/logo.png" alt="Logo Black Hole Evènements"></a>
 

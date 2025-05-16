@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const counters = document.querySelectorAll(".count-up");
-    const duration = 1000; // Durée totale en ms (1s)
+    const duration = 1000; // Durée animation en ms (1s)
 
-    counters.forEach((counter) => {
+    // Fonction d'animation d'un compteur
+    function animateCounter(counter) {
         const target = +counter.getAttribute("data-target");
         let start = 0;
         const frameRate = 1000 / 60; // ~60 FPS
@@ -20,5 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 counter.innerText = current;
             }
         }, frameRate);
+    }
+
+    // Observer pour détecter l'apparition dans le viewport
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    animateCounter(counter);
+                    observer.unobserve(counter);
+                }
+            });
+        },
+        {
+            threshold: 1,
+        }
+    );
+
+    counters.forEach((counter) => {
+        observer.observe(counter);
     });
 });
