@@ -48,6 +48,7 @@ session_start();
     <!-- Scripts personnalisés -->
     <script src="../../../public/js/autoPlayVideo.js"></script>
     <script src="../../../public/js/serviceHoverActive.js"></script>
+    <script src="../../../public/js/countUp.js"></script>
 
 </body>
 
