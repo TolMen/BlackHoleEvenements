@@ -1,0 +1,2 @@
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+public/assets/video/projectionTable.mp4 filter=lfs diff=lfs merge=lfs -text

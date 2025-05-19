@@ -1,0 +1,73 @@
+/* ========== SECTION VIDÉO IMMERSIVE ========== */
+
+.cover-carousel-container {
+    height: 90vh;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 
+        0 4px 6px var(--color-gray-shadow),
+        0 -4px 6px var(--color-gray-shadow);
+}
+
+/* Vidéo plein écran */
+.cover-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* ========== CONTENU SUPERPOSÉ SUR LA VIDÉO ========== */
+
+.cover-content {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 100%;
+    padding: 0 15px;
+    text-align: center;
+    text-shadow: 0 0 10px black;
+}
+
+/* Titre principal */
+.cover-content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Texte secondaire */
+.lead {
+    margin-bottom: 20px;
+}
+
+/* Mise en valeur de mots clés */
+.custom {
+    color: var(--color-tomato-item);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ========== BOUTON PERSONNALISÉ ========== */
+
+.custom-bouton {
+    display: inline-block;
+    font-weight: bold;
+    background: var(--color-tomato-item);
+    color: var(--color-gray-background);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 10px 25px;
+    text-decoration: none;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.custom-bouton:hover {
+    background: var(--color-tomato-item-hover);
+    transform: translateY(-3px);
+}

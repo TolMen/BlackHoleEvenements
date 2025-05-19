@@ -1,0 +1,69 @@
+/* ========== SECTION AVIS CLIENTS ========== */
+
+/* Section globale */
+.customer-reviews {
+    background-color: var(--color-gray-background);
+    color: var(--color-text);
+    padding: 0 15px;
+    padding-bottom: 50px;
+}
+
+/* Conteneur central */
+.boxAvis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Source des avis */
+.sourceAvis {
+    color: var(--color-text);
+}
+
+/* Lien vers la source */
+.linkAvis {
+    color: var(--color-tomato-item);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.linkAvis:hover {
+    color: var(--color-tomato-item-hover);
+}
+
+/* Carte d’avis individuelle */
+.review-card {
+    background-color: var(--color-gray-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--color-gray-shadow);
+    border: 1px solid var(--color-gray-border);
+    transition: transform 0.3s ease;
+    padding: 24px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-card p {
+    overflow-y: auto;
+    max-height: 180px;
+    margin-bottom: 0;
+}
+
+.review-card p::-webkit-scrollbar-thumb {
+    background-color: var(--color-tomato-item);
+    border-radius: 3px;
+}
+
+/* Étoiles de notation */
+.stars {
+    color: var(--color-tomato-item);
+    font-size: 18px;
+    margin-top: 10px;
+}

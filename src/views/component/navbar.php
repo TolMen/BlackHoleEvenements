@@ -2,7 +2,7 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<nav class="navbar navbar-expand-sm fixed-top customNavbar">
+<nav class="navbar navbar-expand-md fixed-top customNavbar">
     <div class="container-fluid">
         <a href="home.php" class="navbar-brand"><img src="../../../public/assets/logo.png" alt="Logo Black Hole Evènements"></a>
 
@@ -17,7 +17,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <a class="custom-nav-link <?php echo ($current_page == 'home.php') ? 'active' : ''; ?>" href="home.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'prestations.php') ? 'active' : ''; ?>" href="prestations.php">Prestations</a>
+                    <a class="custom-nav-link <?php echo ($current_page == 'service.php') ? 'active' : ''; ?>" href="service.php">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="custom-nav-link <?php echo ($current_page == 'inspiration.php') ? 'active' : ''; ?>" href="inspiration.php">Inspiration</a>
                 </li>
                 <li class="nav-item">
                     <a class="custom-nav-link <?php echo ($current_page == 'faq.php') ? 'active' : ''; ?>" href="faq.php">FAQ</a>
