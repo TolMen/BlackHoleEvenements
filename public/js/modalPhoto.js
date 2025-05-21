@@ -9,7 +9,6 @@ photos.forEach((photo) => {
     });
 });
 
-// Fermer la modale en cliquant sur le fond (overlay)
 modal.addEventListener("click", (e) => {
     if (e.target === modal) {
         modal.classList.remove("active");

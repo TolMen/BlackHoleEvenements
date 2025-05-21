@@ -10,7 +10,7 @@ lieuxInput.addEventListener("input", () => {
 
     if (!query) return;
 
-    let found = false; // variable pour savoir si on a trouvé au moins un lieu
+    let found = false;
 
     lieuxCheckboxes.forEach((cb) => {
         const label = cb.parentElement.textContent.trim().toLowerCase();
@@ -26,21 +26,20 @@ lieuxInput.addEventListener("input", () => {
                 "1px solid var(--color-gray-border)";
 
             suggestion.addEventListener("click", () => {
-                // Décoche tous les autres lieux
+
                 lieuxCheckboxes.forEach((c) => (c.checked = false));
-                // Coche celui sélectionné
+
                 cb.checked = true;
-                // Nettoie l'UI
+
                 lieuxInput.value = "";
                 lieuxSuggestions.innerHTML = "";
-                filterPhotos(); // relancer le filtre
+                filterPhotos();
             });
 
             lieuxSuggestions.appendChild(suggestion);
         }
     });
 
-    // Si aucun lieu trouvé, afficher message
     if (!found) {
         const noResult = document.createElement("div");
         noResult.textContent = "Aucun résultat";
@@ -50,7 +49,6 @@ lieuxInput.addEventListener("input", () => {
     }
 });
 
-// Cacher suggestions si on clique ailleurs
 document.addEventListener("click", (e) => {
     if (
         !e.target.closest("#lieuxSearch") &&
@@ -60,20 +58,19 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// Nouvelle fonctionnalité : valider la recherche avec Entrée
 lieuxInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-        e.preventDefault(); // éviter le comportement par défaut
+        e.preventDefault();
         const query = lieuxInput.value.toLowerCase();
 
         for (let cb of lieuxCheckboxes) {
             const label = cb.parentElement.textContent.trim().toLowerCase();
             if (label.includes(query)) {
-                lieuxCheckboxes.forEach((c) => (c.checked = false)); // décocher les autres
-                cb.checked = true; // cocher celui correspondant
+                lieuxCheckboxes.forEach((c) => (c.checked = false));
+                cb.checked = true;
                 lieuxInput.value = "";
                 lieuxSuggestions.innerHTML = "";
-                filterPhotos(); // relancer le filtre
+                filterPhotos();
                 break;
             }
         }

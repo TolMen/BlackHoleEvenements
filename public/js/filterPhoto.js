@@ -1,4 +1,3 @@
-// Accordéon filtres
 document.querySelectorAll(".filter-header").forEach((header) => {
     header.addEventListener("click", () => {
         const group = header.parentElement;
@@ -33,11 +32,11 @@ function filterPhotos() {
     photos.forEach((photo) => {
         const matches = Object.keys(filters).every((group) => {
             if (filters[group].length === 0) return true;
-            // On split la valeur data-* en tableau (pour gérer plusieurs valeurs séparées par des virgules)
+
             const dataValues = photo.dataset[group]
                 .split(",")
                 .map((v) => v.trim());
-            // On vérifie si au moins une valeur du filtre est présente dans les valeurs du data-*
+
             return filters[group].some((f) => dataValues.includes(f));
         });
 
