@@ -1,0 +1,320 @@
+/* ========== STRUCTURE PRINCIPALE ========== */
+
+.main-container {
+    display: flex;
+    align-items: stretch; /* étire la sidebar sur la hauteur du contenu */
+    background-color: var(--color-gray-background);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* ========== SIDEBAR ========== */
+
+.sidebar {
+    width: 200px;
+    padding: 20px;
+    border-right: 1px solid var(--color-gray-border);
+    box-shadow: 4px -4px 6px var(--color-gray-shadow);
+    background-color: white;
+    box-sizing: border-box;
+}
+
+/* TITRE DANS LA SIDEBAR */
+
+.sidebar .faq-section {
+    margin-bottom: 30px;
+}
+
+.sidebar .faq-section .section-title {
+    font-weight: bold;
+    color: var(--color-tomato-item);
+    margin-bottom: 0.3em;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.sidebar .faq-section .title-separator {
+    border: 0;
+    border-top: 5px solid var(--color-tomato-item);
+    width: 100px;
+    margin-left: 0;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+/* ========== FILTRES ========== */
+
+.filter-group {
+    margin-bottom: 5px;
+}
+
+.filter-header {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.filter-header::after {
+    content: "▸";
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s;
+}
+
+.filter-group.open .filter-header::after {
+    content: "▾";
+}
+
+.filter-options {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.filter-group.open .filter-options {
+    max-height: 500px;
+}
+
+.filter-options input {
+    margin-right: 5px;
+    margin-bottom: -2px;
+}
+
+/* Checkbox styles */
+
+.filter-options input[type="checkbox"] {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--color-gray-border);
+    background-color: var(--color-gray-background);
+    cursor: pointer;
+    position: relative;
+    border-radius: 4px;
+}
+
+.filter-options input[type="checkbox"]:checked {
+    background-color: var(--color-tomato-item);
+}
+
+.filter-options input[type="checkbox"]::after {
+    content: "✓";
+    font-size: 13px;
+    color: var(--color-gray-background);
+    position: absolute;
+    top: -3px;
+    left: 2px;
+    display: none;
+}
+
+.filter-options input[type="checkbox"]:checked::after {
+    display: block;
+}
+
+/* ========== RECHERCHE LIEUX ========== */
+
+#lieuxSearch {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-border);
+    font-size: 14px;
+}
+
+#lieuxSearch:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-tomato-item);
+    border-color: var(--color-tomato-item);
+}
+
+#lieuxSearch::placeholder {
+    font-size: 14px;
+}
+
+#lieuxSuggestions {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+}
+
+#lieuxSuggestions div:hover {
+    background-color: var(--color-tomato-item-hover);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* ========== RESET FILTRE ========== */
+
+.filter-reset-container {
+    margin-bottom: 5px;
+}
+
+.resetFilter {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-tomato-item);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.resetFilter i {
+    color: var(--color-gray-background);
+    font-size: 18px;
+}
+
+.resetFilter:hover {
+    transform: translateY(-3px);
+    background: var(--color-tomato-item-hover);
+}
+
+/* ========== GALERIE ========== */
+
+.gallery {
+    flex: 1;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+.photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    border: 2px solid var(--color-gray-border);
+    box-shadow: 0 4px 6px var(--color-gray-shadow);
+    transition: transform 0.3s ease;
+}
+
+.photo:hover {
+    transform: translateY(-5px);
+}
+
+.hidden {
+    display: none;
+}
+
+#no-results {
+    width: 350px;
+    height: 25px;
+    color: var(--color-text);
+    cursor: default;
+}
+
+/* ========== MODALE ========== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    box-shadow: 0 0 15px black;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+    user-select: none;
+    border: 2px solid var(--color-gray-border);
+}
+
+/* Flou et fond plus doux pour le backdrop Bootstrap */
+
+.modal-backdrop {
+    --bs-backdrop-opacity: 0.7;
+}
+
+.btn-close {
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-tomato-item);
+    border-radius: 8px;
+    border: 2px solid var(--color-gray-border);
+}
+
+.btn-close:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Quand modale active, flouter le fond */
+
+.modal.show ~ .main-container {
+    filter: blur(2px);
+    pointer-events: none; /* empêche interaction avec fond */
+    transition: filter 0.3s ease;
+}
+
+/* ========== ANIMATIONS ========== */
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 600px) {
+    .filter-group {
+        font-size: 14px;
+    }
+
+    .sidebar .faq-section .title-separator {
+        border-top: 3px solid var(--color-tomato-item);
+        width: 50px;
+        margin-top: 10px;
+    }
+
+    .sidebar .faq-section {
+        margin-bottom: -10px;
+        font-size: 10px;
+    }
+
+    .sidebar {
+        width: 150px;
+    }
+
+    #lieuxSearch::placeholder {
+        font-size: 10px;
+    }
+}
