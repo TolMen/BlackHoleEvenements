@@ -4,6 +4,7 @@
     box-shadow: 0 -4px 6px var(--color-gray-shadow);
     background-color: var(--color-gray-background);
     color: var(--color-text);
+    position: relative;
 }
 
 .footer .socialIcon {
