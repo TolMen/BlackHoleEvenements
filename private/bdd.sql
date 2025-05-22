@@ -12,6 +12,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS faq;
 DROP TABLE IF EXISTS mentionLegale;
 DROP TABLE IF EXISTS politiqueConfidentialite;
+DROP TABLE IF EXISTS services;
+DROP TABLE IF EXISTS themes;
+DROP TABLE IF EXISTS lieux;
 
 -- Réactive les contraintes de clé étrangère
 SET FOREIGN_KEY_CHECKS = 1;
@@ -37,6 +40,24 @@ CREATE TABLE IF NOT EXISTS politiqueConfidentialite (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS services (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    valeur VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS themes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    valeur VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS lieux (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    valeur VARCHAR(100) NOT NULL UNIQUE
 );
 
 -- ---------------------------------------------
@@ -76,3 +97,75 @@ INSERT INTO politiqueConfidentialite (title, content) VALUES
 ("Destinataires des données", "Les données personnelles sont accessibles uniquement par : <br> <br> - Le responsable du traitement <br> - Les prestataires techniques intervenant pour l’hébergement ou la maintenance du site. <br> <br> Aucune donnée n’est cédée ni vendue à des tiers."),
 ("Durée de conservation", "Les données sont conservées selon les durées suivantes : <br> <br> - Données issues du formulaire de contact : 12 mois <br> - XXXX <br> - XXXX"),
 ("Droits des utilisateurs", "Les utilisateurs disposent des droits suivants : <br> <br> - Accès à leurs données <br> - Rectification <br> - Suppression <br> - Portabilité <br> - Limitation ou opposition au traitement <br> - Réclamation auprès de la CNIL");
+
+-- Insertion des filtres
+
+-- Filtre 'Services'
+INSERT INTO services (nom, valeur) VALUES
+("DJ / Artiste", "artiste"),
+("Décoration textile", "decoTextile"),
+("Décoration lumineuse", "decoLumineuse"),
+("Eclairage", "eclairage"),
+("Sonorisation", "sonorisation"),
+("Vidéo", "video");
+
+-- Filtre 'Thèmes'
+INSERT INTO themes (nom, valeur) VALUES
+("Mariage", "mariage"),
+("Entreprise", "entreprise"),
+("Événement", "evenement");
+
+-- Filtre 'Lieux'
+INSERT INTO lieux (nom, valeur) VALUES
+-- Salles des fêtes
+("Salle des fêtes de Beauregard Vendon", "beauregard-vendon"),
+("Salle des fêtes de Saint-Illide", "saint-illide"),
+
+-- Granges
+("Grange de l\'écuyer", "grange-ecuyer"),
+("Grange de Faverolles", "grange-faverolles"),
+("Grange d\'Aubusson", "grange-aubusson"),
+
+-- Manoirs
+("Manoir de Veygoux", "veygoux"),
+("Manoir d\'Alice", "alice"),
+
+-- Domaines
+("Domaine du Mialaret", "mialaret"),
+("Domaine du Marant", "marant"),
+("Domaine du Lac des Estives", "lac-estives"),
+("Domaine de Sola", "sola"),
+("Domaine de la Tour de Rochefort", "rochefort"),
+("Domaine de Féligonde", "feligonde"),
+("Domaine du Balbuzard", "balbuzard"),
+
+-- Châteaux
+("Château de Périgères", "perigeres"),
+("Château du Guérinet", "guerinet"),
+("Château du Breuil de Doue", "breuil-doue"),
+("Château des Roses et des Tours", "roses-tours"),
+("Château des Martinanches", "martinanches"),
+("Château des Grange Fort", "grange-fort"),
+("Château de Portabéraud", "portaberaud"),
+("Château de Planchevienne", "planchevienne"),
+("Château de Murol en Saint-Amant", "murol"),
+("Château de Miremont", "miremont"),
+("Château de Maulmont", "maulmont"),
+("Château de la Rivière", "riviere"),
+("Château de la Motte", "motte"),
+("Château de la Canière", "caniere"),
+("Château de la Batisse", "batisse"),
+("Château de Gondolle", "gondolle"),
+("Château de Davayat", "davayat"),
+("Château de Chouvigny", "chouvigny"),
+("Château de Bourrassol", "bourrassol"),
+("Château Beauvoir", "beauvoir"),
+("Château de la Barge", "barge"),
+
+-- Autres
+("Hameau des Damayots", "damayots"),
+("Gymnase de Bourg-Lastic", "bourg-lastic"),
+("Casino de Royat", "casino-royat"),
+("Abbaye Saint Gilbert", "abbaye-saint-gilbert"),
+("Palais des Congrès", "palais-congres"),
+("Le Grand Enclos", "grand-enclos");
