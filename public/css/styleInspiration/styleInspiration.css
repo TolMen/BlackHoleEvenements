@@ -185,7 +185,7 @@
     flex: 1;
     padding: 15px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     gap: 15px;
     box-sizing: border-box;
 }
@@ -254,6 +254,10 @@
     border: 2px solid var(--color-gray-border);
 }
 
+.modal-dialog-centered {
+    justify-content: center;
+}
+
 /* Flou et fond plus doux pour le backdrop Bootstrap */
 
 .modal-backdrop {
@@ -304,7 +308,7 @@
 
 @media (max-width: 600px) {
     .filter-group {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .sidebar .faq-section .title-separator {
@@ -332,6 +336,6 @@
     }
 
     .filter-options label {
-        font-size: 10px;
+        font-size: 8px;
     }
 }
