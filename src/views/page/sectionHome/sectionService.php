@@ -4,6 +4,14 @@
     <hr class="title-separator">
     <div class="boxGal">
         <div class="options">
+            <div class="option" style="--optionBackground: url(../../../public/assets/img/imgService/imgServiceArtiste.jpeg);">
+                <div class="label">
+                    <div class="icon"><img src="../../../public/assets/icon/iconArtiste.png" alt=""></div>
+                    <div class="info">
+                        <p class="title">DJ / Artiste</p>
+                    </div>
+                </div>
+            </div>
             <div class="option active" style="--optionBackground: url(../../../public/assets/img/imgService/imgServiceDecoTextile.jpeg);">
                 <div class="label">
                     <div class="icon"><img src="../../../public/assets/icon/iconDecoTextile.png" alt=""></div>
@@ -49,14 +57,6 @@
                     <div class="icon"><img src="../../../public/assets/icon/iconMobilier.png" alt=""></div>
                     <div class="info">
                         <p class="title">Mobilier</p>
-                    </div>
-                </div>
-            </div>
-            <div class="option" style="--optionBackground: url(../../../public/assets/img/imgService/imgServiceArtiste.jpeg);">
-                <div class="label">
-                    <div class="icon"><img src="../../../public/assets/icon/iconArtiste.png" alt=""></div>
-                    <div class="info">
-                        <p class="title">Artiste</p>
                     </div>
                 </div>
             </div>
