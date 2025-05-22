@@ -4,9 +4,6 @@
     display: flex;
     align-items: stretch;
     background-color: var(--color-gray-background);
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
-    animation-delay: 0.2s;
 }
 
 /* ========== SIDEBAR ========== */
@@ -197,7 +194,7 @@
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     display: block;
     border: 2px solid var(--color-gray-border);
@@ -280,7 +277,7 @@
 
 .modal.show ~ .main-container {
     filter: blur(2px);
-    pointer-events: none; /* empêche interaction avec fond */
+    pointer-events: none;
     transition: filter 0.3s ease;
 }
 
@@ -295,6 +292,12 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.main-container {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 /* ========== RESPONSIVE ========== */
