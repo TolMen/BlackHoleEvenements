@@ -23,7 +23,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <a class="custom-nav-link <?php echo ($current_page == 'inspiration.php') ? 'active' : ''; ?>" href="inspiration.php">Inspiration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'faq.php') ? 'active' : ''; ?>" href="faq.php">FAQ</a>
+                    <a class="custom-nav-link <?php echo ($current_page == 'legalPage.php?type=faq') ? 'active' : ''; ?>" href="legalPage.php?type=faq">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <a class="custom-nav-link <?php echo ($current_page == 'actualite.php') ? 'active' : ''; ?>" href="actualite.php">Actualités</a>
