@@ -1,0 +1,274 @@
+/* ========== STRUCTURE GLOBALE ========== */
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 50px 0;
+    background: var(--color-gray-background);
+    height: calc(100vh - 62px);
+}
+
+/* ========== FORM BOX ========== */
+
+.box {
+    position: relative;
+    width: 380px;
+    height: 422px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.box::before,
+.box::after {
+    content: "";
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent,
+        var(--color-tomato-item),
+        var(--color-tomato-item),
+        var(--color-tomato-item)
+    );
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.box::after {
+    animation-delay: -3s;
+}
+
+.borderLine {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.borderLine::before,
+.borderLine::after {
+    content: "";
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent,
+        var(--color-gray-border),
+        var(--color-gray-border),
+        var(--color-gray-border)
+    );
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.borderLine::before {
+    animation-delay: -1.5s;
+}
+
+.borderLine::after {
+    animation-delay: -4.5s;
+}
+
+/* ========== ANIMATIONS ========== */
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-container {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* ========== FORM ========== */
+
+.box form {
+    position: absolute;
+    inset: 4px;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-gray-background);
+}
+
+.box form h2 {
+    color: var(--color-text);
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.box .boxIdentity {
+    display: flex;
+}
+
+/* ========== INPUT FIELDS ========== */
+
+.box form .inputBoxIdentity,
+.box form .inputBoxOther {
+    position: relative;
+    margin-top: 35px;
+}
+
+.box form .inputBoxOther {
+    width: 300px;
+}
+
+.box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: var(--color-gray-background);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.box form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    color: var(--color-text);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.box form .inputBox input:valid ~ span,
+.box form .inputBox input:focus ~ span {
+    color: var(--color-text);
+    font-size: 0.75em;
+    transform: translateY(-34px);
+}
+
+.box form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 94%;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.box form .inputBox input:valid ~ i,
+.box form .inputBox input:focus ~ i {
+    height: 44px;
+}
+
+/* ========== FORM LINKS ========== */
+
+.box form .links {
+    display: flex;
+    justify-content: end;
+}
+
+.box form .links a {
+    margin: 10px 10px;
+    font-size: 0.75em;
+    color: var(--color-text);
+    font-weight: bold;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.box form .links a:hover {
+    color: var(--color-text-hover);
+}
+
+/* ========== FORM SUBMIT BUTTON ========== */
+
+.box form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 9px 5px;
+    background: var(--color-tomato-item);
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 125px;
+    margin-top: 10px;
+    color: var(--color-gray-background);
+    transition: all 0.3s ease;
+}
+
+.box form input[type="submit"]:hover {
+    background: var(--color-tomato-item-hover);
+    transform: translateY(-3px);
+}
+
+.box form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media screen and (max-width: 500px) {
+    .box,
+    .box::before,
+    .box::after,
+    .borderLine::before,
+    .borderLine::after {
+        width: 310px;
+        height: 395px;
+    }
+
+    .box form {
+        padding: 40px 25px;
+    }
+
+    .box form .inputBox i.name {
+        width: 91%;
+    }
+
+    .box form .inputBox i {
+        width: 81%;
+    }
+}
