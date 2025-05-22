@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS themes;
 DROP TABLE IF EXISTS lieux;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS images;
 
 -- Réactive les contraintes de clé étrangère
 SET FOREIGN_KEY_CHECKS = 1;
@@ -27,49 +28,62 @@ CREATE TABLE IF NOT EXISTS faq (
     id INT AUTO_INCREMENT PRIMARY KEY,
     question TEXT NOT NULL,
     answer TEXT NOT NULL
-);
+) ENGINE=InnoDB;
 
 -- Table 'Mention Légales'
 CREATE TABLE IF NOT EXISTS mentionLegale (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL
-);
+) ENGINE=InnoDB;
 
 -- Table 'Politique de confidentialité'
 CREATE TABLE IF NOT EXISTS politiqueConfidentialite (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL
-);
+) ENGINE=InnoDB;
 
 -- Table 'Service'
 CREATE TABLE IF NOT EXISTS services (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     valeur VARCHAR(100) NOT NULL UNIQUE
-);
+) ENGINE=InnoDB;
 
 -- Table 'Thèmes'
 CREATE TABLE IF NOT EXISTS themes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     valeur VARCHAR(100) NOT NULL UNIQUE
-);
+) ENGINE=InnoDB;
 
 -- Table 'Lieux'
 CREATE TABLE IF NOT EXISTS lieux (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     valeur VARCHAR(100) NOT NULL UNIQUE
-);
+) ENGINE=InnoDB;
 
--- Table `users`
+-- Table 'users'
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role ENUM('user', 'admin') NOT NULL
+) ENGINE=InnoDB;
+
+-- Table 'images'
+CREATE TABLE IF NOT EXISTS images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    cheminURL VARCHAR(255) NOT NULL,
+    alt VARCHAR(255) NOT NULL,
+    filtres_services VARCHAR(255) DEFAULT NULL,
+    filtres_themes VARCHAR(255) DEFAULT NULL,
+    filtres_lieux VARCHAR(255) DEFAULT NULL,
+    tag ENUM('imgHeroHome', 'imgSectionService') DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------
@@ -185,3 +199,11 @@ INSERT INTO lieux (nom, valeur) VALUES
 ("Abbaye Saint Gilbert", "abbaye-saint-gilbert"),
 ("Palais des Congrès", "palais-congres"),
 ("Le Grand Enclos", "grand-enclos");
+
+-- Insertion des images
+INSERT INTO images (nom, cheminURL, alt, filtres_services, filtres_themes, filtres_lieux, tag, created_at) VALUES
+("Eclairage extérieur", "imgEclairageExterieur.jpeg", "Photo d'un éclairage extérieur", "eclairage", null, null, "imgHeroHome", NOW()),
+("Mariage Aubusson", "imgMariageAubusson.jpeg", "Photo d'un mariage à Aubusson", null, "mariage", null, "imgHeroHome", NOW()),
+("Mariage au Clos du Four", "imgMariageClosFour.jpeg", "Photo d'un mariage au Clos du Four", null, "mariage", null, "imgHeroHome", NOW()),
+("Mariage à Ébreuil avec déco lumineuse", "imgMariageEbreuilDecoLumineuse.jpeg", "Photo d'un mariage à Ébreuil avec déco lumineuse", "decoLumineuse", "mariage", null, "imgHeroHome", NOW()),
+("Mariage à Vichy avec DJ", "imgMariageVichyDJ.jpeg", "Photo d'un mariage à Vichy avec DJ", "artiste", "mariage", null, "imgHeroHome", NOW());
