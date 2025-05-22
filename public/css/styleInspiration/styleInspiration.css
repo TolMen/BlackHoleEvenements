@@ -12,7 +12,7 @@
 /* ========== SIDEBAR ========== */
 
 .sidebar {
-    width: 200px;
+    width: 215px;
     padding: 20px;
     border-right: 1px solid var(--color-gray-border);
     box-shadow: 4px -4px 6px var(--color-gray-shadow);
@@ -75,7 +75,11 @@
 }
 
 .filter-group.open .filter-options {
-    max-height: 500px;
+    max-height: 5000px;
+}
+
+.filter-options label {
+    font-size: 13px;
 }
 
 .filter-options input {
@@ -150,12 +154,12 @@
 /* ========== RESET FILTRE ========== */
 
 .filter-reset-container {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .resetFilter {
-    width: 35px;
-    height: 35px;
+    width: 175px;
+    height: 30px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -165,6 +169,7 @@
     text-decoration: none;
     border: none;
     cursor: pointer;
+    color: var(--color-gray-background);
 }
 
 .resetFilter i {
@@ -311,10 +316,19 @@
     }
 
     .sidebar {
-        width: 150px;
+        width: 175px;
     }
 
     #lieuxSearch::placeholder {
+        font-size: 10px;
+    }
+
+    .resetFilter {
+        width: 110px;
+        font-size: 12px;
+    }
+
+    .filter-options label {
         font-size: 10px;
     }
 }
