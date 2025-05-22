@@ -4,8 +4,13 @@ const lieuxCheckboxes = document.querySelectorAll(
     '[data-filter="lieux"] .filter-options input[type="checkbox"]'
 );
 
+// Fonction pour supprimer les accents
+function removeAccents(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 lieuxInput.addEventListener("input", () => {
-    const query = lieuxInput.value.toLowerCase();
+    const query = removeAccents(lieuxInput.value.toLowerCase());
     lieuxSuggestions.innerHTML = "";
 
     if (!query) return;
@@ -13,24 +18,22 @@ lieuxInput.addEventListener("input", () => {
     let found = false;
 
     lieuxCheckboxes.forEach((cb) => {
-        const label = cb.parentElement.textContent.trim().toLowerCase();
-        if (label.includes(query)) {
+        const label = cb.parentElement.textContent.trim();
+        const labelNormalized = removeAccents(label.toLowerCase());
+
+        if (labelNormalized.includes(query)) {
             found = true;
 
             const suggestion = document.createElement("div");
-            suggestion.textContent =
-                label.charAt(0).toUpperCase() + label.slice(1);
+            suggestion.textContent = label;
             suggestion.style.cursor = "pointer";
             suggestion.style.padding = "3px 5px";
             suggestion.style.borderBottom =
                 "1px solid var(--color-gray-border)";
 
             suggestion.addEventListener("click", () => {
-
                 lieuxCheckboxes.forEach((c) => (c.checked = false));
-
                 cb.checked = true;
-
                 lieuxInput.value = "";
                 lieuxSuggestions.innerHTML = "";
                 filterPhotos();
@@ -61,11 +64,13 @@ document.addEventListener("click", (e) => {
 lieuxInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         e.preventDefault();
-        const query = lieuxInput.value.toLowerCase();
+        const query = removeAccents(lieuxInput.value.toLowerCase());
 
         for (let cb of lieuxCheckboxes) {
-            const label = cb.parentElement.textContent.trim().toLowerCase();
-            if (label.includes(query)) {
+            const label = cb.parentElement.textContent.trim();
+            const labelNormalized = removeAccents(label.toLowerCase());
+
+            if (labelNormalized.includes(query)) {
                 lieuxCheckboxes.forEach((c) => (c.checked = false));
                 cb.checked = true;
                 lieuxInput.value = "";
