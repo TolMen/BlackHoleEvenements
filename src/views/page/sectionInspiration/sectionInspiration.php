@@ -23,24 +23,19 @@
 
             <!-- Bouton Reset -->
             <div class="filter-reset-container">
-                <button id="resetFiltersBtn" class="resetFilter" title="Réinitialiser les filtres">
-                    <i class="fa fa-refresh" aria-hidden="true"></i>
-                </button>
+                <button id="resetFiltersBtn" class="resetFilter" title="Réinitialiser les filtres">Retirer les filtres</button>
             </div>
-
 
             <!-- Filtres : Service -->
             <div class="filter-group open" data-filter="service">
                 <div class="filter-header">Service</div>
                 <div class="filter-options">
-                    <label><input type="checkbox" value="photo" class="filter-checkbox">Photo</label><br>
-                    <label><input type="checkbox" value="video" class="filter-checkbox">Vidéo</label><br>
-                    <label><input type="checkbox" value="drone" class="filter-checkbox">Drone</label><br>
-                    <label><input type="checkbox" value="montage" class="filter-checkbox">Montage</label><br>
-                    <label><input type="checkbox" value="live" class="filter-checkbox">Live</label><br>
-                    <label><input type="checkbox" value="studio" class="filter-checkbox">Studio</label><br>
-                    <label><input type="checkbox" value="retouche" class="filter-checkbox">Retouche</label><br>
-                    <label><input type="checkbox" value="reportage" class="filter-checkbox">Reportage</label>
+                    <?php foreach ($services as $service): ?>
+                        <label>
+                            <input type="checkbox" value="<?= htmlspecialchars($service['valeur']) ?>" class="filter-checkbox">
+                            <?= htmlspecialchars($service['nom']) ?>
+                        </label><br>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -48,9 +43,12 @@
             <div class="filter-group" data-filter="theme">
                 <div class="filter-header">Thème</div>
                 <div class="filter-options">
-                    <label><input type="checkbox" value="mariage" class="filter-checkbox">Mariage</label><br>
-                    <label><input type="checkbox" value="entreprise" class="filter-checkbox">Entreprise</label><br>
-                    <label><input type="checkbox" value="evenement" class="filter-checkbox">Événement</label>
+                    <?php foreach ($themes as $theme): ?>
+                        <label>
+                            <input type="checkbox" value="<?= htmlspecialchars($theme['valeur']) ?>" class="filter-checkbox">
+                            <?= htmlspecialchars($theme['nom']) ?>
+                        </label><br>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -60,17 +58,17 @@
 
                 <!-- Barre de recherche -->
                 <input type="text" id="lieuxSearch" placeholder="Rechercher un lieu">
-
-                <!-- Suggestions dynamiques -->
                 <div id="lieuxSuggestions"></div>
 
-                <div class="filter-options">
-                    <label><input type="checkbox" value="paris" class="filter-checkbox">Paris</label><br>
-                    <label><input type="checkbox" value="lyon" class="filter-checkbox">Lyon</label><br>
-                    <label><input type="checkbox" value="marseille" class="filter-checkbox">Marseille</label>
+                <div class="filter-options" id="lieuxFilterList">
+                    <?php foreach ($lieux as $lieu): ?>
+                        <label>
+                            <input type="checkbox" value="<?= htmlspecialchars($lieu['valeur']) ?>" class="filter-checkbox">
+                            <?= htmlspecialchars($lieu['nom']) ?>
+                        </label><br>
+                    <?php endforeach; ?>
                 </div>
             </div>
-
         </div>
 
         <!-- GALERIE -->
@@ -85,7 +83,7 @@
 
             <!-- Message si aucun résultat -->
             <div id="no-results" class="hidden">
-                Aucun résultat ne correspond à vos filtres.
+                Aucun résultat ne correspond à vos filtres...
             </div>
         </div>
 
