@@ -2,7 +2,7 @@
 
 .main-container {
     display: flex;
-    align-items: stretch; /* étire la sidebar sur la hauteur du contenu */
+    align-items: stretch;
     background-color: var(--color-gray-background);
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
