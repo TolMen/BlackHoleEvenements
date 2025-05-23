@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-include_once '../../control/ImageControl/HeroHomeImageControl.php'
+include_once '../../control/ImageControl/heroHomeImageControl.php';
+include_once '../../control/ImageControl/sectionServiceImageControl.php';
 ?>
 
 <!DOCTYPE html>

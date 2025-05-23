@@ -73,13 +73,13 @@
 
         <!-- GALERIE -->
         <div class="gallery">
-            <img src="../../../public/assets/img/imgHero/imgEclairageExterieur.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo,live" data-theme="mariage" data-lieux="paris" data-bs-toggle="modal" data-bs-target="#imageModal" />
-            <img src="../../../public/assets/img/imgHero/imgMariageAubusson.jpeg" alt="Photo Mariage Paris" class="photo" data-service="decoTextile" data-theme="entreprise" data-lieux="lyon" data-bs-toggle="modal" data-bs-target="#imageModal" />
-            <img src="../../../public/assets/img/imgHero/imgMariageClosFour.jpeg" alt="Photo Mariage Paris" class="photo" data-service="decoLumineuse" data-theme="entreprise" data-lieux="paris" data-bs-toggle="modal" data-bs-target="#imageModal" />
-            <img src="../../../public/assets/img/imgHero/imgMariageEbreuilDecoLumineuse.jpeg" alt="Photo Mariage Paris" class="photo" data-service="sonorisation" data-theme="evenement" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
-            <img src="../../../public/assets/img/imgHero/imgMariageVichyDJ.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo" data-theme="mariage" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
-            <img src="../../../public/assets/img/imgHero/imgMariageVichyDJ.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo" data-theme="mariage" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
-            <img src="../../../public/assets/img/imgHero/imgMariageVichyDJ.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo" data-theme="mariage" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
+            <img src="../../../public/assets/img/imgEclairageExterieur.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo,live" data-theme="mariage" data-lieux="paris" data-bs-toggle="modal" data-bs-target="#imageModal" />
+            <img src="../../../public/assets/img/imgMariageAubusson.jpeg" alt="Photo Mariage Paris" class="photo" data-service="decoTextile" data-theme="entreprise" data-lieux="lyon" data-bs-toggle="modal" data-bs-target="#imageModal" />
+            <img src="../../../public/assets/img/imgMariageClosFour.jpeg" alt="Photo Mariage Paris" class="photo" data-service="decoLumineuse" data-theme="entreprise" data-lieux="paris" data-bs-toggle="modal" data-bs-target="#imageModal" />
+            <img src="../../../public/assets/img/imgMariageEbreuilDecoLumineuse.jpeg" alt="Photo Mariage Paris" class="photo" data-service="sonorisation" data-theme="evenement" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
+            <img src="../../../public/assets/img/imgMariageVichyDJ.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo" data-theme="mariage" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
+            <img src="../../../public/assets/img/imgMariageVichyDJ.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo" data-theme="mariage" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
+            <img src="../../../public/assets/img/imgMariageVichyDJ.jpeg" alt="Photo Mariage Paris" class="photo" data-service="photo" data-theme="mariage" data-lieux="marseille" data-bs-toggle="modal" data-bs-target="#imageModal" />
 
             <!-- Message si aucun résultat -->
             <div id="no-results" class="hidden">
