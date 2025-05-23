@@ -2,6 +2,7 @@
 session_start();
 
 include_once '../../control/InspirationControl/filtreControl.php';
+include_once '../../control/ImageControl/galleryImageControl.php';
 ?>
 
 <!DOCTYPE html>
