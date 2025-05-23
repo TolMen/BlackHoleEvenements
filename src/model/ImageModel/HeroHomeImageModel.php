@@ -5,7 +5,7 @@ class HeroHomeImageModel
 {
     public function getHeroHomeImages(PDO $bdd)
     {
-        $sql = "SELECT nom, cheminURL, alt FROM images WHERE tag = 'imgHeroHome'";
+        $sql = "SELECT nom, chemin_img, alt FROM images WHERE tag = 'imgHeroHome'";
         $stmt = $bdd->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

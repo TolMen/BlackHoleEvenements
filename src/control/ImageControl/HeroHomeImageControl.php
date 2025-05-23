@@ -1,7 +1,7 @@
 <?php
 
-include_once '../../model/ImageModel/HeroHomeImageModel.php';
+include_once '../../model/ImageModel/heroHomeImageModel.php';
 
-$heroModel = new HeroHomeImageModel();
-$imagesHero = $heroModel->getHeroHomeImages($bdd);
-$totalHeroImages = $heroModel->countHeroHomeImages($bdd);
+$heroHomeImageModel = new HeroHomeImageModel();
+$imagesHeroHome = $heroHomeImageModel->getHeroHomeImages($bdd);
+$totalHeroHomeImages = $heroHomeImageModel->countHeroHomeImages($bdd);
