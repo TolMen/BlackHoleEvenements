@@ -10,8 +10,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 -- Suppression des tables dans le bon ordre
 DROP TABLE IF EXISTS faq;
-DROP TABLE IF EXISTS mentionLegale;
-DROP TABLE IF EXISTS politiqueConfidentialite;
+DROP TABLE IF EXISTS mention_legale;
+DROP TABLE IF EXISTS politique_confidentialite;
 DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS themes;
 DROP TABLE IF EXISTS lieux;
@@ -31,14 +31,14 @@ CREATE TABLE IF NOT EXISTS faq (
 ) ENGINE=InnoDB;
 
 -- Table 'Mention Légales'
-CREATE TABLE IF NOT EXISTS mentionLegale (
+CREATE TABLE IF NOT EXISTS mention_legale (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL
 ) ENGINE=InnoDB;
 
 -- Table 'Politique de confidentialité'
-CREATE TABLE IF NOT EXISTS politiqueConfidentialite (
+CREATE TABLE IF NOT EXISTS politique_confidentialite (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL
@@ -48,7 +48,11 @@ CREATE TABLE IF NOT EXISTS politiqueConfidentialite (
 CREATE TABLE IF NOT EXISTS services (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    valeur VARCHAR(100) NOT NULL UNIQUE
+    valeur VARCHAR(255) NOT NULL UNIQUE,
+    description TEXT,
+    chemin_icon VARCHAR(255),
+    alt_icon VARCHAR(255),
+    ordre_affichage INT
 ) ENGINE=InnoDB;
 
 -- Table 'Thèmes'
@@ -77,13 +81,16 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    cheminURL VARCHAR(255) NOT NULL,
+    chemin_img VARCHAR(255) NOT NULL,
     alt VARCHAR(255) NOT NULL,
     filtres_services VARCHAR(255) DEFAULT NULL,
     filtres_themes VARCHAR(255) DEFAULT NULL,
     filtres_lieux VARCHAR(255) DEFAULT NULL,
     tag ENUM('imgHeroHome', 'imgSectionService') DEFAULT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (filtres_services) REFERENCES services(valeur) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (filtres_themes) REFERENCES themes(valeur) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (filtres_lieux) REFERENCES lieux(valeur) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------
@@ -108,7 +115,7 @@ INSERT INTO faq (question, answer) VALUES
 ("Comment se passe la désinstallation ?", "En fonction de la disponibilité du lieu, le démontage est possible après votre soirée, ou en début de semaine prochaine.");
 
 -- Insertion des informations Mention légales
-INSERT INTO mentionLegale (title, content) VALUES
+INSERT INTO mention_legale (title, content) VALUES
 ("Editeur du site", "- Raison sociale : Black Hole Evènements <br> - Adresse postale : 14 CHEMIN DE LA PLANEZE, 63800 LA ROCHE-NOIRE France <br> - Adresse mail : blackhole.evenements@gmail.com <br> - Téléphone : 09 73 17 03 76 ou 06 10 56 43 68 ou 07 83 51 86 76 <br> - Forme juridique : Association déclarée <br> - SIRET : 809 220 346 00013 <br> - Responsable : Monsieur Frédéric WERNER"),
 ("Hébergement du site", "- Nom de l'hebergeur web <br> - Adresse postale de l'hebergeur <br> - Tel de l'hebergeur <br> - Url de l'hebergeur <br>"),
 ("Conception & Développement", "- Identité : Jessy Frachisse <br> - Statut : Développeur Web <br> - Contact : contact.jessyf@gmail.com <br> - Portfolio : <a style=\"color: var(--color-tomato-item); text-decoration: none;\" href=\"https://jessyf.fr/\">https://jessyf.fr/</a>"),
@@ -118,7 +125,7 @@ INSERT INTO mentionLegale (title, content) VALUES
 ("Conditions d'utilisation", "L’accès au site est libre et gratuit. <br> L’auteur se réserve le droit de modifier ou de suspendre le site à tout moment, sans préavis. <br> L’utilisateur s’engage à ne pas utiliser le site à des fins illicites ou malveillantes.");
 
 -- Insertion des informations Politique de confidentialité
-INSERT INTO politiqueConfidentialite (title, content) VALUES
+INSERT INTO politique_confidentialite (title, content) VALUES
 ("Introduction", "Le présent site est exploité par Black Hole Evènements. <br> La protection de vos données personnelles est une priorité. <br> Cette politique de confidentialité vise à vous informer de la manière dont vos données sont collectées, utilisées, et protégées sur ce site."),
 ("Identité du responsable de traitement", "- Responsable : Black Hole Evènements <br> - Statut : Assocation déclarée <br> - Adresse : 14 CHEMIN DE LA PLANEZE, 63800 LA ROCHE-NOIRE France <br> - Email : blackhole.evenements@gmail.com <br> - SIRET : 809 220 346 00013"),
 ("Données collectées", "Les données personnelles susceptibles d’être collectées sur le site sont les suivantes : <br> <br> - Nom et prénom <br> - Adresse e-mail <br> - Données techniques de navigation (adresse IP, navigateur, pages visitées, etc.) <br> - XXXX <br> - XXXX"),
@@ -130,14 +137,16 @@ INSERT INTO politiqueConfidentialite (title, content) VALUES
 
 -- Insertion des filtres
 
--- Filtre 'Services'
-INSERT INTO services (nom, valeur) VALUES
-("DJ / Artiste", "artiste"),
-("Décoration textile", "decoTextile"),
-("Décoration lumineuse", "decoLumineuse"),
-("Eclairage", "eclairage"),
-("Sonorisation", "sonorisation"),
-("Vidéo", "video");
+-- Filtre 'Services + ensemble des données liées'
+INSERT INTO services (nom, valeur, description, chemin_icon, alt_icon, ordre_affichage) VALUES
+("DJ / Artiste", "artiste", "Faites la différence avec des performances artistiques inoubliables. <br> DJs, performers, acrobates, musiciens… laissez la magie opérer avec nos talents.", "iconArtiste.png", "Icône représentant un micro d'artiste", 1),
+("Décoration textile", "decoTextile", "Sublimez vos espaces avec nos décors textiles sur mesure. <br> De la tenture scénique aux habillages muraux, chaque tissu transforme votre lieu en un univers unique.", "iconDecoTextile.png", "Icône représentant un rideau textile", 2),
+("Décoration lumineuse", "decoLumineuse", "Donnez vie à vos événements grâce à une mise en lumière artistique. <br> Jeux de couleurs, ambiance tamisée ou dynamique : la lumière devient scénographie.", "iconDecoLumineuse.png", "Icône représentant un lustre", 3),
+("Eclairage", "eclairage", "Des solutions d’éclairage techniques et créatives pour valoriser votre événement, que ce soit en intérieur ou en extérieur. <br> Atmosphère, sécurité et esthétisme garantis.", "iconEclairage.png", "Icône représentant un projecteur d'éclairage", 4),
+("Sonorisation", "sonorisation", "Offrez une qualité sonore professionnelle, adaptée à la taille et à l’ambiance de votre événement. <br> De la conférence intimiste au concert grand format.", "iconSonorisation.png", "Icône représentant un haut-parleur de sonorisation", 5),
+("Vidéo", "video", "Capturez l’instant ou projetez-le en grand ! <br> Caméras, écrans LED, captation live… nous donnons à vos contenus toute la visibilité qu’ils méritent.", "iconVideo.png", "Icône représentant un vidéo projecteur", 6),
+("Mobilier", "mobilier", "Créez un espace accueillant et fonctionnel avec notre large gamme de mobilier événementiel : design, modulable et adapté à tout type de scénographie.", "iconMobilier.png", "Icône représentant une tente", 7),
+("Effets spéciaux", "effetSpeciaux", "Créez une ambiance inoubliable grâce à nos effets spéciaux spectaculaires : fumée lourde, jets de flammes, étincelles froides, et bien plus encore pour faire vibrer votre événement.", "iconEffetSpeciaux.png", "Icône représentant un effet spécial", 8);
 
 -- Filtre 'Thèmes'
 INSERT INTO themes (nom, valeur) VALUES
@@ -201,9 +210,17 @@ INSERT INTO lieux (nom, valeur) VALUES
 ("Le Grand Enclos", "grand-enclos");
 
 -- Insertion des images
-INSERT INTO images (nom, cheminURL, alt, filtres_services, filtres_themes, filtres_lieux, tag, created_at) VALUES
+INSERT INTO images (nom, chemin_img, alt, filtres_services, filtres_themes, filtres_lieux, tag, created_at) VALUES
 ("Eclairage extérieur", "imgEclairageExterieur.jpeg", "Photo d'un éclairage extérieur", "eclairage", null, null, "imgHeroHome", NOW()),
 ("Mariage Aubusson", "imgMariageAubusson.jpeg", "Photo d'un mariage à Aubusson", null, "mariage", null, "imgHeroHome", NOW()),
 ("Mariage au Clos du Four", "imgMariageClosFour.jpeg", "Photo d'un mariage au Clos du Four", null, "mariage", null, "imgHeroHome", NOW()),
 ("Mariage à Ébreuil avec déco lumineuse", "imgMariageEbreuilDecoLumineuse.jpeg", "Photo d'un mariage à Ébreuil avec déco lumineuse", "decoLumineuse", "mariage", null, "imgHeroHome", NOW()),
-("Mariage à Vichy avec DJ", "imgMariageVichyDJ.jpeg", "Photo d'un mariage à Vichy avec DJ", "artiste", "mariage", null, "imgHeroHome", NOW());
+("Mariage à Vichy avec DJ", "imgMariageVichyDJ.jpeg", "Photo d'un mariage à Vichy avec DJ", "artiste", "mariage", null, "imgHeroHome", NOW()),
+("Service Artiste", "imgServiceArtiste.jpeg", "Photo du service Artiste", "artiste", null, null, "imgSectionService", NOW()),
+("Service Décoration lumineuse", "imgServiceDecoLumineuse.jpeg", "Photo du service Décoration lumineuse", "decoLumineuse", null, null, "imgSectionService", NOW()),
+("Service Décoration textile", "imgServiceDecoTextile.jpeg", "Photo du service Décoration textile", "decoTextile", null, null, "imgSectionService", NOW()),
+("Service Eclairage", "imgServiceEclairage.jpeg", "Photo du service Eclairage", "eclairage", null, null, "imgSectionService", NOW()),
+("Service Effet Speciaux", "imgServiceEffetSpeciaux.jpeg", "Photo du service Effet Spéciaux", "effetSpeciaux", null, null, "imgSectionService", NOW()),
+("Service Mobilier", "imgServiceMobilier.jpeg", "Photo du service Mobilier", "mobilier", null, null, "imgSectionService", NOW()),
+("Service Sonorisation", "imgServiceSonorisation.jpeg", "Photo du service Sonorisation", "sonorisation", null, null, "imgSectionService", NOW()),
+("Service Vidéo", "imgServiceVideo.jpeg", "Photo du service Vidéo", "video", null, null, "imgSectionService", NOW());
