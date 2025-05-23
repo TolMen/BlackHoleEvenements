@@ -1,4 +1,4 @@
-<div class="boxService">
+<section class="boxService">
     <div class="slide">
         <?php foreach ($servicesForServicePage as $service): ?>
             <div class="item" style="background-image: url(../../../public/assets/img/<?= $service['chemin_img'] ?>);">
@@ -15,4 +15,4 @@
         <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
         <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
-</div>
+</section>

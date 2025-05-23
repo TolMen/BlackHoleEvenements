@@ -1,4 +1,4 @@
-<div class="hero-section container py-5">
+<section class="hero-section container py-5">
     <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
             <img src="../../../public/assets/logo.png" alt="Logo de BlackHole Evènements" class="logo mb-3">
@@ -73,4 +73,4 @@
             </div>
         </div>
     </div>
-</div>
+</section>

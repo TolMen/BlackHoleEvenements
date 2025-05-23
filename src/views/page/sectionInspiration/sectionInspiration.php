@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="main-container">
+<section class="main-container">
 
     <!-- SIDEBAR avec TITRE + FILTRES -->
     <div class="sidebar">
@@ -87,4 +87,4 @@
         </div>
     </div>
 
-</div>
+</section>
