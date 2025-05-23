@@ -1,7 +1,7 @@
 /* ========== SECTION VIDÉO IMMERSIVE ========== */
 
 .cover-carousel-container {
-    height: 90vh;
+    height: calc(100vh - 62px);
     overflow: hidden;
     position: relative;
     box-shadow: 

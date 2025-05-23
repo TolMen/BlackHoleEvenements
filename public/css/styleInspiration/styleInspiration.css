@@ -2,17 +2,14 @@
 
 .main-container {
     display: flex;
-    align-items: stretch; /* étire la sidebar sur la hauteur du contenu */
+    align-items: stretch;
     background-color: var(--color-gray-background);
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
-    animation-delay: 0.2s;
 }
 
 /* ========== SIDEBAR ========== */
 
 .sidebar {
-    width: 200px;
+    width: 215px;
     padding: 20px;
     border-right: 1px solid var(--color-gray-border);
     box-shadow: 4px -4px 6px var(--color-gray-shadow);
@@ -75,7 +72,11 @@
 }
 
 .filter-group.open .filter-options {
-    max-height: 500px;
+    max-height: 5000px;
+}
+
+.filter-options label {
+    font-size: 13px;
 }
 
 .filter-options input {
@@ -150,12 +151,12 @@
 /* ========== RESET FILTRE ========== */
 
 .filter-reset-container {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .resetFilter {
-    width: 35px;
-    height: 35px;
+    width: 175px;
+    height: 30px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -165,6 +166,7 @@
     text-decoration: none;
     border: none;
     cursor: pointer;
+    color: var(--color-gray-background);
 }
 
 .resetFilter i {
@@ -183,7 +185,7 @@
     flex: 1;
     padding: 15px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     gap: 15px;
     box-sizing: border-box;
 }
@@ -192,7 +194,7 @@
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     display: block;
     border: 2px solid var(--color-gray-border);
@@ -252,6 +254,10 @@
     border: 2px solid var(--color-gray-border);
 }
 
+.modal-dialog-centered {
+    justify-content: center;
+}
+
 /* Flou et fond plus doux pour le backdrop Bootstrap */
 
 .modal-backdrop {
@@ -275,7 +281,7 @@
 
 .modal.show ~ .main-container {
     filter: blur(2px);
-    pointer-events: none; /* empêche interaction avec fond */
+    pointer-events: none;
     transition: filter 0.3s ease;
 }
 
@@ -292,11 +298,17 @@
     }
 }
 
+.main-container {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
 /* ========== RESPONSIVE ========== */
 
 @media (max-width: 600px) {
     .filter-group {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .sidebar .faq-section .title-separator {
@@ -311,10 +323,19 @@
     }
 
     .sidebar {
-        width: 150px;
+        width: 175px;
     }
 
     #lieuxSearch::placeholder {
         font-size: 10px;
+    }
+
+    .resetFilter {
+        width: 110px;
+        font-size: 12px;
+    }
+
+    .filter-options label {
+        font-size: 8px;
     }
 }

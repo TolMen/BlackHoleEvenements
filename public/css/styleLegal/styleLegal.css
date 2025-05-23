@@ -1,7 +1,7 @@
-/* ========== SECTION FAQ ========== */
+/* ========== SECTION LEGAL ========== */
 
 /* Titre de la section */
-.faq-section .section-title {
+.legal-section .section-title {
     font-weight: bold;
     color: var(--color-tomato-item);
     margin-bottom: 0.3em;
@@ -9,7 +9,7 @@
 }
 
 /* Séparateur sous le titre */
-.faq-section .title-separator {
+.legal-section .title-separator {
     border: 0;
     border-top: 5px solid var(--color-tomato-item);
     width: 100px;
@@ -33,16 +33,16 @@
     }
 }
 
-.faq-section {
+.legal-section {
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
     animation-delay: 0.2s;
 }
 
-/* ========== BLOC DE QUESTION/RÉPONSE ========== */
+/* ========== BLOC DE TITRE/CONTENU ========== */
 
-/* Conteneur de chaque question */
-.faq-item {
+/* Conteneur de chaque bloc */
+.legal-item {
     background-color: var(--color-gray-background);
     border: 1px solid var(--color-gray-border);
     border-radius: 8px;
@@ -56,14 +56,14 @@
     transition: transform 0.3s ease;
 }
 
-.faq-item:hover {
+.legal-item:hover {
     transform: translateY(-5px);
 }
 
-/* ========== QUESTION ========== */
+/* ========== TITRE ========== */
 
-/* Ligne de question */
-.faq-question {
+/* Ligne de titre */
+.legal-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,17 +74,17 @@
 }
 
 /* Icône Font Awesome (plus/moins) */
-.faq-icon {
+.legal-icon {
     transition: transform 0.3s ease;
 }
 
 /* Rotation de l'icône si la réponse est ouverte */
-.faq-item[aria-expanded="true"] .faq-icon {
+.legal-item[aria-expanded="true"] .legal-icon {
     transform: rotate(180deg);
 }
 
 /* Séparateur entre question et réponse */
-.faq-separator {
+.legal-separator {
     border: none;
     border-top: 1px solid var(--color-gray-border);
     margin: 10px 0 15px;
@@ -93,7 +93,7 @@
 /* ========== RÉPONSE ========== */
 
 /* Contenu de la réponse */
-.faq-answer {
+.legal-content {
     font-size: 16px;
     color: var(--color-text);
     line-height: 1.5;
@@ -104,11 +104,11 @@
 /* ===== MEDIA QUERY ===== */
 
 @media (max-width: 780px) {
-    .faq-question span {
+    .legal-title span {
         font-size: 15px;
     }
 
-    .faq-answer {
+    .legal-content {
         font-size: 13px;
     }
 }

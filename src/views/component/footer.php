@@ -29,7 +29,7 @@
                     <li class="mb-2"><a href="home.php" class="footerLink">Accueil</a></li>
                     <li class="mb-2"><a href="service.php" class="footerLink">Service</a></li>
                     <li class="mb-2"><a href="inspiration.php" class="footerLink">Inspiration</a></li>
-                    <li class="mb-2"><a href="faq.php" class="footerLink">FAQ</a></li>
+                    <li class="mb-2"><a href="legalPage.php?type=faq" class="footerLink">FAQ</a></li>
                     <li class="mb-2"><a href="login.php" class="footerLink">Compte</a></li>
                     <li class="mb-2"><a href="contact.php" class="footerLink">Contactez-nous</a></li>
                 </ul>
@@ -84,8 +84,8 @@
                 </small>
             </div>
             <div class="col-md-6 text-center text-md-end mt-3 mt-md-0 d-flex flex-wrap justify-content-center justify-content-md-end gap-3">
-                <a href="mentionLegale.php" class="footerLink"><small>Mentions légales</small></a>
-                <a href="politiqueConfidentialite.php" class="footerLink"><small>Politique de confidentialité</small></a>
+                <a href="legalPage.php?type=ml" class="footerLink"><small>Mentions légales</small></a>
+                <a href="legalPage.php?type=pc" class="footerLink"><small>Politique de confidentialité</small></a>
                 <a href="https://jessyf.fr/" class="footerLink"><small>Créateur Web : Jessy Frachisse</small></a>
             </div>
         </div>

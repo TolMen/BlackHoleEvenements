@@ -5,7 +5,7 @@
     --color-gray-shadow: #20202026;
 
     --color-text: black;
-    --color-text-hover: #000000bf;
+    --color-text-hover: rgba(0, 0, 0, 0.50);
 
     --color-tomato-item: #ff977d;
     --color-tomato-item-hover: #fbd3cb;

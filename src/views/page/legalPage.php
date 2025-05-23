@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+include_once '../../control/LegalControl/legalControl.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +11,10 @@ session_start();
     <!-- Inclusion des balises meta -->
     <?php include '../component/head.php'; ?>
 
-    <!-- Feuille de style spécifique à la page Mention Légales -->
-    <link rel="stylesheet" href="../../../public/css/styleML/styleML.css">
+    <!-- Feuille de style FAQ / ML / PC -->
+    <link rel="stylesheet" href="../../../public/css/styleLegal/styleLegal.css">
 
-    <title>Mention légales - Black Hole Evènements</title>
+    <title><?= htmlspecialchars($htmlTitle) ?></title>
 </head>
 
 <body>
@@ -20,8 +22,8 @@ session_start();
     <!-- Inclusion de la barre de navigation -->
     <?php include '../component/navbar.php' ?>
 
-    <!-- Section ML -->
-    <?php include 'sectionML/sectionML.php'; ?>
+    <!-- Section Legal -->
+    <?php include 'sectionLegal/sectionLegal.php'; ?>
 
     <!-- Inclusion du pied de page -->
     <?php include '../component/footer.php' ?>

@@ -118,9 +118,10 @@
 }
 
 /* Animation sur le texte de titre */
-.option.active .label .info > p {
+.option.active .label .info .title {
     left: 0;
     opacity: 1;
+    text-shadow: 0 0 10px black;
 }
 
 .option:not(.active) .label .info .title {
@@ -226,7 +227,7 @@
         list-style-type: none;
         flex-grow: 1;
         min-width: 150px;
-        flex-basis: calc(50% - 10px); /* 2 par ligne */
+        flex-basis: calc(50% - 10px);
         height: auto;
     }
 
