@@ -5,7 +5,7 @@ class LegalModel
 {
     public function getAll(PDO $bdd, string $table)
     {
-        $allowedTables = ['faq', 'mentionLegale', 'politiqueConfidentialite'];
+        $allowedTables = ['faq', 'mention_legale', 'politique_confidentialite'];
         if (!in_array($table, $allowedTables)) {
             throw new Exception("Table non autorisée");
         }

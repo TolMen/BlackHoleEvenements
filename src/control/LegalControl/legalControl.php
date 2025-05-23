@@ -5,8 +5,8 @@ $type = $_GET['type'];
 
 $tableMap = [
     'faq' => ['table' => 'faq', 'title' => 'Foire aux Questions', 'fields' => ['question', 'answer']],
-    'ml' => ['table' => 'mentionLegale', 'title' => 'Mentions Légales', 'fields' => ['title', 'content']],
-    'pc' => ['table' => 'politiqueConfidentialite', 'title' => 'Politique de Confidentialité', 'fields' => ['title', 'content']]
+    'ml' => ['table' => 'mention_legale', 'title' => 'Mentions Légales', 'fields' => ['title', 'content']],
+    'pc' => ['table' => 'politique_confidentialite', 'title' => 'Politique de Confidentialité', 'fields' => ['title', 'content']]
 ];
 
 if (!array_key_exists($type, $tableMap)) {
