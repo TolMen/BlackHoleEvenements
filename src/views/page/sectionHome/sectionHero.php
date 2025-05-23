@@ -18,9 +18,9 @@
             <!-- Carrousel -->
             <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover" data-bs-interval="3500">
                 <div class="carousel-inner rounded shadow">
-                    <?php foreach ($imagesHero as $index => $img): ?>
+                    <?php foreach ($imagesHeroHome as $index => $img): ?>
                         <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                            <img src="../../../public/assets/img/<?= htmlspecialchars($img['cheminURL']) ?>"
+                            <img src="../../../public/assets/img/<?= htmlspecialchars($img['chemin_img']) ?>"
                                 class="d-block w-100"
                                 alt="<?= htmlspecialchars($img['alt']) ?>">
                         </div>
@@ -29,7 +29,7 @@
 
                 <!-- Indicateurs dynamiques -->
                 <div class="carousel-indicators">
-                    <?php for ($i = 0; $i < $totalHeroImages; $i++): ?>
+                    <?php for ($i = 0; $i < $totalHeroHomeImages; $i++): ?>
                         <button type="button"
                             data-bs-target="#heroCarousel"
                             data-bs-slide-to="<?= $i ?>"
