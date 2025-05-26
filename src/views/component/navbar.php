@@ -13,31 +13,46 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'home.php') ? 'active' : ''; ?>" href="home.php">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'service.php') ? 'active' : ''; ?>" href="service.php">Service</a>
-                </li>
-                <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'inspiration.php') ? 'active' : ''; ?>" href="inspiration.php">Inspiration</a>
-                </li>
-                <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'legalPage.php?type=faq') ? 'active' : ''; ?>" href="legalPage.php?type=faq">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'actualite.php') ? 'active' : ''; ?>" href="actualite.php">Actualités</a>
-                </li>
-                <li class="nav-item">
-                    <a class="custom-nav-link <?php echo ($current_page == 'contact.php') ? 'active' : ''; ?>" href="contact.php">Contactez-nous</a>
-                </li>
 
-                <?php if (isset($_SESSION['userRole']) && $_SESSION['userRole'] == 'admin'): ?>
+                <?php if (isset($_SESSION['userRole']) && $_SESSION['userRole'] == 'admin') { ?>
                     <li class="nav-item">
-                        <a class="custom-nav-link <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>" href="#">
-                            Administration</a>
+                        <a class="custom-nav-link <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>" href="dashboard.php">Administration</a>
                     </li>
-                <?php endif; ?>
+
+                    <!-- Dropdown navigation for admin -->
+                    <li class="nav-item dropdown">
+                        <a class="custom-nav-link dropdown-toggle" href="#" id="navbarAdminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Navigation publique
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarAdminDropdown">
+                            <li><a class="dropdown-item" href="home.php">Accueil</a></li>
+                            <li><a class="dropdown-item" href="service.php">Service</a></li>
+                            <li><a class="dropdown-item" href="inspiration.php">Inspiration</a></li>
+                            <li><a class="dropdown-item" href="legalPage.php?type=faq">FAQ</a></li>
+                            <li><a class="dropdown-item" href="actualite.php">Actualités</a></li>
+                            <li><a class="dropdown-item" href="contact.php">Contactez-nous</a></li>
+                        </ul>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="custom-nav-link <?php echo ($current_page == 'home.php') ? 'active' : ''; ?>" href="home.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="custom-nav-link <?php echo ($current_page == 'service.php') ? 'active' : ''; ?>" href="service.php">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="custom-nav-link <?php echo ($current_page == 'inspiration.php') ? 'active' : ''; ?>" href="inspiration.php">Inspiration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="custom-nav-link <?php echo ($current_page == 'legalPage.php?type=faq') ? 'active' : ''; ?>" href="legalPage.php?type=faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="custom-nav-link <?php echo ($current_page == 'actualite.php') ? 'active' : ''; ?>" href="actualite.php">Actualités</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="custom-nav-link <?php echo ($current_page == 'contact.php') ? 'active' : ''; ?>" href="contact.php">Contactez-nous</a>
+                    </li>
+                <?php }; ?>
 
                 <?php if (!empty($_SESSION['userID'])): ?>
                     <li class="nav-item">
