@@ -32,9 +32,6 @@ if (isset($_POST['publishArticle'])) {
             if (ImageService::compressAndResizeImage($fileTmpPath, $destPath, 800, 800, 75)) {
                 $imgUrl = $uniqueName;
                 $addArticleModel->insertImage($bdd, $imgUrl, $createdAt, $articleID);
-            } else {
-                header('Location: ../../../createArt.php?compressionFail=true');
-                exit;
             }
         }
 

@@ -16,17 +16,14 @@
                             <div class="editorQuill" id="editor"><?= $articleAncien['content']; ?></div>
                             <input type="hidden" id="hidden-content" name="content">
                         </div>
-                        <div class="mt-4 text-end">
-                            <input type="submit" name="updateArticle" value="Valider" class="btn btn-outline-dark btn-sm">
-                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 order-first order-lg-last">
                     <div class="article-image-desktop sticky-top z-0">
                         <div class="link mb-3">
-                            <a href="actualite.php?articleID=<?php echo $article['id']; ?>" class="btn btn-outline-dark btn-sm">Lire</a>
                             <a href="#" class="btn btn-outline-dark btn-sm active">Modifier</a>
+                            <input type="submit" name="updateArticle" value="Valider" class="btn btn-outline-dark btn-sm">
                             <a href="actualite.php" class="btn btn-outline-dark btn-sm">Retour</a>
                         </div>
                         <div class="position-relative mb-3 image-container">
