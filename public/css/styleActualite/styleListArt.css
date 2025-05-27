@@ -1,0 +1,135 @@
+/* ========== TITRES SECTIONS ========== */
+
+.section-title {
+    font-weight: bold;
+    color: var(--color-tomato-item);
+    margin-bottom: 0.3em;
+    text-align: left;
+}
+
+.title-separator {
+    border: 0;
+    border-top: 5px solid var(--color-tomato-item);
+    width: 100px;
+    margin-left: 0;
+    opacity: 100;
+    border-radius: 8px;
+}
+
+
+/* ========== BOUTONS ========== */
+
+.btn-custom {
+    padding: 12px;
+    height: 35px;
+    font-weight: bold;
+    background: var(--color-tomato-item);
+    color: var(--color-gray-background);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-custom:hover {
+    background: var(--color-tomato-item-hover);
+    transform: translateY(-3px);
+}
+
+
+/* ========== CARTE ARTICLE ========== */
+
+.article-card {
+    background-color: var(--color-gray-background);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-gray-border);
+    box-shadow: 0 4px 6px var(--color-gray-shadow);
+}
+
+.article-card:hover {
+    transform: translateY(-3px);
+}
+
+
+/* ========== IMAGE DE LA CARTE ========== */
+
+.image_contenu {
+    display: flex;
+    align-items: center;
+    height: 170px;
+    overflow: hidden;
+    background-color: var(--color-gray-background);
+    border-bottom: 1px solid var(--color-gray-border);
+    position: relative;
+}
+
+.image_contenu img {
+    width: 100%;
+    object-fit: scale-down;
+}
+
+
+/* ========== CONTENU DE LA CARTE ========== */
+
+.article-card .content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    text-align: center;
+}
+
+
+/* ========== TITRE ARTICLE ========== */
+
+.article-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+
+/* ========== DATE ARTICLE ========== */
+
+.article-card .date {
+    color: var(--color-text-hover);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+
+/* ========== LIEN LECTURE ARTICLE ========== */
+
+.readArt {
+    text-decoration: none;
+}
+
+
+/* ========== BADGE DE SUPPRESSION ========== */
+
+.delete-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 3px 7px;
+    background-color: var(--color-gray-background);
+    border: 1px solid var(--color-gray-border);
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 10;
+}

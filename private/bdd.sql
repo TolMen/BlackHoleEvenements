@@ -17,6 +17,8 @@ DROP TABLE IF EXISTS themes;
 DROP TABLE IF EXISTS lieux;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS images;
+DROP TABLE IF EXISTS article;
+DROP TABLE IF EXISTS image_actu;
 
 -- Réactive les contraintes de clé étrangère
 SET FOREIGN_KEY_CHECKS = 1;
@@ -92,6 +94,38 @@ CREATE TABLE IF NOT EXISTS images (
     FOREIGN KEY (filtres_themes) REFERENCES themes(valeur) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (filtres_lieux) REFERENCES lieux(valeur) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB;
+
+-- Table `articles`
+CREATE TABLE IF NOT EXISTS article (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- Table `image_actu`
+CREATE TABLE IF NOT EXISTS image_actu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    url TEXT NOT NULL,
+    created_at DATE NOT NULL,
+    article_id INT NOT NULL,
+    FOREIGN KEY (article_id) REFERENCES article(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- Réinitialisation des AUTO_INCREMENT
+ALTER TABLE faq AUTO_INCREMENT = 1;
+ALTER TABLE mention_legale AUTO_INCREMENT = 1;
+ALTER TABLE politique_confidentialite AUTO_INCREMENT = 1;
+ALTER TABLE services AUTO_INCREMENT = 1;
+ALTER TABLE themes AUTO_INCREMENT = 1;
+ALTER TABLE lieux AUTO_INCREMENT = 1;
+ALTER TABLE users AUTO_INCREMENT = 1;
+ALTER TABLE images AUTO_INCREMENT = 1;
+ALTER TABLE article AUTO_INCREMENT = 1;
+ALTER TABLE image_actu AUTO_INCREMENT = 1;
 
 -- ---------------------------------------------
 
@@ -224,3 +258,31 @@ INSERT INTO images (nom, chemin_img, alt, filtres_services, filtres_themes, filt
 ("Service Mobilier", "imgServiceMobilier.jpeg", "Photo du service Mobilier", "mobilier", null, null, "imgSectionService", NOW()),
 ("Service Sonorisation", "imgServiceSonorisation.jpeg", "Photo du service Sonorisation", "sonorisation", null, null, "imgSectionService", NOW()),
 ("Service Vidéo", "imgServiceVideo.jpeg", "Photo du service Vidéo", "video", null, null, "imgSectionService", NOW());
+
+-- Insertion de l'article
+INSERT INTO article (title, content, created_at, user_id) VALUES
+("Refonte graphique du site Black Hole Événement : un nouveau souffle numérique",
+"La société Black Hole Événement, spécialiste de l’organisation d’événements sur mesure en Auvergne, dévoile la toute nouvelle version de son site internet ! <br><br>
+
+L’objectif de cette refonte : vous offrir une expérience utilisateur plus fluide, un design moderne, et une présentation claire de nos services événementiels. <br><br>
+
+Cette refonte graphique marque une étape importante pour nous : elle nous permet de valoriser plus efficacement notre savoir-faire dans l’organisation d’événements privés et professionnels (mariages, anniversaires, séminaires, soirées à thème, etc.), tout en vous offrant une expérience utilisateur plus intuitive et fluide, sur ordinateur comme sur mobile. <br><br>
+
+Pour mener à bien ce projet, nous avons collaboré avec un jeune développeur dans le secteur du web (https://jessyf.fr/). <br>
+Il nous a accompagnés autour de plusieurs axes techniques : <br><br>
+
+- Intégration d’une charte graphique repensée, plus sobre et élégante <br>
+- Mise en place d’une galerie photo interactive pour valoriser les réalisations <br>
+- Implémentation d’un système de filtres dynamique (services, lieux, thèmes) <br>
+- Développement d’un back-office sécurisé pour la gestion autonome du contenu <br>
+- Optimisation SEO (balises, performances, accessibilité) <br><br>
+
+Nous avons à cœur de vous offrir un site à notre image : professionnel, élégant, et facile d’accès, à l’image des événements que nous créons pour vous.<br><br>
+
+N’hésitez pas à nous faire part de vos retours et à explorer les différentes sections du site. <br>
+De nouvelles fonctionnalités et publications arrivent bientôt !", 
+"2025/05/27 10:10:00", 1);
+
+-- Insertion de l'image associée à l'article
+INSERT INTO image_actu (url, created_at, article_id) VALUES
+("imgActu_RefonteSite.png", "2025-05-27", 1);
