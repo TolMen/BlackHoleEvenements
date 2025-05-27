@@ -19,7 +19,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         <a class="custom-nav-link <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>" href="dashboard.php">Administration</a>
                     </li>
 
-                    <!-- Dropdown navigation for admin -->
                     <li class="nav-item dropdown">
                         <a class="custom-nav-link dropdown-toggle" href="#" id="navbarAdminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Navigation publique
@@ -28,8 +27,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
                             <li><a class="dropdown-item" href="home.php">Accueil</a></li>
                             <li><a class="dropdown-item" href="service.php">Service</a></li>
                             <li><a class="dropdown-item" href="inspiration.php">Inspiration</a></li>
-                            <li><a class="dropdown-item" href="legalPage.php?type=faq">FAQ</a></li>
                             <li><a class="dropdown-item" href="actualite.php">Actualités</a></li>
+                            <li><a class="dropdown-item" href="legalPage.php?type=faq">FAQ</a></li>
+                            <li><a class="dropdown-item" href="legalPage.php?type=ml">Mentions légales</a></li>
+                            <li><a class="dropdown-item" href="legalPage.php?type=pc">Politique de confidentialité</a></li>
                             <li><a class="dropdown-item" href="contact.php">Contactez-nous</a></li>
                         </ul>
                     </li>
