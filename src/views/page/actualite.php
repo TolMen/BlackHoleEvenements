@@ -40,7 +40,7 @@ if ($isCreateView) {
         <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
     <?php } ?>
 
-    <title>Blog - Black Hole Evènements</title>
+    <title>Actualités - Black Hole Evènements</title>
 </head>
 
 <body>
