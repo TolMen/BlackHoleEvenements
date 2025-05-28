@@ -1,0 +1,231 @@
+/* ===== Titre indépendant ===== */
+body {
+    background: var(--color-gray-background);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.contactForm {
+    padding: 50px 75px;
+}
+
+/* Titre de la section */
+.section-title {
+    font-weight: bold;
+    color: var(--color-tomato-item);
+    margin-bottom: 0.3em;
+    text-align: left;
+}
+
+/* Séparateur sous le titre */
+.title-separator {
+    border: 0;
+    border-top: 5px solid var(--color-tomato-item);
+    width: 100px;
+    margin-left: 0;
+    margin-bottom: 2rem;
+    opacity: 100;
+    border-radius: 8px;
+}
+
+/* ===== Conteneur principal pour colonnes ===== */
+.main-container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Colonne gauche : cartes ===== */
+.left-cards {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.left-cards p {
+    margin-bottom: 5px;
+}
+
+/* ===== Colonne droite : formulaire ===== */
+.right-form {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === Formulaire et inputs (garde ton style existant) === */
+
+form {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-gray-background);
+}
+
+form h2 {
+    color: var(--color-text);
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 25px;
+}
+
+.boxIdentity {
+    display: flex;
+    gap: 20px;
+}
+
+form .inputBoxIdentity,
+form .inputBoxOther {
+    position: relative;
+}
+
+form .inputBoxOther {
+    margin-top: 35px;
+    width: 300px;
+}
+
+.boxIdentity .inputBoxIdentity {
+    flex: 1;
+}
+
+form .inputBox textarea {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    padding: 10px 10px 10px;
+    background: transparent;
+    outline: none;
+    border: 2px solid var(--color-gray-border);
+    border-radius: 4px;
+    box-shadow: none;
+    color: var(--color-text);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    resize: none;
+    z-index: 10;
+}
+
+form .inputBox .spanTextarea {
+    position: absolute;
+    top: -45px;
+    left: 0px;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s ease;
+    color: var(--color-text);
+    font-size: 0.75em;
+}
+
+form .inputBoxOther.full-width {
+    width: 100%;
+}
+
+form .inputBoxOther.margeBottom {
+    margin-bottom: 35px;
+}
+
+form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: var(--color-text);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    color: var(--color-text);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+form .inputBox input:valid ~ span,
+form .inputBox input:focus ~ span {
+    color: var(--color-text);
+    font-size: 0.75em;
+    transform: translateY(-34px);
+}
+
+form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    border-bottom: 2px solid var(--color-gray-border);
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+form .inputBox input:valid ~ i,
+form .inputBox input:focus ~ i {
+    height: 44px;
+    background: transparent;
+}
+
+/* Form button final */
+
+form input[type="submit"] {
+    outline: none;
+    padding: 9px 5px;
+    background: var(--color-tomato-item);
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 125px;
+    margin-top: 20px;
+    color: var(--color-gray-background);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background: var(--color-tomato-item-hover);
+    transform: translateY(-3px);
+}
+
+form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+/* ===== Responsive ===== */
+
+@media screen and (max-width: 900px) {
+    .contactForm {
+        padding: 50px 15px;
+    }
+
+    .main-container {
+        flex-direction: column;
+        padding: 0 20px 20px;
+        min-height: auto;
+    }
+    .left-cards, .right-form {
+        width: 100%;
+        height: auto;
+        justify-content: normal;
+    }
+    .legal-section {
+        padding: 0 20px 1rem;
+    }
+}
