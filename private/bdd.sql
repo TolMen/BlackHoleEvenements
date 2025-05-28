@@ -115,6 +115,16 @@ CREATE TABLE IF NOT EXISTS image_actu (
     FOREIGN KEY (article_id) REFERENCES article(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+-- Table `contact`
+CREATE TABLE IF NOT EXISTS contact (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
 -- Réinitialisation des AUTO_INCREMENT
 ALTER TABLE faq AUTO_INCREMENT = 1;
 ALTER TABLE mention_legale AUTO_INCREMENT = 1;
@@ -126,6 +136,7 @@ ALTER TABLE users AUTO_INCREMENT = 1;
 ALTER TABLE images AUTO_INCREMENT = 1;
 ALTER TABLE article AUTO_INCREMENT = 1;
 ALTER TABLE image_actu AUTO_INCREMENT = 1;
+ALTER TABLE contact AUTO_INCREMENT = 1;
 
 -- ---------------------------------------------
 
