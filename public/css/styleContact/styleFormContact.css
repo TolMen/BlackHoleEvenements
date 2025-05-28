@@ -58,6 +58,10 @@ body {
     flex-direction: column;
 }
 
+.contact-info {
+    text-align: center;
+}
+
 /* === Formulaire et inputs (garde ton style existant) === */
 
 form {
