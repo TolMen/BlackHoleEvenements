@@ -1,6 +1,4 @@
 <?php
-
-session_name("main");
 session_start();
 
 include_once '../../model/ActualiteModel/addArtModel.php';
