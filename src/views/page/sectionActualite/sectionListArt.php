@@ -1,4 +1,4 @@
-<section class="legal-section container py-5">
+<section class="listArt-section container py-5">
     <h2 class="section-title">Actualités</h2>
     <hr class="title-separator">
 
