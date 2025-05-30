@@ -35,12 +35,12 @@
                 <input type="submit" name="envoi" value="Envoyer">
             </form>
         </div>
-        
+
         <div class="left-cards">
             <div class="contact-info">
-                <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
-                <p><strong>Email :</strong> contact@blackhole.fr</p>
-                <p><strong>Adresse :</strong> 123 Rue de l'Étoile, Paris</p>
+                <p><strong>Téléphone :</strong> 09 73 17 03 76</p>
+                <p><strong>Email :</strong> blackhole.evenements@gmail.com</p>
+                <p><strong>Adresse :</strong> Pôle d'activité, <br> 10 Rue Amable Faucon, 63200 Riom</p>
             </div>
 
             <div class="map-container">

@@ -47,6 +47,7 @@
     box-shadow: 0 4px 6px var(--color-gray-shadow);
     border: 1px solid var(--color-gray-border);
     border-radius: 8px;
+    cursor: default;
 }
 
 /* Option active (agrandie) */
@@ -238,6 +239,7 @@
         border-radius: 8px;
         box-shadow: 0 4px 6px var(--color-gray-shadow);
         border: 1px solid var(--color-gray-border);
+        cursor: default;
     }
 
     .img-wrapper img {

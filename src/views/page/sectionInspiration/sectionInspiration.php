@@ -31,7 +31,10 @@
             <div class="filter-options">
                 <?php foreach ($services as $service): ?>
                     <label>
-                        <input type="checkbox" value="<?= htmlspecialchars($service['valeur']) ?>" class="filter-checkbox">
+                        <input type="checkbox"
+                            value="<?= htmlspecialchars($service['valeur']) ?>"
+                            class="filter-checkbox"
+                            <?= ($service['valeur'] === $selectedService) ? 'checked' : '' ?>>
                         <?= htmlspecialchars($service['nom']) ?>
                     </label><br>
                 <?php endforeach; ?>

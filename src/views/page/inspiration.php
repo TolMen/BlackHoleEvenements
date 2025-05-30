@@ -3,6 +3,9 @@ session_start();
 
 include_once '../../control/InspirationControl/filtreControl.php';
 include_once '../../control/ImageControl/galleryImageControl.php';
+
+$selectedService = $_GET['service'] ?? '';
+
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +41,7 @@ include_once '../../control/ImageControl/galleryImageControl.php';
     <script src="../../../public/js/modalClickPhoto.js"></script>
     <script src="../../../public/js/filterReset.js"></script>
     <script src="../../../public/js/searchLieu.js"></script>
+    <script src="../../../public/js/filterServiceToInspiration.js"></script>
 
 </body>
 

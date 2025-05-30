@@ -57,7 +57,7 @@
                 <p class="opacity-75">
                     Discutons de vos besoins pour faire de votre événement un moment inoubliable.
                 </p>
-                <a href="tel:+33973170376" class="telBtn">09 XX XX XX XX</a>
+                <a href="tel:+33973170376" class="telBtn">09 73 17 03 76</a>
 
                 <div class="mailBtn">
                     <a href="#" class="socialIcon" id="copyEmail" data-email="blackhole.evenements@gmail.com" title="Copier l'adresse e-mail">
