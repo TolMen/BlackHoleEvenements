@@ -5,7 +5,7 @@
                 <div class="content">
                     <div class="name"><?= htmlspecialchars($service['nom']) ?></div>
                     <div class="des"><?= nl2br($service['description']) ?></div>
-                    <button class="seeMore">Voir plus d'inspiration</button>
+                    <button class="seeMore"><a href="inspiration.php?service=<?= urlencode($service['valeur']) ?>">Voir plus d'inspiration</a></button>
                 </div>
             </div>
         <?php endforeach; ?>

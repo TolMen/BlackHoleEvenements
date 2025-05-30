@@ -102,7 +102,6 @@
 .content .seeMore {
     font-weight: bold;
     background: var(--color-tomato-item);
-    color: var(--color-gray-background);
     border-radius: 8px;
     transition: all 0.3s ease;
     padding: 10px 25px;
@@ -111,6 +110,11 @@
     cursor: pointer;
     opacity: 1;
     border: none;
+}
+
+.content .seeMore a {
+    color: var(--color-gray-background);
+    text-decoration: none;
 }
 
 .content .seeMore:hover {
