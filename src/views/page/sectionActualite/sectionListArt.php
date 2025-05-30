@@ -18,7 +18,7 @@
                         <div class="image_contenu">
                             <img src="../../../public/assets/img/imgActu/<?= htmlspecialchars($imageUrl) ?>" alt="Image de l'article">
                             <?php if (isset($_SESSION["userRole"]) && $_SESSION["userRole"] == "admin") { ?>
-                                <a href="../../control/ActualiteControl/deleteArt.php?articleID=<?php echo $article['id']; ?>" class="delete-badge" title="Supprimer l'article">
+                                <a href="../../control/ActualiteControl/deleteArtControl.php?articleID=<?php echo $article['id']; ?>" class="delete-badge" title="Supprimer l'article">
                                     <i class="fa-solid fa-trash" style="color: red;"></i>
                                 </a>
                             <?php } ?>

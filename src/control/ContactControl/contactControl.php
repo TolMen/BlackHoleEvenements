@@ -9,6 +9,8 @@ include_once '../../model/ContactModel/getContactSuccess.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['website'])) {
         header('Location: ../../views/page/contact.php');
+
+        // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
         exit;
     }
 
@@ -17,15 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = htmlspecialchars($_POST["subject"], ENT_QUOTES);
     $message = htmlspecialchars($_POST["message"], ENT_QUOTES);
 
-    $getInsertinto = new getContactSuccess();
+    $getInsertinto = new GetContactSuccess();
     $getInsertinto->getInsert($bdd, $name, $email, $subject, $message);
 
-    $getInformation = new getContactSuccess();
+    $getInformation = new GetContactSuccess();
     $resultatsforms = $getInformation->getInfo($bdd, $name, $email, $subject, $message);
 
     $_SESSION['contact_success'] = true;
     $_SESSION['contact_name'] = $resultatsforms["name"];
 
     header('Location: ../../views/page/contact.php');
+
+    // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit;
 }

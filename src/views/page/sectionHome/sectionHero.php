@@ -2,7 +2,7 @@
     <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
             <img src="../../../public/assets/logo.png" alt="Logo de BlackHole Evènements" class="logo mb-3">
-            <h1>Black Hole Evènements</h1>
+            <h1>Black Hole Evénements</h1>
             <p class="hero-subtitle">
                 Spécialiste de
                 <a href="../../../public/files/plaquettePrestations.pdf" target="_blank" download="Plaquette_prestations_sur_mesure_Black_Hole_Evénements.pdf" class="custom-link">
@@ -43,7 +43,7 @@
 
         <div class="hero-presentation">
             <p class="hero-description">
-                Black Hole Évènements, votre expert événementiel à Riom, transforme chaque moment en une expérience unique. <br> Son, lumière, vidéo, déco, effets spéciaux... <br> Tout ce qu’il faut pour sublimer vos mariages, concerts, galas ou festivals, avec du matériel pro et sur-mesure.
+                Black Hole Événements, votre expert événementiel à Riom, transforme chaque moment en une expérience unique. <br> Son, lumière, vidéo, déco, effets spéciaux... <br> Tout ce qu’il faut pour sublimer vos mariages, concerts, galas ou festivals, avec du matériel pro et sur-mesure.
             </p>
             <div class="container text-center">
                 <h2 class="section-title">Nos Chiffres Clés</h2>

@@ -9,6 +9,8 @@ include_once '../../model/Services/imageService.php';
 
 if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
     header('Location: ../../../views/page/actualite.php');
+
+    // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit;
 }
 
@@ -39,4 +41,6 @@ $artModel = new UpdateArtModel();
 $artModel->updateArticle($bdd, $articleID, $title, $content);
 
 header("Location: ../../views/page/actualite.php?articleID=$articleID");
+
+// Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
 exit;
