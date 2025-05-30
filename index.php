@@ -1,9 +1,9 @@
 <?php
 
-// Démarre une session
+// Ouvre la session
 session_start();
 
-// Inclusion de fichier nécessaire 
+// Inclus les fichiers nécessaires
 include_once 'src/control/BDDControl/connectBDD.php';
 
 // Vérifie les paramètres après "?" dans l'URL, si vide redirection vers la page d'accueil

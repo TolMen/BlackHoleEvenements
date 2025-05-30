@@ -1,4 +1,6 @@
 <?php
+
+// Inclus les fichiers nécessaires
 include_once '../../model/LegalModel/legalModel.php';
 
 $type = $_GET['type'];

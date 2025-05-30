@@ -1,6 +1,6 @@
 <?php
 
-// Inclusion des fichiers nécessaire
+// Inclus les fichiers nécessaires
 include_once '../../control/BDDControl/connectBDD.php';
 
 class AuthUserModel

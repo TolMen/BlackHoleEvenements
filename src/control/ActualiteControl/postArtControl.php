@@ -1,4 +1,6 @@
 <?php
+
+// Inclus les fichiers nécessaires
 include_once '../../model/ActualiteModel/postArtModel.php';
 
 if (!empty($_GET['articleID'])) {
