@@ -13,6 +13,8 @@ $tableMap = [
 
 if (!array_key_exists($type, $tableMap)) {
     http_response_code(404);
+
+    // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit("Type de page invalide.");
 }
 

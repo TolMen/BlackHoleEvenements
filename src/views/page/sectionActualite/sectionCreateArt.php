@@ -1,6 +1,6 @@
 <section class="main-container">
     <div class="article-wrapper container">
-        <form id="formArt" method="POST" action="../../control/ActualiteControl/addArt.php" enctype="multipart/form-data">
+        <form id="formArt" method="POST" action="../../control/ActualiteControl/addArtControl.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-12">
                     <div class="article-header text-start">

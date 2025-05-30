@@ -4,7 +4,6 @@ const lieuxCheckboxes = document.querySelectorAll(
     '[data-filter="lieux"] .filter-options input[type="checkbox"]'
 );
 
-// Fonction pour supprimer les accents
 function removeAccents(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }

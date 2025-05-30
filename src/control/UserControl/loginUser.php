@@ -20,8 +20,12 @@ if (!empty($user)) {
     } else {
         header("Location: ../../views/page/home.php");
     }
+
+    // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit;
 } else {
     header("Location: ../../views/page/login.php?infoFalse=true");
+
+    // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit;
 }

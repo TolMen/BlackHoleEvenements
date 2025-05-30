@@ -1,4 +1,4 @@
-<div class="contactForm">
+<section class="contactForm">
     <h2 class="section-title">Contactez-nous</h2>
     <hr class="title-separator" />
 
@@ -57,4 +57,4 @@
             </div>
         </div>
     </div>
-</div>
+</section>

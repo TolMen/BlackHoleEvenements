@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", () => {
             const isExpanded = item.getAttribute("aria-expanded") === "true";
 
-            // Ferme tous
             legalItems.forEach((el) => {
                 el.setAttribute("aria-expanded", "false");
                 document.getElementById(
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             });
 
-            // Ouvre si pas déjà ouvert
             if (!isExpanded) {
                 item.setAttribute("aria-expanded", "true");
                 const answer = document.getElementById(
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Ouvre le premier par défaut
     const firstItem = legalItems[0];
     if (firstItem) {
         firstItem.setAttribute("aria-expanded", "true");

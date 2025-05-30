@@ -18,4 +18,6 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 } else {
     header("Location: ../../views/page/home.php");
 }
+
+// Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
 exit;
