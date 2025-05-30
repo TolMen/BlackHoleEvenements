@@ -1,6 +1,6 @@
 <?php
 
-// Inclusion de fichier nécessaire
+// Inclus les fichiers nécessaires
 $config = require dirname(__DIR__, 3) . '/private/config/configBDD.php';
 
 // Extraction des paramètres de connexion de la BDD

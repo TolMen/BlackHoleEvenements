@@ -1,4 +1,6 @@
 <?php
+
+// Inclus les fichiers nécessaires
 include_once '../../control/BDDControl/connectBDD.php';
 
 class GalleryImageModel

@@ -1,6 +1,9 @@
 <?php
+
+// Ouvre la session
 session_start();
 
+// Inclus les fichiers nécessaires
 include_once '../../model/ActualiteModel/updateArtModel.php';
 include_once '../../model/Services/imageService.php';
 
