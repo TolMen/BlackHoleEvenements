@@ -68,6 +68,6 @@
 .footer .mailCopy {
     display: none;
     font-size: 14px;
-    color: black;
+    color: var(--color-text);
     white-space: nowrap;
 }
