@@ -15,8 +15,14 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <ul class="navbar-nav">
 
                 <?php if (isset($_SESSION['userRole']) && $_SESSION['userRole'] == 'admin') { ?>
-                    <li class="nav-item">
-                        <a class="custom-nav-link <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>" href="dashboard.php">Administration</a>
+                    <li class="nav-item dropdown">
+                        <a class="custom-nav-link dropdown-toggle" href="#" id="navbarAdminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Navigation administrateur
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarAdminDropdown">
+                            <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="dashboard.php?type=messagerie">Messagerie</a></li>
+                        </ul>
                     </li>
 
                     <li class="nav-item dropdown">

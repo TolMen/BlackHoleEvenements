@@ -1,0 +1,132 @@
+/* MISE EN PAGE GÉNÉRALE */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-container {
+    padding: 50px 40px;
+}
+
+/* ========== SECTION GOBAL ========== */
+
+/* Titre de la section */
+.main-container .section-title {
+    font-weight: bold;
+    color: var(--color-tomato-item);
+    margin-bottom: 0.3em;
+    text-align: left;
+}
+
+/* Séparateur sous le titre */
+.main-container .title-separator {
+    border: 0;
+    border-top: 5px solid var(--color-tomato-item);
+    width: 100px;
+    margin-left: 0;
+    margin-bottom: 2rem;
+    opacity: 100;
+    border-radius: 8px;
+}
+
+/* ========== ANIMATION ========== */
+
+/* Animation Fade-In Up */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-container {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* =========================== CARTES D’ARTICLE =========================== */
+
+.message-card {
+    position: relative;
+    background-color: var(--color-gray-background);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px var(--color-gray-shadow);
+    border: 1px solid var(--color-gray-border);
+    transition: transform 0.3s ease;
+    cursor: pointer;;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-card.unread {
+    background-color: var(--color-tomato-item-hover);
+}
+
+.message-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Contenu textuel dans la carte */
+.message-card .content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    text-align: center;
+}
+
+/* Titre de l’article */
+.message-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-text);
+
+    /* Limitation à une ligne avec "..." */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* Largeur maximale à ne pas dépasser */
+    max-width: 100%;
+}
+
+/* Description ou extrait */
+.message-card p {
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+/* Date de publication ou de mise à jour */
+.message-card .date {
+    color: var(--color-text-hover);
+    font-size: 14px;
+}
+
+/* Lien vers l’article */
+.readArt {
+    text-decoration: none;
+}
+
+.delete-badge {
+    position: absolute;
+    background-color: var(--color-gray-background);
+    border: 1px solid var(--color-gray-border);
+    top: 5px;
+    right: 5px;
+    border-radius: 8px;
+    padding: 3px 7px;
+    cursor: pointer;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+}
