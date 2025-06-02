@@ -1,5 +1,5 @@
 <?php
-include_once '../../model/AdminModel/MessagerieModel.php';
+include_once '../../model/AdminModel/messagerieModel.php';
 
 if (isset($_POST['id'])) {
     $id = (int) $_POST['id'];

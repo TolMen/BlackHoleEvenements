@@ -4,7 +4,7 @@
 session_start();
 
 // Inclus les fichiers nécessaires
-include_once '../../model/ContactModel/getContactSuccess.php';
+include_once '../../model/ContactModel/contactModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['website'])) {
@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = htmlspecialchars($_POST["subject"], ENT_QUOTES);
     $message = htmlspecialchars($_POST["message"], ENT_QUOTES);
 
-    $getInsertinto = new GetContactSuccess();
+    $getInsertinto = new ContactModel();
     $getInsertinto->getInsert($bdd, $name, $email, $subject, $message);
 
-    $getInformation = new GetContactSuccess();
+    $getInformation = new ContactModel();
     $resultatsforms = $getInformation->getInfo($bdd, $name, $email, $subject, $message);
 
     $_SESSION['contact_success'] = true;

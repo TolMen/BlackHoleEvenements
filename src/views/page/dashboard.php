@@ -2,10 +2,11 @@
 
 session_start();
 
-include_once '../../control/AdminControl/messagerieControl.php';
-
-
 $isMessagerieView = (isset($_GET['type']) && $_GET['type'] === 'messagerie');
+
+if ($isMessagerieView) {
+    include_once '../../control/AdminControl/messagerieControl.php';
+}
 ?>
 
 <!DOCTYPE html>
