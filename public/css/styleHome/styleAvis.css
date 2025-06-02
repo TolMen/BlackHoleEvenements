@@ -51,14 +51,9 @@
 }
 
 .review-card p {
-    overflow-y: auto;
+    overflow-y: scroll;
     max-height: 180px;
     margin-bottom: 0;
-}
-
-.review-card p::-webkit-scrollbar-thumb {
-    background-color: var(--color-tomato-item);
-    border-radius: 3px;
 }
 
 /* Étoiles de notation */

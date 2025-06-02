@@ -2,6 +2,7 @@
     <div class="container boxAvis">
         <h2 class="text-center section-title">Ils nous ont fait confiance</h2>
         <p class="sourceAvis">Source : <a href="https://www.mariages.net/musique-mariage/black-hole-evenements--e47570/avis" class="linkAvis" target="_blank">Mariages.net</a></p>
+        <p class="sourceAvis">Certains avis nécessitent un défilement pour être lus entièrement.</p>
         <hr class="title-separator">
 
         <div class="row justify-content-center">
