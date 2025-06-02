@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once '../../control/AdminControl/visitorControl.php';
 
 // Modèle de gestion des articles
 include_once '../../model/ActualiteModel/postArtModel.php';

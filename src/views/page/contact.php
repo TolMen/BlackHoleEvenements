@@ -2,6 +2,7 @@
 
 session_start();
 
+include_once '../../control/AdminControl/visitorControl.php';
 ?>
 
 <!DOCTYPE html>

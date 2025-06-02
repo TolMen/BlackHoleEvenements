@@ -6,6 +6,25 @@ $isMessagerieView = (isset($_GET['type']) && $_GET['type'] === 'messagerie');
 
 if ($isMessagerieView) {
     include_once '../../control/AdminControl/messagerieControl.php';
+} else {
+    include_once '../../control/AdminControl/unReadMessageControl.php';
+    include_once '../../model/AdminModel/visitorModel.php';
+
+    $visitorModel = new VisitorModel();
+    $year = (int)date("Y");
+    $month = (int)date("m");
+
+    $monthData = $visitorModel->getMonthlyVisitors($bdd, $year, $month);
+    $yearData = $visitorModel->getYearlyVisitors($bdd, $year);
+
+    $totalVisitorCountYear = $visitorModel->getVisitorCountYear($bdd, $year);
+    $monthVisitorCount = $monthData ? $monthData['visitor_count'] : 0;
+
+    // Transforme les données annuelles en format JS
+    $monthlyData = array_fill(1, 12, 0); // [1 => 0, 2 => 0, ..., 12 => 0]
+    foreach ($yearData as $entry) {
+        $monthlyData[(int)$entry['month']] = (int)$entry['visitor_count'];
+    }
 }
 ?>
 
@@ -19,6 +38,8 @@ if ($isMessagerieView) {
     <?php if ($isMessagerieView) { ?>
         <link rel="stylesheet" href="../../../public/css/styleAdmin/styleMessagerie.css">
         <link rel="stylesheet" href="../../../public/css/stylePopUp/stylePopUp.css">
+    <?php } else { ?>
+        <link rel="stylesheet" href="../../../public/css/styleAdmin/styleDashboard.css">
     <?php } ?>
 
     <title>Dashboard - Black Hole Evènements</title>
@@ -30,13 +51,17 @@ if ($isMessagerieView) {
     <?php include '../component/navbar.php' ?>
 
     <?php if ($isMessagerieView) {
-        include 'sectionDashboard/sectionMessagerie.php'; 
+        include 'sectionDashboard/sectionMessagerie.php';
+    } else {
+        include 'sectionDashboard/sectionDashboard.php';
     } ?>
 
     <!-- Liens vers les scripts JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <script src="../../../public/js/messagePopup.js"></script>
+    <?php if ($isMessagerieView) { ?>
+        <script src="../../../public/js/messagePopup.js"></script>
+    <?php } else include '../../../public/js/historyVisit.php'; ?>
 
 </body>
 

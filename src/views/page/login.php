@@ -2,6 +2,8 @@
 
 session_start();
 
+include_once '../../control/AdminControl/visitorControl.php';
+
 $errorKey = isset($_GET) ? array_key_first($_GET) : null;
 ?>
 
