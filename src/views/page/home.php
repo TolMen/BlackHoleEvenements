@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include_once '../../control/AdminControl/visitorControl.php';
 include_once '../../control/ImageControl/heroHomeImageControl.php';
 include_once '../../control/ImageControl/sectionServiceImageControl.php';
 ?>
