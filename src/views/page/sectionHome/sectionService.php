@@ -18,6 +18,7 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <a href="service.php" class="custom-bouton" style="margin-top: 30px;">En savoir plus</a>
 </section>
 
 <!-- MOBILE VERSION -->
@@ -41,4 +42,5 @@
             </li>
         <?php endforeach; ?>
     </ul>
+    <a href="service.php" class="custom-bouton" style="margin-top: 30px;">En savoir plus</a>
 </section>
