@@ -19,6 +19,8 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS article;
 DROP TABLE IF EXISTS image_actu;
+DROP TABLE IF EXISTS contact;
+DROP TABLE IF EXISTS visiteur_mensuel;
 
 -- Réactive les contraintes de clé étrangère
 SET FOREIGN_KEY_CHECKS = 1;
@@ -50,7 +52,7 @@ CREATE TABLE IF NOT EXISTS politique_confidentialite (
 CREATE TABLE IF NOT EXISTS services (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    valeur VARCHAR(255) NOT NULL UNIQUE,
+    valeur VARCHAR(175) NOT NULL UNIQUE,
     description TEXT,
     chemin_icon VARCHAR(255),
     alt_icon VARCHAR(255),
@@ -61,14 +63,14 @@ CREATE TABLE IF NOT EXISTS services (
 CREATE TABLE IF NOT EXISTS themes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    valeur VARCHAR(255) NOT NULL UNIQUE
+    valeur VARCHAR(175) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
 
 -- Table 'Lieux'
 CREATE TABLE IF NOT EXISTS lieux (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    valeur VARCHAR(255) NOT NULL UNIQUE
+    valeur VARCHAR(175) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
 
 -- Table 'users'
@@ -85,9 +87,9 @@ CREATE TABLE IF NOT EXISTS images (
     nom VARCHAR(255) NOT NULL,
     chemin_img VARCHAR(255) NOT NULL,
     alt VARCHAR(255) NOT NULL,
-    filtres_services VARCHAR(255) DEFAULT NULL,
-    filtres_themes VARCHAR(255) DEFAULT NULL,
-    filtres_lieux VARCHAR(255) DEFAULT NULL,
+    filtres_services VARCHAR(175) DEFAULT NULL,
+    filtres_themes VARCHAR(175) DEFAULT NULL,
+    filtres_lieux VARCHAR(175) DEFAULT NULL,
     tag ENUM('imgHeroHome', 'imgSectionService') DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (filtres_services) REFERENCES services(valeur) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -126,6 +128,15 @@ CREATE TABLE IF NOT EXISTS contact (
     submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
+-- Table `visiteur_mensuel`
+CREATE TABLE IF NOT EXISTS visiteur_mensuel (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    visitor_count INT DEFAULT 1,
+    UNIQUE KEY(year, month)
+);
+
 -- Réinitialisation des AUTO_INCREMENT
 ALTER TABLE faq AUTO_INCREMENT = 1;
 ALTER TABLE mention_legale AUTO_INCREMENT = 1;
@@ -138,6 +149,7 @@ ALTER TABLE images AUTO_INCREMENT = 1;
 ALTER TABLE article AUTO_INCREMENT = 1;
 ALTER TABLE image_actu AUTO_INCREMENT = 1;
 ALTER TABLE contact AUTO_INCREMENT = 1;
+ALTER TABLE visiteur_mensuel AUTO_INCREMENT = 1;
 
 -- ---------------------------------------------
 
@@ -152,7 +164,7 @@ INSERT INTO faq (question, answer) VALUES
 ("Combien de temps à l’avance dois-je vous contacter pour l'organisation de mon événement ?", "Il est préférable de prendre contact le plus tôt possible."),
 ("A quel moment dans mon organisation puis-je faire appel à vous ?", "Vous pouvez faire appel à nous dès le début de vos préparatif, nous sommes là pour vous aiguiller dans les meilleures conditions."),
 ("Accepteriez-vous de couvrir mon mariage qui se fait à l’autre bout de la France ou à l’étranger ?", "Nous acceptons avec plaisir les prestations longues distances."),
-("Existe-t-il un numéro d’urgence si un problème survient ?", "Vous pouvez consulter le technicien sur place. Cependant, vous pouvez nous contacter via le \"XX XX XX XX XX\"."),
+("Existe-t-il un numéro d’urgence si un problème survient ?", "Vous pouvez consulter le technicien sur place. Cependant, vous pouvez nous contacter via le \"09 73 17 03 76\"."),
 ("Appliquez-vous des frais de déplacement ?", "Oui, les frais de déplacements sont indiqués dans le devis."),
 ("Quel est le montant de l’acompte ?", "Le montant de l'acompte et de 40 %."),
 ("Quelle tenue portez-vous lors d'évènement ?", "Les tenus que nous portons sont en accords avec votre dress-code."),
@@ -167,7 +179,7 @@ INSERT INTO mention_legale (title, content) VALUES
 ("Conception & Développement", "- Identité : Jessy Frachisse <br> - Statut : Développeur Web <br> - Contact : contact.jessyf@gmail.com <br> - Portfolio : <a style=\"color: var(--color-tomato-item); text-decoration: none;\" href=\"https://jessyf.fr/\">https://jessyf.fr/</a>"),
 ("Propriété intellectuelle", "Le contenu de ce site (textes, images, code, design) est protégé par le droit d’auteur. <br> Toute reproduction, totale ou partielle, est interdite sans l’autorisation écrite de Black Hole Evènements. <br> Les images utilisées sont soit libres de droits, soit créées par l’auteur."),
 ("Responsabilité", "Black Hole Evènements s’efforce de fournir des informations à jour sur ce site, mais ne garantit ni l’exactitude ni l’exhaustivité. <br> L’utilisation du site se fait sous la responsabilité de l’utilisateur. <br> L’auteur ne peut être tenu responsable d’un quelconque dommage résultant de la consultation du site."),
-("Données personelle", "Ce site peut collecter des données via la page « Contactez-nous » ainsi que toute page associée, uniquement dans le cadre d’un échange avec l’auteur. <br> Les données ne sont en aucun cas cédées à des tiers et sont conservées pour une durée maximale de 12 mois. <br> Conformément au RGPD, vous pouvez demander l’accès, la rectification ou la suppression de vos données à l’adresse suivante : blackhole.evenements@gmail.com"),
+("Données personelle", "Ce site peut collecter des données via la page « Contactez-nous » ainsi que toute page associée, uniquement dans le cadre d’un échange avec l’auteur. <br> Les données ne sont en aucun cas cédées à des tiers et sont conservées pour une durée maximale de 12 mois. <br> Pour plus d’informations sur les cookies utilisés et la collecte de données, veuillez consulter notre Politique de confidentialité. <br> Conformément au RGPD, vous pouvez demander l’accès, la rectification ou la suppression de vos données à l’adresse suivante : blackhole.evenements@gmail.com"),
 ("Conditions d'utilisation", "L’accès au site est libre et gratuit. <br> L’auteur se réserve le droit de modifier ou de suspendre le site à tout moment, sans préavis. <br> L’utilisateur s’engage à ne pas utiliser le site à des fins illicites ou malveillantes.");
 
 -- Insertion des informations Politique de confidentialité
@@ -175,10 +187,17 @@ INSERT INTO politique_confidentialite (title, content) VALUES
 ("Introduction", "Le présent site est exploité par Black Hole Evènements. <br> La protection de vos données personnelles est une priorité. <br> Cette politique de confidentialité vise à vous informer de la manière dont vos données sont collectées, utilisées, et protégées sur ce site."),
 ("Identité du responsable de traitement", "- Responsable : Black Hole Evènements <br> - Statut : Assocation déclarée <br> - Adresse : 14 CHEMIN DE LA PLANEZE, 63800 LA ROCHE-NOIRE France <br> - Email : blackhole.evenements@gmail.com <br> - SIRET : 809 220 346 00013"),
 ("Données collectées", "Les données personnelles susceptibles d’être collectées sur le site sont les suivantes : <br> - Nom et prénom <br> - Adresse e-mail <br> - Données techniques de navigation (adresse IP, navigateur, pages visitées, etc.)"),
-("Finalités du traitement", "Les données collectées ont pour finalités : <br> - Répondre aux messages envoyés via le formulaire de contact <br> - Suivre les statistiques de fréquentation du site <br> - Améliorer le contenu et la navigation du site <br> - Garantir la sécurité du site"),
+("Finalités du traitement", "Les données collectées ont pour finalités : <br> - Répondre aux messages envoyés via le formulaire de contact <br> - Suivre les statistiques anonymes de fréquentation du site à l’aide d’un cookie mensuel <br> - Améliorer le contenu et la navigation du site <br> - Garantir la sécurité du site"),
 ("Base légale", "Les traitements réalisés sont fondés sur : <br> - Votre consentement (formulaire de contact, cookies) <br> - L’intérêt légitime du responsable du site (analyse de fréquentation, sécurité)"),
 ("Destinataires des données", "Les données personnelles sont accessibles uniquement par : <br> - Le responsable du traitement <br> - Les prestataires techniques intervenant pour l’hébergement ou la maintenance du site. <br> <br> Aucune donnée n’est cédée ni vendue à des tiers."),
 ("Durée de conservation", "Les données sont conservées selon les durées suivantes : <br> - Données issues de la page « Contactez-nous » ainsi que toute page associée : 12 mois"),
+("Cookies", "Ce site utilise un cookie strictement nécessaire à la mesure de l’audience mensuelle. <br>
+- Nom du cookie : `site_visitor_YYYY_MM`
+- Finalité : Comptabiliser un visiteur unique par mois à des fins statistiques internes
+- Durée de conservation : Jusqu’à la fin du mois en cours (expiration le dernier jour du mois à 23h59)
+- Données collectées : Aucune donnée personnelle n’est stockée dans ce cookie, il sert uniquement à limiter le comptage de visiteurs <br>
+Ce cookie ne nécessite pas le consentement explicite de l’utilisateur, car il est utilisé uniquement pour produire des statistiques anonymes.
+"),
 ("Droits des utilisateurs", "Les utilisateurs disposent des droits suivants : <br> - Accès à leurs données <br> - Rectification <br> - Suppression <br> - Portabilité <br> - Limitation ou opposition au traitement <br> - Réclamation auprès de la CNIL");
 
 -- Insertion des filtres
@@ -286,7 +305,7 @@ Il nous a accompagnés autour de plusieurs axes techniques : <br><br>
 - Intégration d’une charte graphique repensée, plus sobre et élégante <br>
 - Mise en place d’une galerie photo interactive pour valoriser les réalisations <br>
 - Implémentation d’un système de filtres dynamique (services, lieux, thèmes) <br>
-- Développement d’un back-office sécurisé pour la gestion autonome du contenu <br>
+- Développement d’un back-office sécurisé pour la gestion autonome du contenu  <br>
 - Optimisation SEO (balises, performances, accessibilité) <br><br>
 
 Nous avons à cœur de vous offrir un site à notre image : professionnel, élégant, et facile d’accès, à l’image des événements que nous créons pour vous.<br><br>
@@ -295,7 +314,7 @@ N’hésitez pas à nous faire part de vos retours et à explorer les différent
 De nouvelles fonctionnalités et publications arrivent bientôt !", 
 "2025/05/27 10:10:00", 1),
 ("Mapping sur table : une expérience immersive avec Black Hole Événements", 
-"<p>Chez <strong>Black Hole Événements</strong>, nous vous proposons une technologie innovante et spectaculaire : </p><p><br></p><p>Le <strong><em>mapping vidéo sur table</em></strong>, une animation audiovisuelle immersive qui transforme n’importe quelle table en un véritable terrain de jeu visuel qui émerveillera vos invités.</p><p>Imaginez un dîner où chaque plat s’accompagne d’un spectacle visuel sur votre table, captivant vos convives et rendant l’expérience mémorable.</p><p><br></p><p><br></p><h2>Qu’est-ce que le mapping sur table ?</h2><p><br></p><p>Le mapping vidéo sur table est une technique d’<strong>animation audiovisuelle</strong> qui utilise des projections précises et dynamiques sur les surfaces de tables ou autres supports. Grâce à cette technologie, des images, animations et effets visuels sont projetés en parfaite harmonie avec la forme et les objets présents sur la table, créant un spectacle époustouflant.</p><p><br></p><p>Chez Black Hole Événements, nous maîtrisons cette technologie pour proposer des animations personnalisées adaptées à votre événement — mariage, gala, soirée d’entreprise, lancement de produit ou festival.</p><p><br></p><p><br></p><h2>Pourquoi choisir Black Hole Événements pour votre mapping sur table ?</h2><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Expertise technique et créativité</strong> : Notre équipe combine matériel haut de gamme et savoir-faire artistique pour vous garantir un rendu visuel impeccable et original.</li></ol><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Personnalisation complète</strong> : Chaque projet est conçu sur-mesure selon votre thème, vos couleurs et vos envies, pour un impact visuel à la hauteur de vos attentes.</li></ol><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Immersion totale</strong> : Le mapping sur table capte l’attention de vos invités en créant une atmosphère ludique, magique et interactive.</li></ol><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Adaptabilité</strong> : Que vous soyez un restaurateur souhaitant animer vos tables, un organisateur d’événements ou un responsable marketing, nous adaptons nos solutions à votre besoin.</li></ol><p><br></p><p><br></p><h2>Black Hole Événements, spécialiste de l’audiovisuel événementiel en Auvergne</h2><p><br></p><p>Basés à Riom, dans le Puy-de-Dôme, nous accompagnons depuis plusieurs années professionnels et particuliers dans la réussite de leurs événements grâce à nos solutions audiovisuelles : sonorisation, éclairage, vidéo, DJ, effets spéciaux… et désormais mapping vidéo sur table.</p><p><br></p><p>Faites confiance à Black Hole Événements pour donner vie à vos idées et offrir à vos invités un moment inoubliable.</p><p><br></p><p><br></p><p><strong>Contactez-nous dès aujourd’hui</strong> pour découvrir comment le mapping sur table peut révolutionner votre événement !</p><p><br></p>",
+"<p>Chez <strong>Black Hole Événements</strong>, nous vous proposons une technologie innovante et spectaculaire : </p><p><br></p><p>Le <strong><em>mapping vidéo sur table</em></strong>, une animation audiovisuelle immersive qui transforme n’importe quelle table en un véritable terrain de jeu visuel qui émerveillera vos invités.</p><p>Imaginez un dîner où chaque plat s’accompagne d’un spectacle visuel sur votre table, captivant vos convives et rendant l’expérience mémorable.</p><p><br></p><p><br></p><h2>Qu’est-ce que le mapping sur table ?</h2><p><br></p><p>Le mapping vidéo sur table est une technique d’<strong>animation audiovisuelle</strong> qui utilise des projections précises et dynamiques sur les surfaces de tables ou autres supports. Grâce à cette technologie, des images, animations et effets visuels sont projetés en parfaite harmonie avec la forme et les objets présents sur la table, créant un spectacle époustouflant.</p><p><br></p><p>Chez Black Hole Événements, nous maîtrisons cette technologie pour proposer des animations personnalisées adaptées à votre événement — mariage, gala, soirée d’entreprise, lancement de produit ou festival.</p><p><br></p><p><br></p><h2>Pourquoi choisir Black Hole Événements pour votre mapping sur table ?</h2><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Expertise technique et créativité</strong> : Notre équipe combine matériel haut de gamme et savoir-faire artistique pour vous garantir un rendu visuel impeccable et original.</li></ol><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Personnalisation complète</strong> : Chaque projet est conçu sur-mesure selon votre thème, vos couleurs et vos envies, pour un impact visuel à la hauteur de vos attentes.</li></ol><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Immersion totale</strong> : Le mapping sur table capte l’attention de vos invités en créant une atmosphère ludique, magique et interactive.</li></ol><p><br></p><ol><li data-list='bullet'><span class='ql-ui' contenteditable='false'></span><strong>Adaptabilité</strong> : Que vous soyez un restaurateur souhaitant animer vos tables, un organisateur d’événements ou un responsable marketing, nous adaptons nos solutions à votre besoin.</li></ol><p><br></p><p><br></p><h2>Black Hole Événements, spécialiste de l’audiovisuel événementiel en Auvergne</h2><p><br></p><p>Basés à Riom, dans le Puy-de-Dôme, nous accompagnons depuis plusieurs années professionnels et particuliers dans la réussite de leurs événements grâce à nos solutions audiovisuelles : sonorisation, éclairage, vidéo, DJ, effets spéciaux… et désormais mapping vidéo sur table.</p><p><br></p><p>Faites confiance à Black Hole Événements pour donner vie à vos idées et offrir à vos invités un moment inoubliable.</p><p><br></p><p></p><p><strong>Contactez-nous dès aujourd’hui</strong> pour découvrir comment le mapping sur table peut révolutionner votre événement !</p><p><br></p>",
 "2025/05/27 10:15:00", 1);
 
 -- Insertion de l'image associée à l'article
