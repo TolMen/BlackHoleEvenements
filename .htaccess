@@ -1,0 +1,18 @@
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Redirection automatique vers HTTPS (si activé sur le serveur)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Page d'erreur personnalisée
+ErrorDocument 404 /DossierSite/BlackHoleEvenements/src/views/page/404.php
+
+# Sécurité : empêcher l’accès au fichier .htaccess lui-même
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Désactiver l’indexation automatique des dossiers (empêche d'afficher le contenu brut des dossiers)
+Options -Indexes
