@@ -22,6 +22,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         <ul class="dropdown-menu" aria-labelledby="navbarAdminDropdown">
                             <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" href="dashboard.php?type=messagerie">Messagerie</a></li>
+                            <li><a class="dropdown-item" href="dashboard.php?type=galerie">Galerie</a></li>
                         </ul>
                     </li>
 
