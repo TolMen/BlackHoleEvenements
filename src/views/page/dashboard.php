@@ -3,9 +3,12 @@
 session_start();
 
 $isMessagerieView = (isset($_GET['type']) && $_GET['type'] === 'messagerie');
+$isGalleryView = (isset($_GET['type']) && $_GET['type'] === 'galerie');
 
 if ($isMessagerieView) {
     include_once '../../control/AdminControl/messagerieControl.php';
+} elseif ($isGalleryView) {
+    include_once '../../control/InspirationControl/filtreControl.php';
 } else {
     include_once '../../control/AdminControl/unReadMessageControl.php';
     include_once '../../model/AdminModel/visitorModel.php';
@@ -38,6 +41,8 @@ if ($isMessagerieView) {
     <?php if ($isMessagerieView) { ?>
         <link rel="stylesheet" href="../../../public/css/styleAdmin/styleMessagerie.css">
         <link rel="stylesheet" href="../../../public/css/stylePopUp/stylePopUp.css">
+    <?php } else if ($isGalleryView) { ?>
+        <link rel="stylesheet" href="../../../public/css/styleAdmin/styleGallery.css">
     <?php } else { ?>
         <link rel="stylesheet" href="../../../public/css/styleAdmin/styleDashboard.css">
     <?php } ?>
@@ -52,6 +57,8 @@ if ($isMessagerieView) {
 
     <?php if ($isMessagerieView) {
         include 'sectionDashboard/sectionMessagerie.php';
+    } else if ($isGalleryView) {
+        include 'sectionDashboard/sectionGallery.php';
     } else {
         include 'sectionDashboard/sectionDashboard.php';
     } ?>
@@ -61,7 +68,9 @@ if ($isMessagerieView) {
 
     <?php if ($isMessagerieView) { ?>
         <script src="../../../public/js/messagePopup.js"></script>
-    <?php } else include '../../../public/js/historyVisit.php'; ?>
+    <?php } else { 
+        include '../../../public/js/historyVisit.php'; 
+    } ?>
 
 </body>
 

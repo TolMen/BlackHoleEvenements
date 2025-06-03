@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include_once '../../model/AdminModel/VisitorModel.php';
+include_once '../../model/AdminModel/visitorModel.php';
 
 $visitorModel = new VisitorModel();
 $year = (int)date("Y");

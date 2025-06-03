@@ -32,21 +32,21 @@
     <div class="mt-5 mb-5">
         <h2 class="section-title">Informations</h2>
         <hr class="title-separator" />
-        <form>
+        <form action="../../control/UserControl/updateUserControl.php" method="POST">
             <div class="row align-items-end g-3">
                 <div class="col-md-3">
                     <label for="login" class="form-label">Identifiant</label>
-                    <input type="text" class="form-control" id="login" placeholder="Laisser vide pour ne pas changer">
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Laisser vide pour ne pas changer">
                 </div>
 
                 <div class="col-md-3">
                     <label for="password" class="form-label">Nouveau mot de passe</label>
-                    <input type="password" class="form-control" id="password" placeholder="Laisser vide pour ne pas changer">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Laisser vide pour ne pas changer">
                 </div>
 
                 <div class="col-md-3">
                     <label for="password_confirm" class="form-label">Confirmer le mot de passe</label>
-                    <input type="password" class="form-control" id="password_confirm" placeholder="Laisser vide pour ne pas changer">
+                    <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Laisser vide pour ne pas changer">
                 </div>
 
                 <div class="col-md-3 d-flex align-items-end">
@@ -57,4 +57,11 @@
             </div>
         </form>
     </div>
+    <?php if (isset($_SESSION['update_success'])): ?>
+        <div class="alert alert-success text-center"><?= $_SESSION['update_success']; unset($_SESSION['update_success']); ?></div>
+    <?php endif; ?>
+    
+    <?php if (isset($_SESSION['update_error'])): ?>
+        <div class="alert alert-danger text-center"><?= $_SESSION['update_error']; unset($_SESSION['update_error']); ?></div>
+    <?php endif; ?>
 </div>
