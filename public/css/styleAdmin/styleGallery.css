@@ -1,0 +1,101 @@
+/* MISE EN PAGE GÉNÉRALE */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--color-gray-background);
+}
+
+.main-container {
+    padding: 50px 40px;
+}
+
+/* ========== SECTION GOBAL ========== */
+
+/* Titre de la section */
+.main-container .section-title {
+    font-weight: bold;
+    color: var(--color-tomato-item);
+    margin-bottom: 0.3em;
+    text-align: left;
+}
+
+/* Séparateur sous le titre */
+.main-container .title-separator {
+    border: 0;
+    border-top: 5px solid var(--color-tomato-item);
+    width: 100px;
+    margin-left: 0;
+    margin-bottom: 2rem;
+    opacity: 100;
+    border-radius: 8px;
+}
+
+.main-container label {
+    color: var(--color-text);
+}
+
+.article-image-desktop img,
+.article-image-mobile img {
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.article-image-desktop {
+    top: 100px;
+}
+
+.article-image-mobile {
+    height: 225px;
+}
+
+.editable-image {
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    max-width: 100%;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-wrapper-edit {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+.edit-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--color-gray-background);
+    border: 1px solid var(--color-gray-border);
+    border-radius: 8px;
+    padding: 3px 7px;
+    cursor: pointer;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.edit-icon:hover {
+    background: black;
+}
+.edit-icon:hover i {
+    color: var(--color-gray-background);
+}
+.edit-icon i {
+    font-size: 16px;
+    color: black;
+}
+
+.fw-bold { 
+    margin-bottom: 10px;
+    color: var(--color-tomato-item);
+}
