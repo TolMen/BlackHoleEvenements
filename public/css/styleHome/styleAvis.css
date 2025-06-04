@@ -4,8 +4,7 @@
 .customer-reviews {
     background-color: var(--color-gray-background);
     color: var(--color-text);
-    padding: 0 15px;
-    padding-bottom: 50px;
+    padding: 50px 15px;
 }
 
 /* Conteneur central */
@@ -14,6 +13,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 50px;
 }
 
 /* Source des avis */

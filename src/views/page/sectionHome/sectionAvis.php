@@ -1,4 +1,30 @@
 <section class="customer-reviews">
+    <div class="container text-center">
+        <h2 class="section-title">Nos Chiffres Clés</h2>
+
+        <hr class="title-separator">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="stat-item">
+                    <h3><span class="count-up" data-target="750">0</span><span>+</span></h3>
+                    <p>Événements organisés</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-item">
+                    <h3><span class="count-up" data-target="96">0</span><span>%</span></h3>
+                    <p>Clients satisfaits</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-item">
+                    <h3><span class="count-up" data-target="25">0</span><span>+</span></h3>
+                    <p>Années d'expérience</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container boxAvis">
         <h2 class="text-center section-title">Ils nous ont fait confiance</h2>
         <p class="sourceAvis">Source : <a href="https://www.mariages.net/musique-mariage/black-hole-evenements--e47570/avis" class="linkAvis" target="_blank">Mariages.net</a></p>
