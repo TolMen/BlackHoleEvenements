@@ -62,6 +62,7 @@
         <?php foreach ($imagesGallery as $img): ?>
             <img
                 src="../../../public/assets/img/<?= htmlspecialchars($img['chemin_img']) ?>"
+                loading="lazy"
                 alt="<?= htmlspecialchars($img['alt']) ?>"
                 class="photo"
                 data-service="<?= htmlspecialchars($img['filtres_services'] ?? '') ?>"
