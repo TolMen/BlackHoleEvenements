@@ -217,74 +217,6 @@
     cursor: default;
 }
 
-/* ========== MODALE ========== */
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-.modal-content {
-    max-width: 90vw;
-    max-height: 90vh;
-    box-shadow: 0 0 15px black;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.modal-content img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    border-radius: 8px;
-    user-select: none;
-    border: 2px solid var(--color-gray-border);
-}
-
-.modal-dialog-centered {
-    justify-content: center;
-}
-
-/* Flou et fond plus doux pour le backdrop Bootstrap */
-
-.modal-backdrop {
-    --bs-backdrop-opacity: 0.7;
-}
-
-.btn-close {
-    width: 25px;
-    height: 25px;
-    background-color: var(--color-tomato-item);
-    border-radius: 8px;
-    border: 2px solid var(--color-gray-border);
-}
-
-.btn-close:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-/* Quand modale active, flouter le fond */
-
-.modal.show ~ .main-container {
-    filter: blur(2px);
-    pointer-events: none;
-    transition: filter 0.3s ease;
-}
-
 /* ========== ANIMATIONS ========== */
 
 @keyframes fadeInUp {
@@ -302,6 +234,13 @@
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
     animation-delay: 0.2s;
+}
+
+/* ========== MODAL ========== */
+
+#imageModal .modal-content {
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
 /* ========== RESPONSIVE ========== */
