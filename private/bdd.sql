@@ -215,7 +215,8 @@ INSERT INTO services (nom, valeur, description, chemin_icon, alt_icon, ordre_aff
 
 -- Filtre 'Thèmes'
 INSERT INTO themes (nom, valeur) VALUES
-("Guinguette", "guinguette");
+("Guinguette", "guinguette"),
+("Cérémonie laique", "laique");
 
 -- Filtre 'Lieux'
 INSERT INTO lieux (nom, valeur) VALUES
@@ -276,6 +277,13 @@ INSERT INTO lieux (nom, valeur) VALUES
 -- Insertion des images
 INSERT INTO images (nom, chemin_img, alt, filtres_services, filtres_themes, filtres_lieux, tag, created_at) VALUES
 
+-- Image du hero
+("Service Décoration Lumineuse", "imgPlafondGuirlandeAraigneeCasinoRoyat_2.jpg", "Photo d'une guirlande araignee au plafond du casino de royat", "decoLumineuse", null, "casino-royat", "imgHeroHome", NOW()),
+("Service Décoration Lumineuse", "imgPlafondGuirlandeChateauMurolSaintAmant.jpg", "Photo d'une guirlande au plafond au chateau de murol saint amant", "decoLumineuse", null, "murol", "imgHeroHome", NOW()),
+("Service Décoration Lumineuse", "imgDecoLumineuseSalleFetesSaintIllide_1.jpg", "Photo de boule chinoise a la Salle des fêtes de Saint-Illide", "decoLumineuse", null, "saint-illide", "imgHeroHome", NOW()),
+("Service DJ/Artiste", "imgPisteDanceCasinoRoyat.jpg", "Photo d'une piste de danse au casino de royat", "artiste", null, "casino-royat", "imgHeroHome", NOW()),
+("Mariage à Ébreuil avec déco lumineuse", "imgDecoLumineuseMariageEbreuil.jpeg", "Photo d'un mariage à Ébreuil avec déco lumineuse", "decoLumineuse", null, null, "imgHeroHome", NOW()),
+
 -- Service Eclairage
 ("Eclairage extérieur", "imgEclairageExterieur.jpeg", "Photo d'un éclairage extérieur", "eclairage", null, null, null, NOW()),
 ("Service Eclairage", "imgEclairageChateauMotte.jpg", "Photo d'un éclairage au château de la motte", "eclairage", null, "motte", "imgSectionService", NOW()),
@@ -291,7 +299,6 @@ INSERT INTO images (nom, chemin_img, alt, filtres_services, filtres_themes, filt
 
 -- Service Décoration Lumineuse
 ("Service Décoration Lumineuse", "imgPlafondGuirlandeHameauDamayots.jpg", "Photo d'une guirlande au plafond au Hameau des Damayots", "decoLumineuse", null, "damayots", null, NOW()),
-("Mariage à Ébreuil avec déco lumineuse", "imgDecoLumineuseMariageEbreuil.jpeg", "Photo d'un mariage à Ébreuil avec déco lumineuse", "decoLumineuse", null, null, "imgHeroHome", NOW()),
 ("Service Décoration Lumineuse", "imgDecoLumineuseChateauBatisse.jpg", "Photo d'une décoration lumineuse au château de la batisse", "decoLumineuse", null, "batisse", null, NOW()),
 ("Service Décoration Lumineuse", "imgDecoLumineuseChateauGuerinet.jpg", "Photo d'une décoration lumineuse au château de guerinet", "decoLumineuse", null, "guerinet", null, NOW()),
 ("Service Décoration Lumineuse", "imgPlafondGuirlandeDomaineTourRocheFort.jpg", "Photo d'une guirlande au plafond au Domaine de la Tour de Rochefort", "decoLumineuse", null, "rochefort", null, NOW()),
@@ -302,18 +309,15 @@ INSERT INTO images (nom, chemin_img, alt, filtres_services, filtres_themes, filt
 ("Service Décoration Lumineuse", "imgDecoLumineuseDomaineLacEstives_3.jpg", "Photo de suspension lumineuse au Domaine du Lac des Estives", "decoLumineuse", null, "lac-estives", null, NOW()),
 ("Service Décoration Lumineuse", "imgDecoLumineuseDomaineLacEstives_4.jpg", "Photo de suspension lumineuse au Domaine du Lac des Estives", "decoLumineuse", null, "lac-estives", "imgSectionService", NOW()),
 ("Service Décoration lumineuse", "imgServiceDecoLumineuse.jpeg", "Photo du service Décoration lumineuse", "decoLumineuse", null, null, null, NOW()),
-("Service Décoration Lumineuse", "imgDecoLumineuseSalleFetesSaintIllide_1.jpg", "Photo de boule chinoise a la Salle des fêtes de Saint-Illide", "decoLumineuse", null, "saint-illide", "imgHeroHome", NOW()),
 ("Service Décoration Lumineuse", "imgDecoLumineuseSalleFetesSaintIllide_2.jpg", "Photo de boule chinoise a la Salle des fêtes de Saint-Illide", "decoLumineuse", null, "saint-illide", null, NOW()),
 ("Service Décoration Lumineuse", "imgDecoLumineuseChateauCaniere.jpg", "Photo d'une guirlande exterieur au château de la canière", "decoLumineuse", null, "caniere", null, NOW()),
 ("Service Décoration Lumineuse", "imgDecoLumineuseGrangeFaverolles_1.jpg", "Photo de boule chinoise a la Grange de Faverolles", "decoLumineuse", null, "grange-faverolles", null, NOW()),
 ("Service Décoration Lumineuse", "imgDecoLumineuseGuinguette.jpg", "Photo d'une guirlande exterieur au théme guinguette", "decoLumineuse", "guinguette", null, null, NOW()),
 ("Service Décoration lumineuse", "imgLustreChateauMiremont.jpg", "Photo d'un lustre au château de miremont", "decoLumineuse", null, "miremont", null, NOW()),
 ("Service Décoration lumineuse", "imgPlafondGuirlandeAraigneeCasinoRoyat_1.jpg", "Photo d'une guirlande araignee au plafond du casino de royat", "decoLumineuse", null, "casino-royat", null, NOW()),
-("Service Décoration Lumineuse", "imgPlafondGuirlandeAraigneeCasinoRoyat_2.jpg", "Photo d'une guirlande araignee au plafond du casino de royat", "decoLumineuse", null, "casino-royat", "imgHeroHome", NOW()),
 ("Service Décoration Lumineuse", "imgPlafondGuirlandeChateauBreuilDoue.jpg", "Photo d'une guirlande au plafond au chateau de breuil doue", "decoLumineuse", null, "breuil-doue", null, NOW()),
 ("Service Décoration Lumineuse", "imgPlafondGuirlandeChateauMiremont_1.jpg", "Photo d'une guirlande au plafond au chateau de miremont", "decoLumineuse", null, "miremont", null, NOW()),
 ("Service Décoration Lumineuse", "imgPlafondGuirlandeChateauMiremont_2.jpg", "Photo d'une guirlande au plafond au chateau de miremont", "decoLumineuse", null, "miremont", null, NOW()),
-("Service Décoration Lumineuse", "imgPlafondGuirlandeChateauMurolSaintAmant.jpg", "Photo d'une guirlande au plafond au chateau de murol saint amant", "decoLumineuse", null, "murol", "imgHeroHome", NOW()),
 ("Service Décoration Lumineuse", "imgPlafondGuirlandeChateauRiviere.jpg", "Photo d'une guirlande au plafond du château de la rivière", "decoLumineuse", null, "riviere", null, NOW()),
 
 -- Service Décoration Textile
@@ -322,26 +326,29 @@ INSERT INTO images (nom, chemin_img, alt, filtres_services, filtres_themes, filt
 ("Service Décoration Textile", "imgDecoTextileChateauPerigeres.jpg", "Photo d'une décoration textile au château de la perigeres", "decoTextile", null, "perigeres", null, NOW()),
 
 -- Service DJ/Artiste
-("Service DJ/Artiste", "imgPisteDanceChateauDavayat.jpg", "Photo d'un DJ/Artiste et piste de danse au château de davayat", "artiste", null, "davayat", "imgSectionService", NOW()),
-("Service DJ/Artiste", "imgPisteDanceCasinoRoyat.jpg", "Photo d'une piste de danse au casino de royat", "artiste", null, "casino-royat", "imgHeroHome", NOW()),
+("Service DJ/Artiste", "imgPisteDanceChateauDavayat.jpg", "Photo d'un DJ/Artiste et piste de danse au château de davayat", "artiste", null, "davayat", null, NOW()),
 ("Service DJ/Artiste", "imgPisteDanceChateauCaniere.jpg", "Photo d'une piste de dance au château de la canière", "artiste", null, "caniere", null, NOW()),
+("Service DJ/Artiste", "imgServiceArtiste.jpg", "Photo du service DJ/Artiste", "artiste", null, null, "imgSectionService", NOW()),
 
 -- Service Effets Spéciaux
-("Service Effets Spéciaux", "imgEffetSpeciauxChateauMiremont.jpg", "Photo de fumée effet spéciaux au château de miremont", "effetSpeciaux", null, "miremont", null, NOW()),
-("Service Projection sur table", "imgMappingCasinoRoyat_1.jpg", "Photo d'une projection sur table au Casino de Royat", "effetSpeciaux", null, "casino-royat", null, NOW()),
-("Service Projection sur table", "imgMappingCasinoRoyat_2.jpg", "Photo d'une projection sur table au Casino de Royat", "effetSpeciaux", null, "casino-royat", null, NOW()),
-("Service Projection sur table", "imgMappingCasinoRoyat_3.jpg", "Photo d'une projection sur table au Casino de Royat", "effetSpeciaux", null, "casino-royat", "imgSectionService", NOW()),
+("Service Effets Spéciaux", "imgEffetSpeciauxChateauMiremont.jpg", "Photo de fumée effet spéciaux au château de miremont", "effetSpeciaux", null, "miremont", "imgSectionService", NOW()),
 
 -- Service Sonorisation
-("Service Sonorisation", "imgServiceSonorisation.jpeg", "Photo du service Sonorisation", "sonorisation", null, null, "imgSectionService", NOW()),
+("Service Sonorisation Laique", "imgServiceSonorisationLaique.jpg", "Photo du service Sonorisation laique", "sonorisation", "laique", null, null, NOW()),
+("Service Sonorisation", "imgServiceSonorisation.jpg", "Photo du service Sonorisation", "sonorisation", null, null, "imgSectionService", NOW()),
+("Service Sonorisation", "imgSonorisationLaiqueChateauCaniere.jpg", "Photo d'une cérémonie laique au château de la canière", "sonorisation", "laique", "caniere", null, NOW()),
 
 -- Service Vidéo
-("Service Vidéo", "imgServiceVideo.jpeg", "Photo du service Vidéo", "video", null, null, "imgSectionService", NOW()),
+("Service Projection sur table", "imgMappingCasinoRoyat_1.jpg", "Photo d'une projection sur table au Casino de Royat", "video", null, "casino-royat", null, NOW()),
+("Service Projection sur table", "imgMappingCasinoRoyat_2.jpg", "Photo d'une projection sur table au Casino de Royat", "video", null, "casino-royat", null, NOW()),
+("Service Projection sur table", "imgMappingCasinoRoyat_3.jpg", "Photo d'une projection sur table au Casino de Royat", "video", null, "casino-royat", "imgSectionService", NOW()),
 
 -- Service Mobilier
 ("Service Mobilier", "imgServiceMobilier.jpeg", "Photo du service Mobilier", "mobilier", null, null, "imgSectionService", NOW()),
 
 -- Autre
+("Cérémonie laique au Château de la Canière", "imgLaiqueChateauCaniere_1.jpg", "Photo d'une cérémonie laique au château de la canière", null, "laique", "caniere", null, NOW()),
+("Cérémonie laique au Château de la Canière", "imgLaiqueChateauCaniere_2.jpg", "Photo d'une cérémonie laique au château de la canière", null, "laique", "caniere", null, NOW()),
 ("Mariage au Clos du Four", "imgMariageClosFour.jpeg", "Photo d'un mariage au Domaine du Clos du Four", null, null, "clos-four", null, NOW()),
 ("Mariage à Vichy avec DJ", "imgArtisteMariageVichy.jpeg", "Photo d'un mariage à Vichy avec DJ", "artiste", null, null, null, NOW()),
 ("Château de la Canière", "imgChateauCaniere.jpg", "Photo au château de la canière", null, null, "caniere", null, NOW()),
