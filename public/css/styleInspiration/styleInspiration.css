@@ -25,7 +25,7 @@
 
 .sidebar .faq-section .section-title {
     font-weight: bold;
-    color: var(--color-tomato-item);
+    color: var(--color-site-item);
     margin-bottom: 0.3em;
     text-align: left;
     font-size: 1.5em;
@@ -33,7 +33,7 @@
 
 .sidebar .faq-section .title-separator {
     border: 0;
-    border-top: 5px solid var(--color-tomato-item);
+    border-top: 5px solid var(--color-site-item);
     width: 100px;
     margin-left: 0;
     margin-bottom: 2rem;
@@ -98,7 +98,7 @@
 }
 
 .filter-options input[type="checkbox"]:checked {
-    background-color: var(--color-tomato-item);
+    background-color: var(--color-site-item);
 }
 
 .filter-options input[type="checkbox"]::after {
@@ -128,8 +128,8 @@
 
 #lieuxSearch:focus {
     outline: none;
-    box-shadow: 0 0 0 2px var(--color-tomato-item);
-    border-color: var(--color-tomato-item);
+    box-shadow: 0 0 0 2px var(--color-site-item);
+    border-color: var(--color-site-item);
 }
 
 #lieuxSearch::placeholder {
@@ -143,7 +143,7 @@
 }
 
 #lieuxSuggestions div:hover {
-    background-color: var(--color-tomato-item-hover);
+    background-color: var(--color-site-item-hover);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -160,7 +160,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-tomato-item);
+    background: var(--color-site-item);
     border-radius: 8px;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -176,7 +176,7 @@
 
 .resetFilter:hover {
     transform: translateY(-3px);
-    background: var(--color-tomato-item-hover);
+    background: var(--color-site-item-hover);
 }
 
 /* ========== GALERIE ========== */
@@ -251,7 +251,7 @@
     }
 
     .sidebar .faq-section .title-separator {
-        border-top: 3px solid var(--color-tomato-item);
+        border-top: 3px solid var(--color-site-item);
         width: 50px;
         margin-top: 10px;
     }

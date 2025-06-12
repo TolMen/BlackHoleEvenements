@@ -8,7 +8,7 @@ body {
 }
 
 .title-separator {
-    border: 2px solid var(--color-tomato-item);
+    border: 2px solid var(--color-site-item);
     border-radius: 2px;
     width: 100px;
     margin-bottom: 25px;
