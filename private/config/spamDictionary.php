@@ -26,7 +26,19 @@ return [
     'Maya Corey',
     'Estelle Menard',
     'Corrine Halfey',
-    'Joeann Dinkins'
+    'Joeann Dinkins',
+    'Ashely Barna',
+    'Tesha Kemper',
+    'The Karaoke Killers',
+    'Refugia Aslatt',
+    'Kyle Hurst',
+    'Eliza Alfred',
+    'FbPlldXoYFjLkXRHHKhOxl',
+    'Jamie Curlewis',
+    'Raymondcak',
+    'Ara Valente',
+    'Brittany Mattson',
+    'Kristopher Eberly',
     
     // Mots clés de spam commercial
     // '',
