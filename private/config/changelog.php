@@ -15,5 +15,13 @@ return [
         'date' => '29/01/2026',
         'description' => 'Création d\'un journal de suivi des modifications du site pour Black Hole Evènements.'
     ],
+    [
+        'date' => '17/02/2026',
+        'description' => 'Mise à jour des e-mails pour les recevoir dans la boîte de réception principale de l\'événement plutôt que dans la boite de spam.'
+    ],
+    [
+        'date' => '17/02/2026',
+        'description' => 'Alimentation du dictionnaire anti-spam avec les noms de spammeurs récents.'
+    ],
     // Ajoutez vos nouvelles modifications ici
 ];

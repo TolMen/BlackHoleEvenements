@@ -1,78 +1,81 @@
 <?php
-
-// Ouvre la session
 session_start();
 
-// Inclus les fichiers nécessaires
 include_once '../../model/ContactModel/contactModel.php';
 include_once '../../model/Services/antiSpamService.php';
+include_once '../../../private/config/configMail.php';
+
+// PHPMailer
+require_once '../../model/Services/PHPMailer.php';
+require_once '../../model/Services/SMTP.php';
+require_once '../../model/Services/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // === INITIALISATION DU SERVICE ANTI-SPAM ===
     $antiSpam = new AntiSpamService($bdd);
 
-    // === NETTOYAGE DES DONNÉES ===
-    $name = htmlspecialchars(trim($_POST["name"]), ENT_QUOTES);
-    $email = htmlspecialchars(trim($_POST["email"]), ENT_QUOTES);
+    $name    = htmlspecialchars(trim($_POST["name"]), ENT_QUOTES);
+    $email   = htmlspecialchars(trim($_POST["email"]), ENT_QUOTES);
     $subject = htmlspecialchars(trim($_POST["subject"]), ENT_QUOTES);
     $message = htmlspecialchars(trim($_POST["message"]), ENT_QUOTES);
 
-    // === VALIDATION BASIQUE ===
     if (empty($name) || empty($email) || empty($subject) || empty($message)) {
         $_SESSION['contact_error'] = "Tous les champs sont obligatoires.";
         header('Location: ../../views/page/contact.php');
         exit;
     }
 
-    // === ANALYSE ANTI-SPAM (AVANT L'INSERTION) ===
     $spamAnalysis = $antiSpam->analyzeContent($name, $email, $subject, $message);
-
     if ($spamAnalysis['isSpam']) {
-        // Message générique pour ne pas donner d'infos au spammeur
         $_SESSION['contact_error'] = "Votre message n'a pas pu être envoyé. Veuillez vérifier son contenu.";
         header('Location: ../../views/page/contact.php');
-        exit; // IMPORTANT : On arrête ici, AVANT l'insertion en BDD
+        exit;
     }
 
-    // === SI ON ARRIVE ICI, LE MESSAGE EST LÉGITIME ===
-
-    // Insertion en base de données
     $contactModel = new ContactModel();
     $contactModel->getInsert($bdd, $name, $email, $subject, $message);
 
-    // === ENVOI EMAIL DE NOTIFICATION ===
-    $to = 'blackhole.evenements@gmail.com';
+    // === ENVOI EMAIL ===
     $subjectMail = "📩 Nouveau message reçu sur Black Hole Événements : $subject";
-
     $messageMail = "
-    <html>
-    <head>
-        <title>$subjectMail</title>
-    </head>
-    <body>
+    <html><body>
         <p><strong>Nom :</strong> $name</p>
         <p><strong>Email :</strong> $email</p>
         <p><strong>Objet :</strong> $subject</p>
         <p><strong>Message :</strong><br>" . nl2br($message) . "</p>
-    </body>
-    </html>
+    </body></html>
     ";
 
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: blackhole.evenements@gmail.com" . "\r\n";
-    $headers .= "Reply-To: $email" . "\r\n";
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'blackhole.evenements@gmail.com';
+        $mail->Password   = $mail_pass;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+        $mail->CharSet    = 'UTF-8';
 
-    // Envoie du mail
-    mail($to, $subjectMail, $messageMail, $headers);
+        $mail->setFrom('blackhole.evenements@gmail.com', 'Black Hole Événements');
+        $mail->addReplyTo($email, $name);
+        $mail->addAddress('blackhole.evenements@gmail.com');
 
-    // === CONFIRMATION ===
+        $mail->isHTML(true);
+        $mail->Subject = $subjectMail;
+        $mail->Body    = $messageMail;
+
+        $mail->send();
+    } catch (Exception $e) {
+        error_log("Erreur mail : " . $mail->ErrorInfo);
+    }
+
     $_SESSION['contact_success'] = true;
     $_SESSION['contact_name'] = $name;
-
     header('Location: ../../views/page/contact.php');
-
-    // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit;
 }
