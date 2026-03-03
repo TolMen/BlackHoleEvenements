@@ -25,4 +25,10 @@ class PostArtModel
         $state->execute();
         return $state->fetchAll();
     }
+
+    public function incrementViews(PDO $bdd, int $articleId): void
+    {
+        $query = $bdd->prepare('UPDATE article SET views = views + 1 WHERE id = :id');
+        $query->execute(['id' => $articleId]);
+    }
 }

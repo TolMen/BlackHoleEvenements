@@ -18,6 +18,9 @@ if (empty($articles)) {
 
 $article = $articles[0];
 
+// Incrément du compteur de vues
+$artPostModel->incrementViews($bdd, $postArtId);
+
 $imageData = $artPostModel->getArticleImage($bdd, $postArtId);
 $imageUrl = $imageData['url'] ?? '../../../public/assets/logo.png';
 

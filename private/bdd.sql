@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS article (
     created_at DATETIME NOT NULL,
     updated_at DATETIME NULL,
     user_id INT NOT NULL,
+    views INT NOT NULL DEFAUT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 

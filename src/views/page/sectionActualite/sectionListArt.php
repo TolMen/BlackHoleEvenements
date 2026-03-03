@@ -28,7 +28,7 @@
                             <span class="date">
                                 <?= empty($article['updated_at'])
                                     ? date("d/m/Y à H:i", strtotime($article['created_at']))
-                                    : date("d/m/Y à H:i", strtotime($article['updated_at'])) ?>
+                                    : date("d/m/Y à H:i", strtotime($article['updated_at'])) ?> - 👁️ <?= intval($article['views']); ?>
                             </span>
                         </div>
                     </div>

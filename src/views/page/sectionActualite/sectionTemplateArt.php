@@ -30,6 +30,7 @@
                     <div class="article-meta mt-3">
                         <p>📅 Le : <strong><?= date("d/m/Y à H:i", strtotime($dateToShow)); ?></strong></p>
                         <p>📝 Auteur : <strong>Black Hole Evènements</strong></p>
+                        <p>👁️ Vues : <strong><?= intval($article['views']); ?></strong></p>
                     </div>
                 </div>
             </div>

@@ -47,9 +47,13 @@ body {
 }
 
 .article-content {
-    font-size: 1.1rem;
+    font-size: 15px;
     color: var(--color-text);
     margin-top: 15px;
+}
+
+.article-content h2{
+    font-size: 1.4rem;
 }
 
 .article-meta {
