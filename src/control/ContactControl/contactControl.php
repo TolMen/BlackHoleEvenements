@@ -18,10 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $antiSpam = new AntiSpamService($bdd);
 
-    $name    = htmlspecialchars(trim($_POST["name"]), ENT_QUOTES);
-    $email   = htmlspecialchars(trim($_POST["email"]), ENT_QUOTES);
+    // === NETTOYAGE DES DONNÉES ===
+    $name = htmlspecialchars(trim($_POST["name"]), ENT_QUOTES);
+    $email = htmlspecialchars(trim($_POST["email"]), ENT_QUOTES);
     $subject = htmlspecialchars(trim($_POST["subject"]), ENT_QUOTES);
     $message = htmlspecialchars(trim($_POST["message"]), ENT_QUOTES);
+
+    // === VÉRIFICATION HONEYPOT ===
+    if (!empty($_POST['website'])) {
+        header('Location: ../../views/page/contact.php');
+        exit;
+    }
 
     if (empty($name) || empty($email) || empty($subject) || empty($message)) {
         $_SESSION['contact_error'] = "Tous les champs sont obligatoires.";
