@@ -36,10 +36,10 @@
             <div class="col-md-4 mb-4">
                 <div class="review-card">
                     <div class="d-flex flex-column mb-2">
-                        <h5 class="mb-0">Samantha & Florian</h5>
-                        <p class="review-date text-muted">Avis publié le 05 Juillet 2024</p>
+                        <h5 class="mb-0">Pauline</h5>
+                        <p class="review-date text-muted">Avis publié le 18 novembre 2025</p>
                     </div>
-                    <p class="text-muted mb-1">"Un professionnalisme, une gentillesse et une écoute hors du commun ! Ils ont su faire de notre salle des fêtes un magnifie lieu de réception, la décoration était juste magnifique ! Et le DJ a été très bien choisit, il a totalement répondu à nos attentes ! Je recommande fortement 😁"</p>
+                    <p class="text-muted mb-1">"Un grand merci à l'équipe de Black Hole Evenement, qui à su à la dernière minute nous proposer la solution pour mon ciel étoilé , qui a largement contribuer à créer l'ambiance que je souhaitais pour mon mariage. Equipe très sympathique, réactive et professionnelle. "</p>
                     <div class="stars">5 ★</div>
                 </div>
             </div>
@@ -47,10 +47,11 @@
             <div class="col-md-4 mb-4">
                 <div class="review-card">
                     <div class="d-flex flex-column mb-2">
-                        <h5 class="mb-0">Xavier</h5>
-                        <p class="review-date text-muted">Avis publié le 01 décembre 2023</p>
+                        <h5 class="mb-0">Hernando</h5>
+                        <p class="review-date text-muted">Avis publié le 07 août 2025</p>
                     </div>
-                    <p class="text-muted mb-1">"Une équipe qui nous a aidé à créer notre rêve. Une équipe à l’écoute et d’une gentillesse extraordinaire."</p>
+                    <p class="text-muted mb-1">"Black Hole Événement on fait de notre soirée de mariage, un moment inoubliable !
+                        L’ambiance lumineuse et musicale étaient au delà de nos attentes. Hugo et Romain on était au top, à l’écoute, réactifs et patients. Aucuns regrets sur notre choix de prestataire ! On vous conseille +++ cette entreprise. Encore un grand merci !"</p>
                     <div class="stars">5 ★</div>
                 </div>
             </div>
@@ -58,11 +59,11 @@
             <div class="col-md-4 mb-4">
                 <div class="review-card">
                     <div class="d-flex flex-column mb-2">
-                        <h5 class="mb-0">Alexis</h5>
-                        <p class="review-date text-muted">Avis publié le 18 Avril 2024</p>
+                        <h5 class="mb-0">Valentin</h5>
+                        <p class="review-date text-muted">Avis publié le 27 septembre 2025</p>
                     </div>
-                    <p class="text-muted mb-1">"L'équipe de BH a su être à l'écoute et professionnelle pour la réalisation du mapping sur table avec des vidéos sur mesure pour coller à notre thème. Effet garanti, invités bluffés et nous même conquis ! Nous avions demandé à garder la surprise et de ne pas voir le contenu avant et nous n'avons pas été déçus. La prestation lumière / effets spéciaux lors de notre cérémonie laïque, du repas, de la soirée dansante a été à la hauteur de nos exigences. Ils ont su comprendre notre déroulé et nos attentes en amont ce qui fait que la journée a été fluide et sans stress : Black Hole savait parfaitement ce qu'ils avaient à faire. Grâce à Black Hole, nous garderons un magnifique souvenir de notre mariage qui ne pouvait pas être plus parfait ! "</p>
-                    <div class="stars">4.8 ★</div>
+                    <p class="text-muted mb-1">"On a fait appel à Black Hole Evènements pour notre mariage à Servian au Chateau Hermitage de Combas. L'équipe est très professionnelle et réactive avec une prestation qualitative. Nous avons pu compter sur eux malgré un imprévu du à une panne de leur camion et ils ont su trouver une solution pour respecter les délais pour l'installation des lumières et du système son. Ils se sont occupés de la sonorisation de la salle ainsi que de la cérémonie laïque. Merci à eux pour leur travail, on recommande sans hésiter. "</p>
+                    <div class="stars">5 ★</div>
                 </div>
             </div>
 
