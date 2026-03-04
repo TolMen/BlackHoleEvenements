@@ -39,6 +39,19 @@ return [
     'Ara Valente',
     'Brittany Mattson',
     'Kristopher Eberly',
+    'Sherry Wise',
+    'Sophia Broderick',
+    'Claudette Fortenberry',
+    'Joanna Holden',
+    'Daniel Wright',
+    'Katherin Shanks',
+    'Kyle Nicholls',
+    'hRSRfDKXRQcZnnGeEe',
+    'Gemma Marshall',
+    'Adeline Doolette',
+    'JKrBsgOydCFWMoIrOtEct',
+    'Elvia Wilfong',
+    'SQpjqgOcNSPEZCqOmX'
     
     // Mots clés de spam commercial
     // '',
