@@ -26,6 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // === VÉRIFICATION HONEYPOT ===
     if (!empty($_POST['website'])) {
+        $statsFile = dirname(__DIR__, 3) . '/private/blockedStats.json';
+        $stats = json_decode(file_get_contents($statsFile), true);
+        $stats['spam']++;
+        file_put_contents($statsFile, json_encode($stats));
         header('Location: ../../views/page/contact.php');
         exit;
     }
@@ -38,6 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $spamAnalysis = $antiSpam->analyzeContent($name, $email, $subject, $message);
     if ($spamAnalysis['isSpam']) {
+        $statsFile = dirname(__DIR__, 3) . '/private/blockedStats.json';
+        $stats = json_decode(file_get_contents($statsFile), true);
+        $stats['spam']++;
+        file_put_contents($statsFile, json_encode($stats));
         $_SESSION['contact_error'] = "Votre message n'a pas pu être envoyé. Veuillez vérifier son contenu.";
         header('Location: ../../views/page/contact.php');
         exit;

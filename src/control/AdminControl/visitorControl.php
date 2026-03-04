@@ -38,3 +38,11 @@ if (!isset($_COOKIE[$cookieName]) && !$isBot) {
         $visitorModel->incrementVisitor($bdd, $year, $month);
     }
 }
+
+// Comptage des bots bloqués
+if ($isBot) {
+    $statsFile = dirname(__DIR__, 3) . '/private/blockedStats.json';
+    $stats = json_decode(file_get_contents($statsFile), true);
+    $stats['bots']++;
+    file_put_contents($statsFile, json_encode($stats));
+}
