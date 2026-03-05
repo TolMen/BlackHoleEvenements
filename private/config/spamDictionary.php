@@ -51,7 +51,8 @@ return [
     'Adeline Doolette',
     'JKrBsgOydCFWMoIrOtEct',
     'Elvia Wilfong',
-    'SQpjqgOcNSPEZCqOmX'
+    'SQpjqgOcNSPEZCqOmX',
+    'Zulma Gipson'
     
     // Mots clés de spam commercial
     // '',

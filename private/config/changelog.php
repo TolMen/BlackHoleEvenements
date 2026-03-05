@@ -7,6 +7,11 @@
  */
 
 return [
+    // Ajoutez vos nouvelles modifications ici
+    [
+        'date' => '05/03/2026',
+        'description' => 'Optimisation des performances de la page Inspiration : chargement différé des images (lazy loading), génération automatique de thumbnails à l\'upload, et affichage d\'animations de chargement pendant l\'initialisation de la galerie.'
+    ],
     [
         'date' => '04/03/2026',
         'description' => 'Ajout d\'un compteur de vues sur les articles de la page Actualités.'
@@ -43,5 +48,4 @@ return [
         'date' => '17/02/2026',
         'description' => 'Alimentation du dictionnaire anti-spam avec les noms de spammeurs récents.'
     ],
-    // Ajoutez vos nouvelles modifications ici
 ];
