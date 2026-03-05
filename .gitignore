@@ -1,2 +1,3 @@
 private/config/configBDD.php
 private/config/configMail.php
+generate_thumbs.php

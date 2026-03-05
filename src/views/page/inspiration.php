@@ -36,12 +36,14 @@ $selectedService = $_GET['service'] ?? '';
     <!-- Librairies JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Scripts personnalisés -->
+    <!-- Scripts personnalisés — ORDRE IMPORTANT :
+         galleryGestion.js doit être chargé EN PREMIER car il expose window.applyGalleryFilters
+         utilisé par tous les autres scripts de filtrage. -->
+    <script src="../../../public/js/galleryGestion.js"></script>
     <script src="../../../public/js/filterPhoto.js"></script>
     <script src="../../../public/js/filterReset.js"></script>
     <script src="../../../public/js/searchLieu.js"></script>
     <script src="../../../public/js/filterServiceToInspiration.js"></script>
-    <script src="../../../public/js/galleryGestion.js"></script>
 
 </body>
 

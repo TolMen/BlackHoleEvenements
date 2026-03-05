@@ -274,6 +274,67 @@
     box-shadow: none !important;
 }
 
+/* ========== SKELETON LOADING ==========
+   Cartes placeholder animées affichées pendant le chargement des lots d'images.
+   Elles respectent exactement les mêmes dimensions que .photo (aspect-ratio 4/3).
+*/
+
+.skeleton-card {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    border: 2px solid var(--color-gray-border);
+    background: linear-gradient(
+        90deg,
+        var(--color-gray-background) 25%,
+        var(--color-gray-border) 50%,
+        var(--color-gray-background) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ========== ÉTATS DE CHARGEMENT DES PHOTOS ========== */
+
+/* Image en attente de chargement (src pas encore affectée) */
+.photo.photo-loading {
+    background-color: var(--color-gray-border);
+    opacity: 0;
+}
+
+/* Image chargée — apparition en fondu */
+.photo.photo-loaded {
+    animation: photo-fade-in 0.35s ease forwards;
+}
+
+@keyframes photo-fade-in {
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ========== MESSAGE AUCUN RÉSULTAT ========== */
+
+.no-results-msg {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    color: var(--color-text);
+    cursor: default;
+}
+
+/* ========== SENTINELLE INFINITE SCROLL ========== */
+
+#gallery-sentinel {
+    height: 1px;
+    margin: 0;
+    padding: 0;
+}
+
 /* ========== RESPONSIVE ========== */
 
 @media (max-width: 600px) {

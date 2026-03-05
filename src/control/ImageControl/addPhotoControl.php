@@ -41,7 +41,7 @@ if (isset($_POST['publishPhoto'])) {
             return iconv('UTF-8', 'ASCII//TRANSLIT', $str);
         }
 
-        // Ajout d’un identifiant unique 
+        // Ajout d'un identifiant unique
         $uniqueId = '_' . uniqid();
 
         $photoNameNoAccents = removeAccents($photoName);
@@ -54,8 +54,22 @@ if (isset($_POST['publishPhoto'])) {
         $quality  = 75;
 
         if (!ImageService::compressAndResizeImage($tmpName, $destination, $width, $height, $quality)) {
-            die("Erreur lors de la compression/redimensionnement de l’image.");
+            die("Erreur lors de la compression/redimensionnement de l'image.");
         }
+
+        // ===== GÉNÉRATION DU THUMBNAIL =====
+        // Le thumbnail est utilisé dans la galerie pour un chargement rapide.
+        // Le fichier original est affiché uniquement en modale (plein écran).
+        $thumbDir = $uploadDir . 'thumbs/';
+        if (!is_dir($thumbDir)) {
+            mkdir($thumbDir, 0755, true);
+        }
+        $thumbDestination = $thumbDir . 'thumb_' . $uniqueFilename;
+        // On génère le thumbnail depuis le fichier tmp (toujours disponible à ce stade)
+        ImageService::generateThumbnail($tmpName, $thumbDestination, 400, 300, 80);
+        // Note : un échec de génération du thumbnail n'est pas bloquant —
+        // galleryGestion.js retombera automatiquement sur l'image originale.
+        // ====================================
 
         function generateValeur($str)
         {
@@ -108,10 +122,10 @@ if (isset($_POST['publishPhoto'])) {
             header('Location: ../../views/page/dashboard.php?success=1');
             exit;
         } else {
-            die("Une erreur est survenue lors de l’enregistrement en base de données.");
+            die("Une erreur est survenue lors de l'enregistrement en base de données.");
         }
     } else {
-        die("Image manquante ou erreur d’upload (erreur #{$_FILES['image']['error']}).");
+        die("Image manquante ou erreur d'upload (erreur #{$_FILES['image']['error']}).");
     }
 } else {
     // Accès direct sans soumission de formulaire

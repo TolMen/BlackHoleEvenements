@@ -1,3 +1,10 @@
+<?php
+// Injection des données galerie en JSON pour galleryGestion.js
+// Le PHP génère les métadonnées uniquement, sans balises <img> (chargement côté client)
+$galleryDataJson = json_encode(array_values($imagesGallery), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
+$isAdmin = (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') ? 'true' : 'false';
+?>
+
 <section class="main-container">
     <!-- SIDEBAR avec TITRE + FILTRES -->
     <div class="sidebar">
@@ -57,52 +64,19 @@
         </div>
     </div>
 
-    <!-- GALERIE -->
-    <div class="gallery">
-        <?php foreach ($imagesGallery as $img): ?>
-            <div class="photo-wrapper position-relative">
-                <?php if (isset($_SESSION['userRole']) && $_SESSION['userRole'] == 'admin') { ?>
-                    <a href="../../model/ImageModel/deleteImageModel.php?id=<?= $img['id'] ?>"
-                        class="delete-badge"
-                        title="Supprimer l’image"
-                        onclick="event.stopPropagation();">
-                        <i class="fa-solid fa-trash" style="color: red;"></i>
-                    </a>
+    <!-- GALERIE — peuplée dynamiquement par galleryGestion.js -->
+    <div class="gallery" id="gallery"></div>
 
-                    <?php if ($img['tag'] !== 'imgSectionService') { ?>
-                        <button class="tagService-badge"
-                            title="Définir comme image de section"
-                            data-id="<?= $img['id'] ?>"
-                            data-service="<?= htmlspecialchars($img['filtres_services']) ?>">
-                            <i class="fa-solid fa-thumbtack" style="color: black;"></i>
-                        </button>
-                    <?php } ?>
-                <?php } ?>
-
-                <img
-                    src="../../../public/assets/img/<?= htmlspecialchars($img['chemin_img']) ?>"
-                    loading="lazy"
-                    alt="<?= htmlspecialchars($img['alt']) ?>"
-                    class="photo"
-                    data-id="<?= $img['id'] ?>"
-                    data-service="<?= htmlspecialchars($img['filtres_services'] ?? '') ?>"
-                    data-theme="<?= htmlspecialchars($img['filtres_themes'] ?? '') ?>"
-                    data-lieux="<?= htmlspecialchars($img['filtres_lieux'] ?? '') ?>"
-                    data-bs-toggle="modal"
-                    data-bs-target="#imageModal" />
-            </div>
-        <?php endforeach; ?>
-
-        <!-- Message si aucun résultat -->
-        <div id="no-results" class="hidden">
-            Aucun résultat ne correspond à vos filtres...
-        </div>
-    </div>
 </section>
+
+<!-- Message si aucun résultat (géré par galleryGestion.js) -->
+<div id="no-results" class="hidden no-results-msg">
+    Aucun résultat ne correspond à vos filtres...
+</div>
 
 <!-- Modale personnalisée pour image -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8);">
-    <div class=" modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
         <div class="modal-content border-0">
             <div class="modal-body d-flex justify-content-center align-items-center p-0" style="background-color: transparent; height: calc(100vh - 62px); margin: 0;">
                 <img
@@ -116,3 +90,9 @@
         </div>
     </div>
 </div>
+
+<!-- Données JSON de la galerie (métadonnées uniquement, sans octets d'image) -->
+<script>
+    window.galleryData = <?= $galleryDataJson ?>;
+    window.isAdmin = <?= $isAdmin ?>;
+</script>
