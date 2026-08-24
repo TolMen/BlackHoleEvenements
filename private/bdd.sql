@@ -1,7 +1,12 @@
 -- Configuration BDD
 
 SET NAMES utf8mb4;
-USE blackhole; 
+
+-- Crée la base si elle n'existe pas encore (première installation).
+CREATE DATABASE IF NOT EXISTS blackhole
+    CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE blackhole;
 
 -- ---------------------------------------------
 
@@ -105,7 +110,7 @@ CREATE TABLE IF NOT EXISTS article (
     created_at DATETIME NOT NULL,
     updated_at DATETIME NULL,
     user_id INT NOT NULL,
-    views INT NOT NULL DEFAUT 0,
+    views INT NOT NULL DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 

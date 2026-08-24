@@ -37,6 +37,28 @@ $pageRobots = 'noindex, nofollow';
             color: var(--color-text);
         }
 
+        .error-details {
+            margin-top: 25px;
+            max-width: 900px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            background: rgba(220, 53, 69, 0.08);
+            border: 1px solid rgba(220, 53, 69, 0.35);
+            text-align: left;
+        }
+
+        .error-details .error-message {
+            font-weight: bold;
+            color: #dc3545;
+            word-break: break-word;
+        }
+
+        .error-details .error-origin {
+            font-size: 14px;
+            opacity: 0.8;
+            word-break: break-all;
+        }
+
         .error-page a {
             margin-top: 25px;
             color: var(--color-text);
@@ -53,6 +75,17 @@ $pageRobots = 'noindex, nofollow';
     <main class="error-page">
         <h1>500</h1>
         <p>Une erreur technique est survenue. Nos équipes en sont informées.</p>
+
+        <?php if (APP_ENV === 'development' && isset($erreur) && $erreur instanceof Throwable) { ?>
+            <!-- Détail affiché uniquement en développement (localhost). -->
+            <div class="error-details">
+                <p class="error-message"><?= e($erreur->getMessage()) ?></p>
+                <p class="error-origin">
+                    <?= e($erreur->getFile()) ?> — ligne <?= (int) $erreur->getLine() ?>
+                </p>
+            </div>
+        <?php } ?>
+
         <a href="<?= url('/') ?>">Retour à l'accueil</a>
     </main>
 

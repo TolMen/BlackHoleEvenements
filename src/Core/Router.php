@@ -33,7 +33,7 @@ class Router
     {
         set_exception_handler(function (Throwable $e) {
             error_log('[Router] Exception : ' . $e->getMessage());
-            $this->renderError(500);
+            $this->renderError(500, $e);
         });
 
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
@@ -107,8 +107,13 @@ class Router
         return $params;
     }
 
-    /** Affiche la page d'erreur correspondante et arrête le script. */
-    public function renderError(int $code): void
+    /**
+     * Affiche la page d'erreur correspondante et arrête le script.
+     *
+     * $erreur n'est transmise à la vue qu'en développement : en production,
+     * le détail reste dans les journaux du serveur.
+     */
+    public function renderError(int $code, ?Throwable $erreur = null): void
     {
         http_response_code($code);
 

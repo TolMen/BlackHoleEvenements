@@ -19,7 +19,10 @@ function db(): PDO
 
     if (!is_file($configFile)) {
         error_log('[BDD] Fichier de configuration introuvable : ' . $configFile);
-        throw new RuntimeException('Configuration de la base de données absente.');
+        throw new RuntimeException(db_error_message(
+            'Configuration de la base de données absente.',
+            'créez le fichier private/config/configBDD.php (voir le README)'
+        ));
     }
 
     $config = require $configFile;
@@ -37,10 +40,29 @@ function db(): PDO
             PDO::ATTR_EMULATE_PREPARES   => false,
         ]);
     } catch (PDOException $e) {
-        // Le détail part dans les logs, jamais à l'écran du visiteur.
+        // Le détail part dans les logs, jamais à l'écran du visiteur en ligne.
         error_log('[BDD] Connexion impossible : ' . $e->getMessage());
-        throw new RuntimeException('Connexion à la base de données impossible.');
+        throw new RuntimeException(db_error_message(
+            'Connexion à la base de données impossible.',
+            $e->getMessage()
+        ));
     }
 
     return $pdo;
+}
+
+/**
+ * Message d'erreur de base de données.
+ *
+ * En développement, la cause précise est ajoutée pour pouvoir corriger tout
+ * de suite (base absente, identifiants erronés…). En production, seul le
+ * message générique sort : le détail reste dans les journaux du serveur.
+ */
+function db_error_message(string $message, string $detail): string
+{
+    if (defined('APP_ENV') && APP_ENV === 'development' && $detail !== '') {
+        return $message . ' ' . $detail;
+    }
+
+    return $message;
 }
