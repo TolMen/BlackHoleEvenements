@@ -30,8 +30,20 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // ── Environnement ────────────────────────────────────────
-// 'development' en local (XAMPP), 'production' sur le serveur.
-define('APP_ENV', 'production');
+// Détecté automatiquement : « development » en local (XAMPP, WAMP, MAMP…),
+// « production » partout ailleurs. Les erreurs sont donc lisibles pendant
+// le développement, et jamais affichées aux visiteurs du site en ligne.
+(function () {
+    $host = strtolower($_SERVER['HTTP_HOST'] ?? '');
+    $host = explode(':', $host)[0];   // retire le port éventuel (:8080)
+
+    $isLocal = in_array($host, ['localhost', '127.0.0.1', '::1', ''], true)
+        || str_ends_with($host, '.local')
+        || str_ends_with($host, '.test')
+        || str_ends_with($host, '.localhost');
+
+    define('APP_ENV', $isLocal ? 'development' : 'production');
+})();
 define('APP_NAME', 'Black Hole Évènements');
 define('APP_SHORT', 'Black Hole Évènements');
 

@@ -1,3 +1,9 @@
 # Code applicatif : jamais accessible depuis le web.
 # Tout passe par le contrôleur frontal (index.php).
-Require all denied
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

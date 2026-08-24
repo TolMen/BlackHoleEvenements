@@ -7,7 +7,9 @@ Options -Indexes
 
 RewriteEngine On
 
-# ── Forcer HTTPS ─────────────────────────────────────────
+# ── Forcer HTTPS (sauf en local) ─────────────────────────
+# XAMPP et consorts servent en http:// : on ne les redirige pas.
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1|\[::1\])(:[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
@@ -69,10 +71,14 @@ RewriteRule ^ index.php [QSA,L]
 </IfModule>
 
 # ── Protection des fichiers sensibles ────────────────────
-<FilesMatch "^\.(htaccess|gitignore|gitattributes)$">
-    Require all denied
-</FilesMatch>
-
-<FilesMatch "\.(sql|json|mmdb|md)$">
-    Require all denied
+# Les deux syntaxes sont fournies : Apache 2.4 (Require) et 2.2 (Order),
+# afin qu'aucune configuration serveur ne renvoie d'erreur 500.
+<FilesMatch "^\.(htaccess|gitignore|gitattributes)$|\.(sql|mmdb|md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
 </FilesMatch>
