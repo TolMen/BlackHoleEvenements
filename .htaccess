@@ -1,18 +1,84 @@
-# Activer le moteur de réécriture
+# ─────────────────────────────────────────────────────────
+#  Black Hole Évènements — configuration Apache
+#  Toutes les adresses passent par index.php (URL propres).
+# ─────────────────────────────────────────────────────────
+
+Options -Indexes
+
 RewriteEngine On
 
-# Redirection automatique vers HTTPS (si activé sur le serveur)
+# ── Forcer HTTPS (sauf en local) ─────────────────────────
+# XAMPP et consorts servent en http:// : on ne les redirige pas.
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1|\[::1\])(:[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-# Page d'erreur personnalisée
-ErrorDocument 404 /DossierSite/BlackHoleEvenements/src/views/page/404.php
+# ── Une seule version du domaine (avec www) ──────────────
+# Évite que Google voie deux sites identiques sur deux domaines.
+RewriteCond %{HTTP_HOST} ^blackhole-evenements\.com$ [NC]
+RewriteRule ^ https://www.blackhole-evenements.com%{REQUEST_URI} [R=301,L]
 
-# Sécurité : empêcher l’accès au fichier .htaccess lui-même
-<Files .htaccess>
-    Order Allow,Deny
-    Deny from all
-</Files>
+# ── Dossiers applicatifs ─────────────────────────────────
+# Jamais servis directement : index.php décide (redirection 301 des
+# anciennes adresses, 404 sinon).
+RewriteRule ^(src|config|private)/ index.php [QSA,L]
 
-# Désactiver l’indexation automatique des dossiers (empêche d'afficher le contenu brut des dossiers)
-Options -Indexes
+# ── Fichiers réellement présents (CSS, JS, images, PDF…) ─
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ── Tout le reste vers le contrôleur frontal ─────────────
+RewriteRule ^ index.php [QSA,L]
+
+# ── En-têtes de sécurité ─────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+# ── Cache navigateur des fichiers statiques ──────────────
+# Des pages qui se chargent vite sont mieux classées : les assets sont
+# mis en cache longtemps, le HTML jamais.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg             "access plus 6 months"
+    ExpiresByType image/png              "access plus 6 months"
+    ExpiresByType image/webp             "access plus 6 months"
+    ExpiresByType image/svg+xml          "access plus 6 months"
+    ExpiresByType image/gif              "access plus 6 months"
+    ExpiresByType image/x-icon           "access plus 1 year"
+    ExpiresByType video/mp4              "access plus 6 months"
+    ExpiresByType text/css               "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript        "access plus 1 month"
+    ExpiresByType font/woff              "access plus 1 year"
+    ExpiresByType font/woff2             "access plus 1 year"
+    ExpiresByType application/pdf        "access plus 1 month"
+    ExpiresByType text/html              "access plus 0 seconds"
+</IfModule>
+
+# ── Compression ──────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+    AddOutputFilterByType DEFLATE application/javascript text/javascript
+    AddOutputFilterByType DEFLATE application/json application/xml image/svg+xml
+    AddOutputFilterByType DEFLATE font/woff font/woff2
+</IfModule>
+
+# ── Protection des fichiers sensibles ────────────────────
+# Les deux syntaxes sont fournies : Apache 2.4 (Require) et 2.2 (Order),
+# afin qu'aucune configuration serveur ne renvoie d'erreur 500.
+<FilesMatch "^\.(htaccess|gitignore|gitattributes)$|\.(sql|mmdb|md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

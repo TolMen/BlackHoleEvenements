@@ -1,8 +1,6 @@
 <?php
 
-session_start();
-
-include_once '../../model/UserModel/userInfoModel.php';
+include_once __DIR__ . '/../../model/UserModel/userInfoModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_SESSION["userID"];
@@ -14,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérifie si les deux mots de passe correspondent
     if ($newPassword && $newPassword !== $confirmPassword) {
         $_SESSION['update_error'] = "Les mots de passe ne correspondent pas.";
-        header('Location: ../../views/page/dashboard.php');
+        header('Location: ' . url('/admin'));
         exit;
     }
 
@@ -27,6 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['update_error'] = "Aucune modification apportée.";
     }
 
-    header('Location: ../../views/page/dashboard.php');
+    header('Location: ' . url('/admin'));
     exit;
 }

@@ -3,7 +3,7 @@
         <h2 class="section-title">Ajouter une photo à la galerie</h2>
         <hr class="title-separator">
 
-        <form id="formGallery" method="POST" action="../../control/ImageControl/addPhotoControl.php" enctype="multipart/form-data">
+        <form id="formGallery" method="POST" action="<?= url('/admin/galerie/photos') ?>" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="mb-4">
@@ -109,12 +109,12 @@
                         <div class="link mb-3">
                             <input type="submit" name="publishPhoto" value="Valider"
                                 class="btn btn-outline-dark btn-sm">
-                            <a href="dashboard.php" class="btn btn-outline-dark btn-sm">Retour</a>
+                            <a href="<?= url('/admin') ?>" class="btn btn-outline-dark btn-sm">Retour</a>
                         </div>
 
                         <div class="position-relative mb-3 image-container">
                             <div class="image-wrapper-edit">
-                                <img src="../../../public/assets/img/imgActu/imgActu_Create.png"
+                                <img src="<?= BASE_PATH ?>/public/assets/img/imgActu/imgActu_Create.png"
                                     alt="Aperçu de la photo" class="img-fluid rounded shadow editable-image"
                                     id="preview-img">
                                 <label for="imageUpload" class="edit-icon">

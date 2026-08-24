@@ -10,7 +10,7 @@ $isAdmin = (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') ?
     <div class="sidebar">
         <!-- TITRE -->
         <div class="faq-section">
-            <h2 class="section-title">Inspiration</h2>
+            <h1 class="section-title">Inspiration</h1>
             <hr class="title-separator">
         </div>
 

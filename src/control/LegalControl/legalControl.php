@@ -1,25 +1,47 @@
 <?php
 
-// Inclus les fichiers nécessaires
-include_once '../../model/LegalModel/legalModel.php';
+/**
+ * Prépare le contenu d'une page légale (FAQ, mentions légales, politique de
+ * confidentialité).
+ *
+ * Le type est fourni par la route (/faq, /mentions-legales,
+ * /politique-de-confidentialite) via la variable $type ; l'ancien paramètre
+ * ?type= reste accepté en repli.
+ */
 
-$type = $_GET['type'];
+include_once __DIR__ . '/../../model/LegalModel/legalModel.php';
+
+$type = $type ?? ($_GET['type'] ?? '');
 
 $tableMap = [
-    'faq' => ['table' => 'faq', 'title' => 'Foire aux Questions', 'fields' => ['question', 'answer']],
-    'ml' => ['table' => 'mention_legale', 'title' => 'Mentions Légales', 'fields' => ['title', 'content']],
-    'pc' => ['table' => 'politique_confidentialite', 'title' => 'Politique de Confidentialité', 'fields' => ['title', 'content']]
+    'faq' => [
+        'table'  => 'faq',
+        'title'  => 'Foire aux Questions',
+        'fields' => ['question', 'answer'],
+        'path'   => '/faq',
+    ],
+    'ml' => [
+        'table'  => 'mention_legale',
+        'title'  => 'Mentions Légales',
+        'fields' => ['title', 'content'],
+        'path'   => '/mentions-legales',
+    ],
+    'pc' => [
+        'table'  => 'politique_confidentialite',
+        'title'  => 'Politique de Confidentialité',
+        'fields' => ['title', 'content'],
+        'path'   => '/politique-de-confidentialite',
+    ],
 ];
 
 if (!array_key_exists($type, $tableMap)) {
     http_response_code(404);
-
-    // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
-    exit("Type de page invalide.");
+    require VIEWS_PATH . '/errors/404.php';
+    exit;
 }
 
 $legalModel = new LegalModel();
-$data = $legalModel->getAll($bdd, $tableMap[$type]['table']);
-$pageTitle = $tableMap[$type]['title'];
-$htmlTitle = $pageTitle . " | Black Hole Évènements";
-$fields = $tableMap[$type]['fields'];
+$data       = $legalModel->getAll($bdd, $tableMap[$type]['table']);
+$legalTitle = $tableMap[$type]['title'];
+$legalPath  = $tableMap[$type]['path'];
+$fields     = $tableMap[$type]['fields'];

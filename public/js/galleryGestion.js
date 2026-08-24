@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Boutons admin
         if (window.isAdmin) {
             const deleteLink = document.createElement("a");
-            deleteLink.href = `../../model/ImageModel/deleteImageModel.php?id=${img.id}`;
+            deleteLink.href = `${window.BASE_URL}/admin/galerie/photos/${img.id}/supprimer`;
             deleteLink.className = "delete-badge";
             deleteLink.title = "Supprimer l'image";
             deleteLink.setAttribute("onclick", "event.stopPropagation();");
@@ -122,10 +122,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Utilisation du thumbnail si disponible, sinon image originale
         const thumbSrc = img.chemin_thumb
-            ? `../../../public/assets/img/${img.chemin_thumb}`
-            : `../../../public/assets/img/${img.chemin_img}`;
+            ? `${window.BASE_URL}/public/assets/img/${img.chemin_thumb}`
+            : `${window.BASE_URL}/public/assets/img/${img.chemin_img}`;
 
-        const fullSrc = `../../../public/assets/img/${img.chemin_img}`;
+        const fullSrc = `${window.BASE_URL}/public/assets/img/${img.chemin_img}`;
 
         imgEl.className = "photo photo-loading";
         imgEl.alt = img.alt || "";
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const imageId = this.dataset.id;
         const service = this.dataset.service;
 
-        fetch("../../model/ImageModel/setSectionImage.php", {
+        fetch(`${window.BASE_URL}/admin/galerie/image-section`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ imageId, service }),

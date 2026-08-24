@@ -1,10 +1,10 @@
 <section class="contactForm">
-    <h2 class="section-title">Contactez-nous</h2>
+    <h1 class="section-title">Contactez-nous</h1>
     <hr class="title-separator" />
 
     <div class="main-container">
         <div class="right-form">
-            <form method="POST" id="contactForm" action="../../control/ContactControl/contactControl.php">
+            <form method="POST" id="contactForm" action="<?= url('/contact') ?>">
                 <div class="boxIdentity">
                     <div class="inputBox inputBoxIdentity">
                         <input type="text" id="name" name="name" minlength="2" maxlength="15" pattern="[A-Za-z-]{2,15}" required />

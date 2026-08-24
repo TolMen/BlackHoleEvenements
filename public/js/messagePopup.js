@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Sinon on envoie la requête pour marquer comme lu
-        fetch("../../control/AdminControl/markAsReadControl.php", {
+        fetch(`${window.BASE_URL}/admin/messagerie/lu`, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: "id=" + encodeURIComponent(id),

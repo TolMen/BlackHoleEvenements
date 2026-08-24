@@ -1,6 +1,6 @@
 <section class="main-container">
     <div class="article-wrapper container">
-        <form id="formArt" method="POST" action="../../control/ActualiteControl/updateArtControl.php?articleID=<?= $articleID ?>" enctype="multipart/form-data">
+        <form id="formArt" method="POST" action="<?= url('/admin/actualites/' . $articleID) ?>" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-12">
                     <div class="article-header text-start">
@@ -24,11 +24,11 @@
                         <div class="link mb-3">
                             <a href="#" class="btn btn-outline-dark btn-sm active">Modifier</a>
                             <input type="submit" name="updateArticle" value="Valider" class="btn btn-outline-dark btn-sm">
-                            <a href="actualite.php" class="btn btn-outline-dark btn-sm">Retour</a>
+                            <a href="<?= url('/actualites') ?>" class="btn btn-outline-dark btn-sm">Retour</a>
                         </div>
                         <div class="position-relative mb-3 image-container">
                             <div class="image-wrapper-edit">
-                                <img src="../../../public/assets/img/imgActu/<?= htmlspecialchars($imageUrl) ?>" alt="Image de l'article" class="img-fluid rounded shadow editable-image" id="preview-img">
+                                <img src="<?= e(article_image_url($imageUrl)) ?>" alt="Image de l'article" class="img-fluid rounded shadow editable-image" id="preview-img">
                                 <label for="imageUpload" class="edit-icon">
                                     <i class="fas fa-pencil-alt"></i>
                                 </label>

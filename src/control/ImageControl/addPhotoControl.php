@@ -1,9 +1,8 @@
 <?php
-session_start();
 
-include_once '../../control/BDDControl/connectBDD.php';
-include_once '../../model/ImageModel/addPhotoModel.php';
-include_once '../../model/Services/imageService.php';
+include_once __DIR__ . '/../../control/BDDControl/connectBDD.php';
+include_once __DIR__ . '/../../model/ImageModel/addPhotoModel.php';
+include_once __DIR__ . '/../../model/Services/imageService.php';
 
 if (isset($_POST['publishPhoto'])) {
     $photoName = trim($_POST['photoName']);
@@ -30,7 +29,7 @@ if (isset($_POST['publishPhoto'])) {
     }
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = '../../../public/assets/img/';
+        $uploadDir = PUBLIC_PATH . '/assets/img/';
 
         $tmpName  = $_FILES['image']['tmp_name'];
         $fileName = $_FILES['image']['name'];
@@ -119,7 +118,7 @@ if (isset($_POST['publishPhoto'])) {
         );
 
         if ($addPhoto) {
-            header('Location: ../../views/page/dashboard.php?success=1');
+            header('Location: ' . url('/admin/galerie?succes=1'));
             exit;
         } else {
             die("Une erreur est survenue lors de l'enregistrement en base de données.");
@@ -129,6 +128,6 @@ if (isset($_POST['publishPhoto'])) {
     }
 } else {
     // Accès direct sans soumission de formulaire
-    header('Location: ../../views/page/dashboard.php');
+    header('Location: ' . url('/admin/galerie'));
     exit;
 }

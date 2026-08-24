@@ -1,10 +1,7 @@
 <?php
 
-// Ouvre la session
-session_start();
-
 // Inclus les fichiers nécessaires
-include_once '../../model/UserModel/loginUserModel.php';
+include_once __DIR__ . '/../../model/UserModel/loginUserModel.php';
 
 $username = htmlspecialchars($_POST["username"], ENT_QUOTES);
 $password = htmlspecialchars($_POST["password"], ENT_QUOTES);
@@ -16,15 +13,15 @@ if (!empty($user)) {
     $_SESSION["userID"] = $user["id"];
     $_SESSION["userRole"] = $user["role"];
     if ($user["role"] == "admin") {
-        header("Location: ../../views/page/dashboard.php");
+        header("Location: " . url("/admin"));
     } else {
-        header("Location: ../../views/page/home.php");
+        header("Location: " . url("/"));
     }
 
     // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit;
 } else {
-    header("Location: ../../views/page/login.php?infoFalse=true");
+    header("Location: " . url("/connexion?erreur=1"));
 
     // Fin du script après redirection volontaire pour éviter toute exécution supplémentaire
     exit;

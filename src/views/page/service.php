@@ -1,41 +1,46 @@
 <?php
-session_start();
 
-include_once '../../control/AdminControl/visitorControl.php';
-include_once '../../control/ImageControl/sectionServiceImageControl.php';
+/**
+ * Page des prestations (/services).
+ */
+
+$pageTitle       = 'Nos prestations audiovisuelles et événementielles';
+$pageDescription = 'Découvrez nos prestations : éclairage, sonorisation, vidéo projection, '
+    . 'effets spéciaux, décoration lumineuse et simulation 3D pour mariages, concerts, '
+    . 'festivals et salons professionnels.';
+$pageCanonical   = absolute_url('/services');
+$pageStyles      = ['css/styleService/styleService.css'];
+
+$pageJsonLd = jsonld_script([
+    jsonld_organization(),
+    jsonld_breadcrumb([
+        'Accueil'      => '/',
+        'Prestations'  => '/services',
+    ]),
+]);
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <!-- Inclusion des balises meta -->
-    <?php include '../component/head.php'; ?>
-
-    <!-- Feuille de style spécifique à la page Service -->
-    <link rel="stylesheet" href="../../../public/css/styleService/styleService.css">
-
-    <title>Service - Black Hole Evènements</title>
+    <?php include VIEWS_PATH . '/component/head.php'; ?>
 </head>
 
 <body>
 
-    <!-- Inclusion de la barre de navigation -->
-    <?php include '../component/navbar.php'; ?>
+    <?php include VIEWS_PATH . '/component/navbar.php'; ?>
 
-    <!-- Section principale des services -->
-    <?php include 'sectionService/sectionService.php'; ?>
+    <main>
+        <?php include PAGES_PATH . '/sectionService/sectionService.php'; ?>
+    </main>
 
-    <!-- Inclusion du pied de page -->
-    <?php include '../component/footer.php'; ?>
+    <?php include VIEWS_PATH . '/component/footer.php'; ?>
 
-    <!-- Librairies JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <!-- Scripts personnalisés -->
-    <script src="../../../public/js/slideService.js"></script>
+    <script src="<?= asset('js/slideService.js') ?>"></script>
 
 </body>
 

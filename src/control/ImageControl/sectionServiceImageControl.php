@@ -1,7 +1,7 @@
 <?php
 
 // Inclus les fichiers nécessaires
-include_once '../../model/ImageModel/sectionServiceImageModel.php';
+include_once __DIR__ . '/../../model/ImageModel/sectionServiceImageModel.php';
 
 $serviceImageModel = new SectionServiceImageModel();
 $servicesForHome = $serviceImageModel->getServicesWithImagesForHome($bdd);
