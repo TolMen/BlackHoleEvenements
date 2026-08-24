@@ -1,16 +1,16 @@
 <section class="hero-section container">
     <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
-            <img src="../../../public/assets/logo.png" alt="Logo de BlackHole Evènements" class="logo mb-3">
-            <h1>Black Hole Evénements</h1>
+            <img src="<?= BASE_PATH ?>/public/assets/logo.png" alt="Logo de Black Hole Évènements" class="logo mb-3" width="200" height="159">
+            <h1>Black Hole Évènements</h1>
             <p class="hero-subtitle">
                 Spécialiste de
-                <a href="../../../public/files/plaquettePrestations.pdf" target="_blank" download="Plaquette_prestations_sur_mesure_Black_Hole_Evénements.pdf" class="custom-link">
+                <a href="<?= BASE_PATH ?>/public/files/plaquettePrestations.pdf" target="_blank" download="Plaquette_prestations_sur_mesure_Black_Hole_Evénements.pdf" class="custom-link">
                     l'événementiel sur mesure
                 </a> : mariages, concerts, festivals...
             </p>
             <div class="center-btn mt-4">
-                <a href="contact.php" style="text-decoration: none;"><button class="btn">Un devis ? Contactez-nous</button></a>
+                <a href="<?= url('/contact') ?>" style="text-decoration: none;"><button class="btn">Un devis ? Contactez-nous</button></a>
             </div>
         </div>
 
@@ -20,9 +20,11 @@
                 <div class="carousel-inner rounded shadow">
                     <?php foreach ($imagesHeroHome as $index => $img): ?>
                         <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                            <img src="../../../public/assets/img/<?= htmlspecialchars($img['chemin_img']) ?>"
+                            <img src="<?= BASE_PATH ?>/public/assets/img/<?= e($img['chemin_img']) ?>"
                                 class="d-block w-100"
-                                alt="<?= htmlspecialchars($img['alt']) ?>">
+                                alt="<?= e($img['alt']) ?>"
+                                loading="<?= $index === 0 ? 'eager' : 'lazy' ?>"
+                                decoding="async">
                         </div>
                     <?php endforeach; ?>
                 </div>

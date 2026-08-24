@@ -32,7 +32,7 @@
     <div class="mt-5 mb-5">
         <h2 class="section-title">Informations</h2>
         <hr class="title-separator" />
-        <form action="../../control/UserControl/updateUserControl.php" method="POST">
+        <form action="<?= url('/admin/compte') ?>" method="POST">
             <div class="row align-items-end g-3">
                 <div class="col-md-3">
                     <label for="login" class="form-label">Identifiant</label>

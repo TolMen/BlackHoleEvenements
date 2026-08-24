@@ -1,0 +1,3 @@
+# Code applicatif : jamais accessible depuis le web.
+# Tout passe par le contrôleur frontal (index.php).
+Require all denied

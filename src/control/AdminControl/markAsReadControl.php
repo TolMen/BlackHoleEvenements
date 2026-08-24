@@ -1,5 +1,5 @@
 <?php
-include_once '../../model/AdminModel/messagerieModel.php';
+include_once __DIR__ . '/../../model/AdminModel/messagerieModel.php';
 
 if (isset($_POST['id'])) {
     $id = (int) $_POST['id'];

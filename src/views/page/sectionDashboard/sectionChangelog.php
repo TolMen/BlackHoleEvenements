@@ -3,8 +3,8 @@
 $changelog = require dirname(__DIR__, 4) . '/private/config/changelog.php';
 ?>
 
-<main class="main-container">
-    <h2 class="section-title">Journal des modifications</h2>
+<div class="main-container">
+    <h1 class="section-title">Journal des modifications</h1>
     <hr class="title-separator">
 
     <section class="container">
@@ -39,4 +39,4 @@ $changelog = require dirname(__DIR__, 4) . '/private/config/changelog.php';
             <?php endif; ?>
         </div>
     </section>
-</main>
+</div>

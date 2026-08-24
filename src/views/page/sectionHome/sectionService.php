@@ -5,10 +5,10 @@
     <div class="boxGal">
         <div class="options">
             <?php foreach ($servicesForHome as $index => $service): ?>
-                <div class="option <?= $index === 1 ? 'active' : '' ?>" style="--optionBackground: url(../../../public/assets/img/<?= $service['chemin_img'] ?>);">
+                <div class="option <?= $index === 1 ? 'active' : '' ?>" style="--optionBackground: url(<?= BASE_PATH ?>/public/assets/img/<?= $service['chemin_img'] ?>);">
                     <div class="label">
                         <div class="icon">
-                            <img src="../../../public/assets/icon/<?= $service['chemin_icon'] ?>" alt="<?= $service['alt_icon'] ?>">
+                            <img src="<?= BASE_PATH ?>/public/assets/icon/<?= $service['chemin_icon'] ?>" alt="<?= $service['alt_icon'] ?>">
                         </div>
                         <div class="info">
                             <p class="title"><?= htmlspecialchars($service['nom']) ?></p>
@@ -18,7 +18,7 @@
             <?php endforeach; ?>
         </div>
     </div>
-    <a href="service.php" class="custom-bouton" style="margin-top: 30px;">En savoir plus</a>
+    <a href="<?= url('/services') ?>" class="custom-bouton" style="margin-top: 30px;">En savoir plus</a>
 </section>
 
 <!-- MOBILE VERSION -->
@@ -29,10 +29,10 @@
         <?php foreach ($servicesForHome as $service): ?>
             <li>
                 <div class="img-wrapper">
-                    <img src="../../../public/assets/img/<?= $service['chemin_img'] ?>" alt="<?= $service['alt'] ?>">
+                    <img src="<?= BASE_PATH ?>/public/assets/img/<?= $service['chemin_img'] ?>" alt="<?= $service['alt'] ?>">
                     <div class="label">
                         <div class="icon">
-                            <img src="../../../public/assets/icon/<?= $service['chemin_icon'] ?>" alt="<?= $service['alt_icon'] ?>">
+                            <img src="<?= BASE_PATH ?>/public/assets/icon/<?= $service['chemin_icon'] ?>" alt="<?= $service['alt_icon'] ?>">
                         </div>
                         <div class="info">
                             <p class="title"><?= htmlspecialchars($service['nom']) ?></p>
@@ -42,5 +42,5 @@
             </li>
         <?php endforeach; ?>
     </ul>
-    <a href="service.php" class="custom-bouton" style="margin-top: 30px;">En savoir plus</a>
+    <a href="<?= url('/services') ?>" class="custom-bouton" style="margin-top: 30px;">En savoir plus</a>
 </section>

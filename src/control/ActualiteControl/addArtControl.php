@@ -1,11 +1,8 @@
 <?php
 
-// Ouvre la session
-session_start();
-
 // Inclus les fichiers nécessaires
-include_once '../../model/ActualiteModel/addArtModel.php';
-include_once '../../model/Services/imageService.php';
+include_once __DIR__ . '/../../model/ActualiteModel/addArtModel.php';
+include_once __DIR__ . '/../../model/Services/imageService.php';
 
 if (isset($_POST['publishArticle'])) {
     $title = $_POST['title'];
@@ -18,7 +15,7 @@ if (isset($_POST['publishArticle'])) {
 
     if ($articleID) {
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            $uploadDir = '../../../public/assets/img/imgActu/';
+            $uploadDir = PUBLIC_PATH . '/assets/img/imgActu/';
 
             $fileTmpPath = $_FILES['image']['tmp_name'];
             $fileName = $_FILES['image']['name'];
@@ -36,7 +33,7 @@ if (isset($_POST['publishArticle'])) {
             }
         }
 
-        header('Location: ../../views/page/actualite.php?articleID=' . $articleID);
-        throw new Exception("Redirection vers la page de l'article");
+        header('Location: ' . article_url((int) $articleID, $title));
+        exit;
     }
 }

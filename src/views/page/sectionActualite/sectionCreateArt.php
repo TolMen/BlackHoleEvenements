@@ -1,6 +1,6 @@
 <section class="main-container">
     <div class="article-wrapper container">
-        <form id="formArt" method="POST" action="../../control/ActualiteControl/addArtControl.php" enctype="multipart/form-data">
+        <form id="formArt" method="POST" action="<?= url('/admin/actualites') ?>" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-12">
                     <div class="article-header text-start">
@@ -23,11 +23,11 @@
                     <div class="article-image-desktop sticky-top z-0">
                         <div class="link mb-3">
                             <input type="submit" name="publishArticle" value="Valider" class="btn btn-outline-dark btn-sm">
-                            <a href="actualite.php" class="btn btn-outline-dark btn-sm">Retour</a>
+                            <a href="<?= url('/actualites') ?>" class="btn btn-outline-dark btn-sm">Retour</a>
                         </div>
                         <div class="position-relative mb-3 image-container">
                             <div class="image-wrapper-edit">
-                                <img src="../../../public/assets/img/imgActu/imgActu_Create.png" alt="Image de l'article" class="img-fluid rounded shadow editable-image" id="preview-img">
+                                <img src="<?= BASE_PATH ?>/public/assets/img/imgActu/imgActu_Create.png" alt="Image de l'article" class="img-fluid rounded shadow editable-image" id="preview-img">
                                 <label for="imageUpload" class="edit-icon">
                                     <i class="fas fa-pencil-alt"></i>
                                 </label>

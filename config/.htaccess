@@ -1,0 +1,2 @@
+# Configuration applicative : jamais accessible depuis le web.
+Require all denied

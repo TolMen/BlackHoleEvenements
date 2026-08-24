@@ -1,21 +1,23 @@
 <?php
-session_start();
 
-// Protégé : admin uniquement
-if (!isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'admin') {
-    header('Location: home.php');
-    exit;
-}
+/**
+ * Compteur des visites bloquées (/admin/statistiques-bloquees).
+ *
+ * L'accès administrateur est vérifié par AdminController.
+ */
 
-$statsFile = dirname(__DIR__, 3) . '/private/blockedStats.json';
-$stats = json_decode(file_get_contents($statsFile), true);
+$statsFile = PRIVATE_PATH . '/blockedStats.json';
+$stats = is_file($statsFile) ? json_decode((string) file_get_contents($statsFile), true) : [];
+$stats = is_array($stats) ? $stats : [];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <title>Stats bloquées</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Statistiques bloquées | Black Hole Évènements</title>
     <style>
         body {
             font-family: sans-serif;
@@ -60,11 +62,11 @@ $stats = json_decode(file_get_contents($statsFile), true);
     <div class="box">
         <h1>Statistiques de blocage</h1>
         <div class="stat">
-            <span><?= intval($stats['bots']) ?></span>
+            <span><?= (int) ($stats['bots'] ?? 0) ?></span>
             Bots bloqués
         </div>
         <div class="stat">
-            <span><?= intval($stats['spam']) ?></span>
+            <span><?= (int) ($stats['spam'] ?? 0) ?></span>
             Messages spam bloqués
         </div>
     </div>

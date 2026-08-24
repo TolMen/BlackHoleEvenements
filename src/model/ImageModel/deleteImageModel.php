@@ -1,14 +1,13 @@
 <?php
-session_start();
 
 if (!isset($_GET['id'])) {
-    header("Location: ../../views/page/inspiration.php");
+    header("Location: " . url('/admin/galerie'));
     exit;
 }
 
-$imgID = $_GET['id'];
+$imgID = isset($imgID) ? (int) $imgID : (int) $_GET['id'];
 
-include_once '../../control/BDDControl/connectBDD.php';
+include_once __DIR__ . '/../../control/BDDControl/connectBDD.php';
 
 // 1. Récupérer le nom du fichier
 $stmt = $bdd->prepare("SELECT chemin_img FROM images WHERE id = ?");
@@ -17,7 +16,7 @@ $image = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // 2. Supprimer le fichier si trouvé
 if ($image && !empty($image['chemin_img'])) {
-    $cheminFichier = "../../../public/assets/img/" . $image['chemin_img'];
+    $cheminFichier = PUBLIC_PATH . '/assets/img/' . $image['chemin_img'];
 
     if (file_exists($cheminFichier)) {
         unlink($cheminFichier); // Supprimer le fichier image
@@ -29,5 +28,5 @@ $query = $bdd->prepare("DELETE FROM images WHERE id = ?");
 $query->execute([$imgID]);
 
 // 4. Rediriger
-header("Location: ../../views/page/inspiration.php");
+header("Location: " . url('/admin/galerie'));
 exit;

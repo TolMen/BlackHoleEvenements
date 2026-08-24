@@ -1,6 +1,6 @@
 <?php
 
-include_once '../../control/BDDControl/connectBDD.php';
+include_once __DIR__ . '/../../control/BDDControl/connectBDD.php';
 
 class UserModel
 {

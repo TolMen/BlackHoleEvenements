@@ -1,7 +1,0 @@
-User-agent: *
-
-Disallow: /private/
-Disallow: /src/control/
-Disallow: /src/model/
-
-Sitemap: https://www.blackhole-evenements.com/sitemap.xml

@@ -1,14 +1,13 @@
 <?php
-session_start();
 
-include_once '../../model/ContactModel/contactModel.php';
-include_once '../../model/Services/antiSpamService.php';
-include_once '../../../private/config/configMail.php';
+include_once __DIR__ . '/../../model/ContactModel/contactModel.php';
+include_once __DIR__ . '/../../model/Services/antiSpamService.php';
+include_once __DIR__ . '/../../../private/config/configMail.php';
 
 // PHPMailer
-require_once '../../model/Services/PHPMailer.php';
-require_once '../../model/Services/SMTP.php';
-require_once '../../model/Services/Exception.php';
+require_once __DIR__ . '/../../model/Services/PHPMailer.php';
+require_once __DIR__ . '/../../model/Services/SMTP.php';
+require_once __DIR__ . '/../../model/Services/Exception.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -30,13 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stats = json_decode(file_get_contents($statsFile), true);
         $stats['spam']++;
         file_put_contents($statsFile, json_encode($stats));
-        header('Location: ../../views/page/contact.php');
+        header('Location: ' . url('/contact'));
         exit;
     }
 
     if (empty($name) || empty($email) || empty($subject) || empty($message)) {
         $_SESSION['contact_error'] = "Tous les champs sont obligatoires.";
-        header('Location: ../../views/page/contact.php');
+        header('Location: ' . url('/contact'));
         exit;
     }
 
@@ -47,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stats['spam']++;
         file_put_contents($statsFile, json_encode($stats));
         $_SESSION['contact_error'] = "Votre message n'a pas pu être envoyé. Veuillez vérifier son contenu.";
-        header('Location: ../../views/page/contact.php');
+        header('Location: ' . url('/contact'));
         exit;
     }
 
@@ -91,6 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $_SESSION['contact_success'] = true;
     $_SESSION['contact_name'] = $name;
-    header('Location: ../../views/page/contact.php');
+    header('Location: ' . url('/contact'));
     exit;
 }

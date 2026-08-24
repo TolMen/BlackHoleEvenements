@@ -85,6 +85,7 @@
 
 /* Titre */
 .content .name {
+    margin: 0;
     font-size: 40px;
     text-transform: uppercase;
     font-weight: bold;

@@ -1,25 +1,20 @@
 {
-    "name": "Black Hole Événements",
-
+    "name": "Black Hole Évènements",
     "short_name": "BH Event",
-
-    "start_url": "/index.php",
-
+    "start_url": "/",
+    "scope": "/",
     "display": "browser",
-
     "orientation": "any",
-
     "background_color": "#f9f9f9",
-
     "theme_color": "#ff977d",
-
     "lang": "fr-FR",
-
-    "description": "Black Hole Événements, situé à Riom (Puy-de-Dôme), est spécialisé dans les prestations audiovisuelles et événementielles pour mariages, anniversaires, galas, concerts et festivals. Sonorisation, éclairage, vidéo, DJ, effets spéciaux, décoration lumineuse, mobilier, et plus, avec un large parc de matériel professionnel. Offrez à votre événement une expérience unique et mémorable grâce à notre savoir-faire et équipements haut de gamme.",
-
-    "author": "Entreprise Black Hole Événement / Développeur Web Jessy Frachisse",
-
-    "homepage_url": "https://www.blackhole-evenements.com/",
-
-    "categories": ["business", "events", "audiovisual"]
+    "description": "Black Hole Évènements, à Riom (Puy-de-Dôme), est spécialisé dans les prestations audiovisuelles et événementielles : mariages, anniversaires, galas, concerts et festivals. Sonorisation, éclairage, vidéo, DJ, effets spéciaux et décoration lumineuse.",
+    "categories": ["business", "events"],
+    "icons": [
+        {
+            "src": "/public/assets/logo.png",
+            "sizes": "780x620",
+            "type": "image/png"
+        }
+    ]
 }

@@ -1,7 +1,7 @@
 <?php
 
 // Inclus les fichiers nécessaires
-include_once '../../control/BDDControl/connectBDD.php';
+include_once __DIR__ . '/../../control/BDDControl/connectBDD.php';
 
 class DeleteArtModel
 {
@@ -12,7 +12,7 @@ class DeleteArtModel
         $image = $query->fetch(PDO::FETCH_ASSOC);
 
         if ($image && isset($image['url'])) {
-            $imagePath = '../../../public/assets/img/imgActu/' . $image['url'];
+            $imagePath = PUBLIC_PATH . '/assets/img/imgActu/' . $image['url'];
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }

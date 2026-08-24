@@ -1,4 +1,4 @@
-<main class="main-container">
+<div class="main-container">
     <h2 class="section-title">Messagerie</h2>
     <hr class="title-separator">
 
@@ -15,7 +15,7 @@
                         data-read="<?= $message['is_read'] ? '1' : '0' ?>"
                         data-date="<?= date('d/m/Y H:i', strtotime($message['submitted_at'])) ?>">
 
-                        <a href="../../model/AdminModel/deleteMessagerieModel.php?id=<?= $message['id'] ?>"
+                        <a href="<?= url('/admin/messagerie/' . $message['id'] . '/supprimer') ?>"
                             class="delete-badge"
                             title="Supprimer le message"
                             onclick="event.stopPropagation();">
@@ -36,7 +36,7 @@
             <?php } ?>
         </div>
     </section>
-</main>
+</div>
 
 <div id="popup" class="popup">
     <div class="popup-content">

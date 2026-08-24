@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="article-header text-center">
-                    <h1 class="article-title"><?= htmlspecialchars($article['title']); ?></h1>
+                    <h1 class="article-title"><?= e($article['title']) ?></h1>
                 </div>
             </div>
         </div>
@@ -20,15 +20,15 @@
                     <div class="link mb-3">
                         <a href="#" class="btn btn-outline-dark btn-sm active">Lire</a>
                         <?php if (isset($_SESSION["userRole"]) && $_SESSION["userRole"] == "admin") { ?>
-                            <a href="actualite.php?articleID=<?php echo $article['id']; ?>&type=update" class="btn btn-outline-dark btn-sm">Modifier</a>
+                            <a href="<?= url('/admin/actualites/' . (int) $article['id'] . '/modifier') ?>" class="btn btn-outline-dark btn-sm">Modifier</a>
                         <?php } ?>
-                        <a href="actualite.php" class="btn btn-outline-dark btn-sm">Retour</a>
+                        <a href="<?= url('/actualites') ?>" class="btn btn-outline-dark btn-sm">Retour</a>
                     </div>
                     <div class="image-wrapper-view">
-                        <img src="../../../public/assets/img/imgActu/<?= htmlspecialchars($imageUrl) ?>" alt="Image de l'article" class="img-fluid rounded shadow article-image-view">
+                        <img src="<?= e(article_image_url($imageUrl)) ?>" alt="Illustration de l'article : <?= e($article['title']) ?>" class="img-fluid rounded shadow article-image-view">
                     </div>
                     <div class="article-meta mt-3">
-                        <p>📅 Le : <strong><?= date("d/m/Y à H:i", strtotime($dateToShow)); ?></strong></p>
+                        <p>📅 Le : <strong><time datetime="<?= e(date('Y-m-d', strtotime($dateToShow))) ?>"><?= date("d/m/Y à H:i", strtotime($dateToShow)) ?></time></strong></p>
                         <p>📝 Auteur : <strong>Black Hole Evènements</strong></p>
                         <p>👁️ Vues : <strong><?= intval($article['views']); ?></strong></p>
                     </div>

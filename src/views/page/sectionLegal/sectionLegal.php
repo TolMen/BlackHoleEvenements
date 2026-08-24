@@ -1,5 +1,5 @@
 <section class="legal-section container py-5">
-    <h2 class="section-title"><?= htmlspecialchars($pageTitle) ?></h2>
+    <h1 class="section-title"><?= e($legalTitle) ?></h1>
     <hr class="title-separator">
 
     <?php foreach ($data as $index => $item):

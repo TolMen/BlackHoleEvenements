@@ -1,49 +1,53 @@
 <?php
-session_start();
 
-include_once '../../control/AdminControl/visitorControl.php';
-include_once '../../control/InspirationControl/filtreControl.php';
-include_once '../../control/ImageControl/galleryImageControl.php';
+/**
+ * Galerie d'inspiration (/inspiration).
+ *
+ * Le filtre par service reste en paramètre d'URL (?service=…) : il s'agit
+ * d'une variante de la même page, dont la version canonique est /inspiration.
+ */
 
-$selectedService = $_GET['service'] ?? '';
+$pageTitle       = 'Inspiration : nos réalisations en images';
+$pageDescription = 'Parcourez nos réalisations : décorations lumineuses, mises en lumière '
+    . 'de châteaux et domaines, scènes de concert et ambiances de mariage en Auvergne.';
+$pageCanonical   = absolute_url('/inspiration');
+$pageStyles      = ['css/styleInspiration/styleInspiration.css'];
 
+$pageJsonLd = jsonld_script([
+    jsonld_organization(),
+    jsonld_breadcrumb([
+        'Accueil'     => '/',
+        'Inspiration' => '/inspiration',
+    ]),
+]);
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <!-- Inclusion des balises meta et autres head communs -->
-    <?php include '../component/head.php'; ?>
-
-    <!-- Feuille de style spécifique à la page Inspiration -->
-    <link rel="stylesheet" href="../../../public/css/styleInspiration/styleInspiration.css">
-
-    <title>Inspiration - Black Hole Evènements</title>
+    <?php include VIEWS_PATH . '/component/head.php'; ?>
 </head>
 
 <body>
 
-    <!-- Inclusion de la barre de navigation -->
-    <?php include '../component/navbar.php'; ?>
+    <?php include VIEWS_PATH . '/component/navbar.php'; ?>
 
-    <!-- Section Inspiration principale -->
-    <?php include 'sectionInspiration/sectionInspiration.php'; ?>
+    <main>
+        <?php include PAGES_PATH . '/sectionInspiration/sectionInspiration.php'; ?>
+    </main>
 
-    <!-- Inclusion du pied de page -->
-    <?php include '../component/footer.php'; ?>
+    <?php include VIEWS_PATH . '/component/footer.php'; ?>
 
-    <!-- Librairies JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Scripts personnalisés — ORDRE IMPORTANT :
          galleryGestion.js doit être chargé EN PREMIER car il expose window.applyGalleryFilters
          utilisé par tous les autres scripts de filtrage. -->
-    <script src="../../../public/js/galleryGestion.js"></script>
-    <script src="../../../public/js/filterPhoto.js"></script>
-    <script src="../../../public/js/filterReset.js"></script>
-    <script src="../../../public/js/searchLieu.js"></script>
-    <script src="../../../public/js/filterServiceToInspiration.js"></script>
+    <script src="<?= asset('js/galleryGestion.js') ?>"></script>
+    <script src="<?= asset('js/filterPhoto.js') ?>"></script>
+    <script src="<?= asset('js/filterReset.js') ?>"></script>
+    <script src="<?= asset('js/searchLieu.js') ?>"></script>
+    <script src="<?= asset('js/filterServiceToInspiration.js') ?>"></script>
 
 </body>
 

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Espaces privés : jamais indexés
+Disallow: /admin
+Disallow: /connexion
+Disallow: /deconnexion
+
+Sitemap: https://www.blackhole-evenements.com/sitemap.xml
